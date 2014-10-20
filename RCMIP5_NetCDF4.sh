@@ -1,3 +1,4 @@
+#!/bin/bash
 ## 1) Update and install R
 
 ## using Nectar image "NeCTAR Ubuntu 14.04 (Trusty) amd64"
