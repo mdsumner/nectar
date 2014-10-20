@@ -14,7 +14,6 @@ sudo apt-get install netcdf-bin -y
 sudo apt-get install libnetcdf-dev -y
 
 ## 2) Install R package dependencies
-## brew, digest, Rcpp stringr, and testthat packages
 ## lib = "/usr/lib/R/site-library"
 
 sudo Rscript -e 'x <- .libPaths();install.packages(c("abind", "plyr", "reshape2", "foreach", "digest", "ggplot2", "ncdf4", "ncdf", "doParallel", "fields", "testthat", "knitr"), lib = x[length(x)-1], repos = "http://cran.csiro.au")'
