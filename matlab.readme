@@ -1,0 +1,10 @@
+## matlab on Nectar in 5 steps
+
+# 1) spin up the TPAC VM "TPAC MatLab U14.04 06-06-14"
+# 2) Include at least security rule for SSH (port 22)
+# 3) Don't forget your Security key. 
+# 4) Choose "tasmania" as the Availability Zone (else you won't have access to the license server)
+# 5) ssh -i [mykey].pem -X ubuntu@[ip-address]
+
+## HAPPY DAYS
+
