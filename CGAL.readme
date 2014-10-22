@@ -1,0 +1,161 @@
+## Source: http://scigeo.org/articles/howto-install-latest-geospatial-software-on-linux.html#cgal
+
+mkdir ~/build
+cd ~/build
+
+## cmake
+
+### On Ubuntu
+## assume g++ already
+apt-get install libncurses5-dev --assume-yes
+
+Now we can download and compile cmake.
+# download latest version
+# check here: http://www.cmake.org/cmake/resources/software.html
+wget http://www.cmake.org/files/v3.0/cmake-3.0.2.tar.gz
+tar xvfz cmake-3.0.2.tar.gz
+cd cmake-3.0.2
+
+./bootstrap 
+make -j$threads
+# test out
+bin/cmake --version
+bin/ccmake --version
+
+# install into build dir
+make install
+
+##Finally, update the environmental variables for your new binary path.
+### add to /opt/source/scripts/export_paths.sh (see Preliminaries)
+### then run: 'source export_paths.sh' to update these environment paths
+##export PATH="/opt/source/cmake-2.8.11.1/build/bin:$PATH"
+
+
+## boost
+### On Ubuntu
+apt-get install python-dev libbz2-dev zlib1g-dev --assume-yes
+
+# get latest release
+# check here: http://www.boost.org/users/download/
+cd ~/build
+wget http://iweb.dl.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz
+tar xvfz boost_1_56_0.tar.gz
+cd boost_1_56_0
+
+./bootstrap.sh 
+
+# for mpi support: edit project-config.jam and add this line:
+#   using mpi ;
+##nano project-config.jam
+
+
+./b2 -j$threads stage threading=multi --layout=tagged link=shared
+./b2 install
+
+
+## eigen
+
+### On Ubuntu
+apt-get install libfftw3-dev fftw-dev gfortran --assume-yes
+
+# download latest release
+cd ~/build
+wget http://bitbucket.org/eigen/eigen/get/3.2.2.tar.gz
+tar xvfz 3.2.2.tar.gz
+cd eigen-eigen-1306d75b4a21
+mkdir cmake_build
+cd cmake_build
+# run ccmake (press c, confirm paths, press c again, press g, and exit)
+ccmake .. -DCMAKE_INSTALL_PREFIX=/home/ubuntu/build/eigen-eigen-1306d75b4a21/build
+
+make -j$threads
+# install into build dir
+make install
+
+# optional -- build tests (takes a long time)
+##make check
+##./test/geo_transformations_1
+
+
+
+
+### On Ubuntu
+# all that is required to build cgal (besides cmake/boost)
+sudo apt-get install libgmp-dev libmpfr-dev
+# for image support (recommended)
+##sudo apt-get install zlib1g-dev 
+# optional: if not building eigen from source, install from packages
+##sudo apt-get install libeigen3-dev
+# optional for demos using qt3 (some use qt3, others qt4)
+##sudo apt-get install libqt3-mt-dev libqt3-compat-headers
+# more optional deps
+sudo apt-get install libmpfi-dev libntl-dev libqglviewer-dev libcoin60-dev libipe-dev
+# even more optional deps
+sudo apt-get install libblas-dev liblapack-dev libf2c2-dev f2c
+
+ get latest release
+# check here: http://www.cgal.org/download.html
+cd ~/build
+wget https://gforge.inria.fr/frs/download.php/file/34149/CGAL-4.5.tar.gz
+##wget https://gforge.inria.fr/frs/download.php/32359/CGAL-4.2.tar.gz
+tar xvfz CGAL-4.5.tar.gz
+cd CGAL-4.5/
+mkdir cmake_build
+cd cmake_build
+
+
+## run cmake
+## note: the options can also be set interactively in ccmake/cmake-gui
+
+# basic options (demos, examples, and qt are optional)
+ccmake .. \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  ##-DBOOST_ROOT=/usr/local \
+  -DBoost_NO_BOOST_CMAKE=TRUE \
+  -DWITH_CGAL_Core=on \
+  -DWITH_CGAL_ImageIO=on \
+  -DWITH_demos=on \
+  -DWITH_examples=on \
+  -DWITH_CGAL_Qt3=on \
+  -DWITH_CGAL_Qt4=on 
+
+# if eigen is installed (provide path if used custom build)
+  -DWITH_Eigen3=on \
+  -DEIGEN3_INCLUDE_DIR=/opt/source/eigen_3_1_3/build/include \
+
+# more options
+  -DWITH_ZLIB=on \
+  -DWITH_BLAS=on \
+  -DWITH_LAPACK=on \
+
+# even more possible options for Ubuntu (depending on what is installed)
+  -DWITH_OpenGL=on \
+  -DWITH_NTL=on \
+  ##-DWITH_MPFI=on \
+  -DWITH_Coin3D=on \
+  -DWITH_QGLViewer=on \
+  -DWITH_IPE=on \
+
+# run 'configure', check all options (use advanced view to see all paths),
+# then run 'configure' again as needed, 'generate' and exit.
+
+# compile
+##make -j$threads
+# install into build dir
+make install
+
+# optionally compile demos
+make -j$threads demos
+# test
+./demo/Mesh_2/mesh
+
+# optionally compile examples (takes a long time; some may not work)
+make -j$threads examples
+# test
+./examples/Polygon/Polygon
+Finally, update the environmental variables for your new library and binary path.
+### add to /opt/source/scripts/export_paths.sh (see Preliminaries)
+### then run: 'source export_paths.sh' to update these environment paths
+## -export LD_LIBRARY_PATH="/opt/source/CGAL-4.2/build/lib:$LD_LIBRARY_PATH"
+## -export PATH="/opt/source/CGAL-4.2/build/bin:$PATH"
+
