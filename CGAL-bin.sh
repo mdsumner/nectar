@@ -13,4 +13,5 @@ apt-get install cmake g++
 tar --gzip -xf /usr/share/doc/libcgal-demo/examples.tar.gz
 tar --gzip -xf /usr/share/doc/libcgal-demo/demo.tar.gz
 
+
 ## http://homepages.math.uic.edu/~ddumas/teaching/2014/spring/mcs481/cgal-example/
