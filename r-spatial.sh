@@ -18,6 +18,11 @@
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
 echo 'deb http://cran.csiro.au/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+
+## updated GDAL 
+## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
+add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+
 apt-get update 
 apt-get upgrade --assume-yes
 
@@ -35,7 +40,7 @@ apt-get install libnetcdf-dev --assume-yes
 apt-get install netcdf-bin --assume-yes
 
 ## PROJ.4 and GDAL
-apt-get install libproj --assume-yes
+apt-get install proj-bin --assume-yes
 apt-get install libproj-dev --assume-yes
 apt-get install libgdal-dev --assume-yes
 apt-get install gdal-bin --assume-yes
