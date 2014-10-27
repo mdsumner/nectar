@@ -9,12 +9,13 @@ ln -s /usr/share/zoneinfo/Etc/GMT+10 /etc/localtime
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
 ## chown ubuntu /etc/apt/sources.list
 echo 'deb http://cran.csiro.au/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
-echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/"; options(repos = r); })' >> /etc/R/Rprofile.site
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 apt-get update --assume-yes
 apt-get upgrade --assume-yes
 apt-get install r-base r-base-dev --assume-yes
+
+echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/"; options(repos = r); })' >> /etc/R/Rprofile.site
 
 ## 3) Install 3rd party NetCDF4 dependency
 apt-get install netcdf-bin --assume-yes
