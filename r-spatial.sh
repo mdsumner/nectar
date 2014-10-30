@@ -73,6 +73,6 @@ Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/lib/R
 # sudo apt-get install gdebi-core --assume-yes
 ## already installed above by something, but no harm
 # sudo apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
-# wget http://download2.rstudio.org/rstudio-server-0.98.1081-amd64.deb
-# sudo gdebi rstudio-server-0.98.1081-amd64.deb
+#  wget http://download2.rstudio.org/rstudio-server-0.98.1085-amd64.deb
+# sudo gdebi rstudio-server-0.98.1085-amd64.deb
 
