@@ -66,7 +66,7 @@ apt-get install gdal-bin --assume-yes
 ## now R
 apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/lib/R/site-library")'
+Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
 ## RStudio server?, uncomment and run interactively
 ## see here for updates: http://www.rstudio.com/products/rstudio/download-server/
