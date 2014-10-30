@@ -76,3 +76,5 @@ Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local
 #  wget http://download2.rstudio.org/rstudio-server-0.98.1085-amd64.deb
 # sudo gdebi rstudio-server-0.98.1085-amd64.deb
 
+##wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.3.368-amd64.deb
+## sudo gdebi shiny-server-1.2.3.368-amd64.deb
