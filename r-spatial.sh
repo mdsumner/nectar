@@ -68,6 +68,9 @@ apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
+## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
+sudo apt-get install ec
+
 ## RStudio server?, uncomment and run interactively
 ## see here for updates: http://www.rstudio.com/products/rstudio/download-server/
 # sudo apt-get install gdebi-core --assume-yes
