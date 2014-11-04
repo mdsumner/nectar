@@ -7,7 +7,7 @@ make -j8
 make install
 
 module load netcdf/3.6.2-gnu  
-udunits/2.1.7
+module load udunits/2.1.7
 
 bin/Rscript -e 'install.packages(c("RNetCDF"))'
 
