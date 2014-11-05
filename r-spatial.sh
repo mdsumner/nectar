@@ -69,7 +69,10 @@ echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";opti
 Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
 ## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
-sudo apt-get install ec
+## sudo apt-get install ec
+
+sudo apt-get install texlive-fonts-recommended
+sudo apt-get install texlive-latex-recommended
 
 ## RStudio server?, uncomment and run interactively
 ## see here for updates: http://www.rstudio.com/products/rstudio/download-server/
