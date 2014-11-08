@@ -18,7 +18,7 @@ apt-get install libapparmor1 # Required only for Ubuntu, not Debian
 wget http://mran.revolutionanalytics.com/install/RRO-8.0-Beta-Ubuntu-14.04.x86_64.tar.gz
 
 tar zxvf RRO-8.0-Beta-Ubuntu-14.04.x86_64.tar.gz
-./install.shs
+./install.sh
 
 wget http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb
 
