@@ -71,8 +71,14 @@ Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local
 ## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
 ## sudo apt-get install ec
 
-sudo apt-get install texlive-fonts-recommended
-sudo apt-get install texlive-latex-recommended
+apt-get install texlive-fonts-recommended --assume-yes
+apt-get install texlive-latex-recommended --assume-yes
+
+apt-get install gdebi-core --assume-yes
+apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
+## uncomment and run gdebi with sudo
+##wget http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb
+##gdebi rstudio-server-0.98.1091-amd64.deb --assume-yes
 
 ## RStudio server?, uncomment and run interactively
 ## see here for updates: http://www.rstudio.com/products/rstudio/download-server/
