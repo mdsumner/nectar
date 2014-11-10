@@ -37,4 +37,6 @@ cd udunits-2.2.17/
 
 env LD_LIBRARY_PATH="/u/mdsumner/lib" bin/Rscript -e 'install.packages(c("RNetCDF"), configure.args = c("--with-netcdf-include=/u/mdsumner/include --with-netcdf-lib=/u/mdsumner/lib --with-udunits-include=/u/mdsumner/include --with-udunits-lib=/u/mdsumner/lib"))'
 
+env LD_LIBRARY_PATH="/u/mdsumner/lib" bin/Rscript -e 'install.packages(c("ncdf4"), configure.args = c("--with-netcdf-include=/u/mdsumner/include --with-netcdf-lib=/u/mdsumner/lib"))'
+
 env LD_LIBRARY_PATH="/u/mdsumner/lib" bin/R
