@@ -1,8 +1,24 @@
+## compile ROMS notes
+## need f90 in NetCDF
+## default is /usr/local/include etc
+
+
 ## on scratch01
 mkdir roms
 svn checkout https://www.myroms.org/svn/src/trunk roms
 export NETCDF_INCDIR=/usr/include
 export NETCDF_LIBDIR=/usr/lib
 export FORT=gfortran
-cd roms
+export MY_ROOT_DIR=/home/mdsumner/roms
+
+## fug, try again from scratch
+wget http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.2.tar.gz
+tar zxvf netcdf-fortran-4.2.tar.gz
+cd netcdf-fortran-4.2.tar.gz
+./configure
 make
+sudo make install
+
+cd roms
+make -j 2
+
