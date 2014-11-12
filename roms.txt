@@ -1,0 +1,8 @@
+## on scratch01
+mkdir roms
+svn checkout https://www.myroms.org/svn/src/trunk roms
+export NETCDF_INCDIR=/usr/include
+export NETCDF_LIBDIR=/usr/lib
+export FORT=gfortran
+cd roms
+make
