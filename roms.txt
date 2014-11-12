@@ -1,9 +1,9 @@
 ## compile ROMS notes
 ## need f90 in NetCDF
 ## default is /usr/local/include etc
+## not sure on Nc-4 requirement, turned off to work here
 
-
-## I think this worked on cppb
+## this worked on cppb
 mkdir trunk
 svn checkout https://www.myroms.org/svn/src/trunk trunk
 export FORT=gfortran
@@ -11,29 +11,6 @@ export MY_ROOT_DIR=/home/mdsumner/trunk
 export USE_NETCDF4=no
 cd trunk
 make -j 8
-
-
-
-
-
-
-
-## on scratch01
-mkdir roms
-svn checkout https://www.myroms.org/svn/src/trunk roms
-export NETCDF_INCDIR=/usr/include
-export NETCDF_LIBDIR=/usr/lib
-export FORT=gfortran
-export MY_ROOT_DIR=/home/mdsumner/roms
-
-## fug, try again from scratch
-wget http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.2.tar.gz
-tar zxvf netcdf-fortran-4.2.tar.gz
-cd netcdf-fortran-4.2.tar.gz
-./configure
-make
-sudo make install
-
-cd roms
-make -j 2
-
+## test: 
+## ./oceanS < ROMS/External/ocean_upwelling.in >  log &
+mpirun -np 8 ./oceanS < ROMS/External/ocean_upwelling.in >  log3 &
