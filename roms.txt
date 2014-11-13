@@ -1,0 +1,15 @@
+## compile ROMS notes
+## need f90 in NetCDF
+## default is /usr/local/include etc
+## not sure on Nc-4 requirement, turned off to work here
+## need mpi to be set in makefile (or in build.sh?)
+
+## this worked on cppb
+git clone https://github.com/kshedstrom/roms.git
+export FORT=gfortran
+export MY_ROOT_DIR=/home/mdsumner/trunk
+export USE_NETCDF4=no
+cd roms
+make -j 8
+## test: 
+## ./oceanS < ROMS/External/ocean_upwelling.in >  log &

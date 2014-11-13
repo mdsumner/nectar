@@ -5,9 +5,6 @@
 
 ## Paste all this text into "Post-Creation/Configuration Script"" or run as `sudo r-spatial.sh`
 
-## - NOTE: commands may be run individually must be run as sudo for ubuntu account, 
-##   otherwise they run as root in startup, or as sudo by normal bash script
-
 ## This script installs:
 ## - R with rgdal, ncdf4, rgeos and raster
 ## - including HDF4, HDF5, NetCDF-4 and OpenDAP capabilities via rgdal or raster
@@ -39,23 +36,6 @@ apt-get install hdf4-tools --assume-yes
 apt-get install libnetcdf-dev --assume-yes
 apt-get install netcdf-bin --assume-yes
 
-## optional ECW
-# wget http://downloada.erdas.com/software/2014/ECWJP2SDKSetup/v5.1.1.49_Linux/ECWJP2SDKSetup_5.1.1.bin
-# chmod +x ECWJP2SDKSetup_5.1.1.bin
-# ./ECWJP2SDKSetup_5.1.1.bin #Select desktop-read-only and accept the license)
-# sudo cp -r ERDAS-ECW_JPEG_2000_SDK-5.1.1 /usr/local/
-# sudo ln -s /usr/local/ERDAS-ECW_JPEG_2000_SDK-5.1.1/Desktop_Read-Only/lib/x64/release/libNCSEcw.so /usr/local/lib/libNCSEcw.so
-# sudo ldconfig
-# wget https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable/+files/libgdal-ecw-src_1.10.0-1~precise4_all.deb
-# ar vx libgdal-ecw-src_1.10.0-1~precise4_all.deb
-# tar -xzf data.tar.gz
-# sudo cp usr/src/libgdal-ecw-1.10.0.tar.gz /usr/src/
-# sudo cp    usr/bin/gdal-ecw-build /usr/bin/
-# sudo gdal-ecw-build /usr/local/ERDAS-ECW_JPEG_2000_SDK-5.1.1/Desktop_Read-Only
-# sudo mkdir /usr/lib/gdalplugins/1.11
-# cd /usr/lib/gdalplugins/1.10
-# cp gdal_ECW_JP2ECW.so /usr/lib/gdalplugins/1.11 
-
 
 ## PROJ.4 and GDAL
 apt-get install proj-bin --assume-yes
@@ -66,13 +46,27 @@ apt-get install gdal-bin --assume-yes
 ## now R
 apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/lib/R/site-library")'
+Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
+
+## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
+## sudo apt-get install ec
+
+apt-get install texlive-fonts-recommended --assume-yes
+apt-get install texlive-latex-recommended --assume-yes
+
+apt-get install gdebi-core --assume-yes
+apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
+## uncomment and run gdebi with sudo
+##wget http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb
+##gdebi rstudio-server-0.98.1091-amd64.deb --assume-yes
 
 ## RStudio server?, uncomment and run interactively
 ## see here for updates: http://www.rstudio.com/products/rstudio/download-server/
 # sudo apt-get install gdebi-core --assume-yes
 ## already installed above by something, but no harm
 # sudo apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
-# wget http://download2.rstudio.org/rstudio-server-0.98.1081-amd64.deb
-# sudo gdebi rstudio-server-0.98.1081-amd64.deb
+#  wget http://download2.rstudio.org/rstudio-server-0.98.1085-amd64.deb
+# sudo gdebi rstudio-server-0.98.1085-amd64.deb
 
+##wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.3.368-amd64.deb
+## sudo gdebi shiny-server-1.2.3.368-amd64.deb
