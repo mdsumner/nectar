@@ -1,1 +1,5 @@
-.vagrant
+.Rproj.user
+.Rhistory
+.RData
+*.Rproj
+.gitignore
