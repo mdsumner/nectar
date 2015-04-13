@@ -52,7 +52,9 @@ sudo apt-get update
 sudo apt-get install postgresql-9.4-postgis-2.1 pgadmin3 ##postgresql-contrib
 sudo apt-get postgresql-client-common postgres-xc-client
 
-#sudo su - postgres
-#createuser -d -E -i -l -P -r -s yourUserName
+#sudo su - postgres psql
+#create user  mdsumner with password 'hoochymama';
+#create database ocdb;
+#grant all privileges on database ocdb to mdsumner;
 
 Rscript -e 'install.packages(c("dplyr", "RPostgreSQL"), "/usr/local/lib/R/site-library")'
