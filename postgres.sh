@@ -1,4 +1,6 @@
+#!/bin/bash
 
+## Install R and pg
 
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
 echo 'deb http://cran.csiro.au/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
@@ -36,10 +38,23 @@ apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
+##http://wiki.openstreetmap.org/wiki/PostGIS/Installation
+sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.3-postgis-2.1
+## https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+
+sudo adduser mdsumner
+sudo -i -u postgres
+createdb mdsumner
+createuser --interactive
+
+##SHOW data_directory;
+## /var/lib/postgresql/9.3/main
+
+/usr/local/pgsql/data
+
+## attach volume  to 
 sudo apt-get install gdebi-core --assume-yes
 sudo apt-get install libapparmor1 --assume-yes
-wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-0.99.386-amd64.deb
-sudo gdebi rstudio-server-0.99.386-amd64.deb
 
 # CGAL
 sudo apt-get install libcgal-dev
