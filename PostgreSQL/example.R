@@ -15,7 +15,9 @@ con <- dbConnect(PostgreSQL())
 
 chunk <- 100000
 cnt <- seq(1, chunk)
- dbWriteTable(my_db, as.data.frame(x[cnt, ]), "oc_db")
+d <- copy_to(my_db, x[cnt, ], "oc_db")
+
+ ##dbWriteTable(my_db, as.data.frame(x[cnt, ]), "oc_db")
 cnt <- cnt + chunk
 
 while(TRUE) {
