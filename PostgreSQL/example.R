@@ -25,3 +25,5 @@ while(TRUE) {
 }
 my_db <- src_postgres()
 d <- tbl(my_db, "oc_db")
+##xi <- db_create_index(my_db, "oc_db", list(c("year", "jday"), "bin_num"), name = NULL, ...)
+
