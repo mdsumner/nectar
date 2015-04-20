@@ -30,4 +30,4 @@ my_db <- src_postgres()
 d <- tbl(my_db, "oc_db")
 ##xi <- db_create_index(my_db, "oc_db", list(c("year", "jday"), "bin_num"), name = NULL, ...)
 
-CREATE INDEX test2_mm_idx ON oc_db ((year, jday), bin_num);
+CREATE INDEX Year_day_bin ON oc_db (year, jday, bin_num);
