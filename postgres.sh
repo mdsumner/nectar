@@ -26,6 +26,9 @@ apt-get install hdf4-tools --assume-yes
 apt-get install libnetcdf-dev --assume-yes
 apt-get install netcdf-bin --assume-yes
 
+##http://wiki.openstreetmap.org/wiki/PostGIS/Installation
+apt-get install postgresql postgresql-contrib postgis postgresql-9.3-postgis-2.1
+## https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
 
 ## PROJ.4 and GDAL
 apt-get install proj-bin --assume-yes
@@ -38,9 +41,6 @@ apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
-##http://wiki.openstreetmap.org/wiki/PostGIS/Installation
-sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.3-postgis-2.1
-## https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
 
 sudo adduser mdsumner
 sudo -i -u postgres
