@@ -48,6 +48,11 @@ Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster", "dplyr", "RP
 ##createdb azif
 ##createuser --interactive
 
+apt-get install gdebi-core --assume-yes
+apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
+wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-0.99.386-amd64.deb
+# gdebi rstudio-server-0.99.386-amd64.deb
+
 
 ## consider (for PostGIS)
 # CGAL
