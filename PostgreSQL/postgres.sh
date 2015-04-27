@@ -28,8 +28,10 @@ apt-get install netcdf-bin --assume-yes
 
 ## PostgreSQL now so that GDAL and rgdal automatically pick it and PostGIS up
 ##http://wiki.openstreetmap.org/wiki/PostGIS/Installation
-apt-get install postgresql postgresql-contrib postgis postgresql-9.3-postgis-2.1
+apt-get install postgresql postgresql-contrib postgis postgresql-9.3-postgis-2.1 --assume-yes
 ## https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+apt-get install postgres-xc-client --assume-yes
+apt-get install postgres-xc --assume-yes
 
 ## PROJ.4 and GDAL
 apt-get install proj-bin --assume-yes
@@ -44,17 +46,19 @@ Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster", "dplyr", "RP
 
 
 ## create normal user etc. 
-#sudo adduser azif
-##sudo -i -u postgres
-##createdb azif
+###sudo adduser azif
+# sudo -i -u postgres
+# createdb azif
 ##createuser --interactive
-CREATE TABLESPACE ocuserspace LOCATION '/mnt/postgresql/data';
-createdb -D ocuserspace ocuser;
+#initdb -D /mnt/db --nodename=db
+
+##CREATE TABLESPACE ocuserspace LOCATION '/mnt/postgresql/data';
+##createdb -D ocuserspace ocuser;
 
 apt-get install gdebi-core --assume-yes
 apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
 wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-0.99.386-amd64.deb
-# gdebi rstudio-server-0.99.386-amd64.deb
+gdebi rstudio-server-0.99.386-amd64.deb
 
 
 ## consider (for PostGIS)
