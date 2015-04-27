@@ -42,11 +42,14 @@ apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster", "dplyr", "RPostgreSQL"), "/usr/local/lib/R/site-library")'
 
+
 ## create normal user etc. 
 #sudo adduser azif
 ##sudo -i -u postgres
 ##createdb azif
 ##createuser --interactive
+CREATE TABLESPACE ocuserspace LOCATION '/mnt/postgresql/data';
+createdb -D ocuserspace ocuser;
 
 apt-get install gdebi-core --assume-yes
 apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
