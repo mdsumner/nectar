@@ -22,4 +22,9 @@ R CMD INSTALL fastshp_.tar.gz
 #.Call("shp_orientation", PACKAGE = "rcgal", d)
 ## etc. 
 
+ls points_and_segment.cpp
+export CGAL=/usr/include/CGAL/
+cgal_create_CMakeLists -s executable
+cmake .
+make  
 
