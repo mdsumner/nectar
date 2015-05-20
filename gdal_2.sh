@@ -7,4 +7,6 @@ sudo apt-get install build-essential
 cd gdal
 ./configure
 make 
+make install
+export LD_LIBRARY_PATH=/usr/local/lib
 
