@@ -15,5 +15,21 @@ make
 make install
 export LD_LIBRARY_PATH=/usr/local/lib
 
+sudo apt-get install r-base r-base-dev --assume-yes
+sudo echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
+
+sudo apt-get install subversion
+svn checkout svn://scm.r-forge.r-project.org/svnroot/rgdal/trunk
+
+Rscript -e 'install.packages(c("rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
+
+## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
+## sudo apt-get install ec
+
+#apt-get install texlive-fonts-recommended --assume-yes
+#apt-get install texlive-latex-recommended --assume-yes
+
+apt-get install gdebi-core --assume-yes
+apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
 
 
