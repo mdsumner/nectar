@@ -15,6 +15,10 @@ make
 make install
 export LD_LIBRARY_PATH=/usr/local/lib
 
+sudo chown ubuntu /etc/apt/sources.list
+sudo echo 'deb http://cran.csiro.au/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+
 sudo apt-get install r-base r-base-dev --assume-yes
 sudo echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 
