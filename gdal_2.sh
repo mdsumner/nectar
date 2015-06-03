@@ -9,7 +9,7 @@ sudo apt-get install libproj-dev --assume-yes
 sudo apt-get install proj-bin --assume-yes
 git clone https://github.com/OSGeo/gdal.git
 
-cd gdal
+cd gdal/gdal
 ./configure
 make 
 make install
