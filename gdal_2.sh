@@ -26,7 +26,9 @@ sudo apt-get install subversion
 svn checkout svn://scm.r-forge.r-project.org/svnroot/rgdal/pkg
 svn export pkg rgdal
 R CMD build rgdal --no-build-vignettes
-R CMD INSTALL rgdal_1.0-2.tar.gz
+## R CMD INSTALL rgdal_1.0-2.tar.gz
+## ghod, every step is trecherous . . .
+R CMD INSTALL rgdal_1.0-2.tar.gz --configure-args='--with-gdal-config=/usr/bin/gdal-config'
 
 Rscript -e 'install.packages(c("rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
