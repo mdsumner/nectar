@@ -23,7 +23,10 @@ sudo apt-get install r-base r-base-dev --assume-yes
 sudo echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 
 sudo apt-get install subversion
-svn checkout svn://scm.r-forge.r-project.org/svnroot/rgdal/trunk
+svn checkout svn://scm.r-forge.r-project.org/svnroot/rgdal/pkg
+svn export pkg rgdal
+R CMD build rgdal --no-build-vignettes
+R CMD INSTALL rgdal_1.0-2.tar.gz
 
 Rscript -e 'install.packages(c("rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
