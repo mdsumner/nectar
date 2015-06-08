@@ -9,6 +9,23 @@ sudo apt-get install libproj-dev --assume-yes
 sudo apt-get install proj-bin --assume-yes
 git clone https://github.com/OSGeo/gdal.git
 
+## yikes
+#wget http://download.osgeo.org/proj/proj-4.9.1.tar.gz
+#tar -zxvf proj-4.9.1.tar.gz
+#cd proj-4.9.1/
+#sudo apt remove libproj-dev
+#sudo apt remove proj-bin
+#./configure --prefix=/usr
+#make -j2
+#sudo make install
+#cd /etc/ld.so.conf.d
+#sudo touch rgdal.conf
+#echo '/usr/lib' | sudo tee -a rgdal.conf
+#cd ~
+#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#sudo R CMD REMOVE rgdal
+#sudo R CMD INSTALL rgdal_1.0-2.tar.gz --configure-args='--with-gdal-config=/usr/local/bin/gdal-config'
+
 cd gdal/gdal
 ./configure
 make 
