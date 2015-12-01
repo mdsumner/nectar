@@ -1,0 +1,28 @@
+apt-get install python-dev
+pip install numpy
+pip install mpop
+pip install pykdtree
+
+export PPP_CONFIG_DIR=/home/ubuntu/pytroll/mpop/etc
+
+from mpop.utils import debug_on 
+debug_on() 
+from mpop.satellites import PolarFactory
+from datetime import datetime
+time_slot = datetime(2013, 6, 25, 11, 15)
+orbit = "08599"
+global_data = PolarFactory.create_scene("mpop", "", "viirs", time_slot, orbit)
+global_data.load() 
+
+global_data.load([1.38])
+print global_data
+
+
+from mpop.satellites import GeostationaryFactory
+from mpop.projector import get_area_def
+import datetime
+time_slot = datetime.datetime(2009, 10, 8, 14, 30)
+global_data = GeostationaryFactory.create_scene("meteosat", "09", "seviri", time_slot)
+#europe = get_area_def("EuropeCanary")
+global_data.load([0.6, 0.8, 10.8], area_extent=europe.area_extent)
+print global_data
