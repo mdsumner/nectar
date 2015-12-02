@@ -3,6 +3,49 @@ pip install numpy
 pip install mpop
 pip install pykdtree
 
+
+
+a <- c("mpop", "trollimage", "trollduction", "mipp", 
+"trollsift", "posttroll", "pytroll-schedule", 
+"pytroll-file-utils", "pyresample", "pyorbital","trollcast", "pycoast", "pygranule", "pydecorate", "pytroll-db", 
+"python-bufr")
+
+for (i in seq_along(a)) { 
+writeLines(sprintf("sudo pip install -e git://github.com/pytroll/%s.git#egg=%s", a[i], a[i]))
+}
+
+sudo pip install -e git://github.com/pytroll/mpop.git#egg=mpop
+sudo pip install -e git://github.com/pytroll/trollimage.git#egg=trollimage
+sudo pip install -e git://github.com/pytroll/trollduction.git#egg=trollduction
+sudo pip install -e git://github.com/pytroll/mipp.git#egg=mipp
+sudo pip install -e git://github.com/pytroll/trollsift.git#egg=trollsift
+sudo pip install -e git://github.com/pytroll/posttroll.git#egg=posttroll
+sudo pip install -e git://github.com/pytroll/pytroll-schedule.git#egg=pytroll-schedule
+sudo pip install -e git://github.com/pytroll/pytroll-file-utils.git#egg=pytroll-file-utils
+sudo pip install -e git://github.com/pytroll/pyresample.git#egg=pyresample
+sudo pip install -e git://github.com/pytroll/pyorbital.git#egg=pyorbital
+sudo pip install -e git://github.com/pytroll/trollcast.git#egg=trollcast
+sudo pip install -e git://github.com/pytroll/pycoast.git#egg=pycoast
+sudo pip install -e git://github.com/pytroll/pygranule.git#egg=pygranule
+sudo pip install -e git://github.com/pytroll/pydecorate.git#egg=pydecorate
+sudo pip install -e git://github.com/pytroll/pytroll-db.git#egg=pytroll-db
+sudo pip install -e git://github.com/pytroll/python-bufr.git#egg=python-bufr
+
+from mpop.utils import debug_on 
+debug_on()
+from mpop.satellites import GeostationaryFactory
+from mpop.projector import get_area_def
+import datetime
+time_slot = datetime.datetime(2009, 10, 8, 14, 30)
+global_data = GeostationaryFactory.create_scene("meteosat", "09", "seviri", time_slot)
+europe = get_area_def("EuropeCanary")
+global_data.load([0.6, 0.8, 10.8], area_extent=europe.area_extent)
+print global_data
+global_data.load(['VIS006', 'VIS008', 'IR_108'], area_extent=europe.area_extent)
+img = global_data.image.overview()
+img.save("./myoverview.png")
+
+
 export PPP_CONFIG_DIR=/home/ubuntu/pytroll/mpop/etc
 
 from mpop.utils import debug_on 
