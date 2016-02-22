@@ -42,6 +42,7 @@ apt-get install proj-bin --assume-yes
 apt-get install libproj-dev --assume-yes
 apt-get install libgdal-dev --assume-yes
 apt-get install gdal-bin --assume-yes
+apt-get install libgeos-dev --assume-yes
 
 apt-get install libssl-dev  --assume-yes
 
