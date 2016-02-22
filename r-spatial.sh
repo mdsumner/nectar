@@ -43,10 +43,12 @@ apt-get install libproj-dev --assume-yes
 apt-get install libgdal-dev --assume-yes
 apt-get install gdal-bin --assume-yes
 
+apt-get install libssl-dev  --assume-yes
+
 ## now R
 apt-get install r-base r-base-dev --assume-yes
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
+Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster"), "/usr/local/lib/R/site-library")'
 
 ## LaTeX, pandoc etc. nightmare - just google rstudio errors and follow the trail . . .
 ## sudo apt-get install ec
