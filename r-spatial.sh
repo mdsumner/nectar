@@ -73,3 +73,9 @@ apt-get install libapparmor1 --assume-yes # Required only for Ubuntu, not Debian
 
 ##wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.3.368-amd64.deb
 ## sudo gdebi shiny-server-1.2.3.368-amd64.deb
+
+
+## rgl
+## 2016-03-10
+apt-get install libgl1-mesa-dev libglu1-mesa-dev
+
