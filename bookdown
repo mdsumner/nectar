@@ -1,0 +1,4 @@
+apt-get install  libssl0.9.8 libssl-dev
+Rsript -e 'install.packages("rsconnect")'
+Rsript -e 'devtools::install_github("rstudio/bookdown")'
+
