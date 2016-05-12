@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ## Install R and geo-spatial dependencies
-## mdsumner@gmail.com
+##  (a bit of a moving feast, let me know if you need help)
+
 
 ## Paste all this text into "Post-Creation/Configuration Script"" or run as `sudo r-spatial.sh`
 
