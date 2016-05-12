@@ -12,35 +12,21 @@ This page describes use of Nectar for beginners. Nectar is the cloud computing r
 
 https://nectar.org.au/about-nectar
 
+Official guides and how-to here: ttps://support.nectar.org.au/support/solutions
+
 # Summary
 
 We will
 
-0. Discuss the "cloud" and see some uses
-1. Log in to Nectar and launch a VM (virtual computer)
-2. Log in to our new computer
-3. Install and run applications
+1. What is the cloud? What is it used for? 
+2. Log in to Nectar and launch a VM (virtual computer)
+3. Log in to the VM
+4. Use the VM
 
-## Log in to Nectar and launch a VM
 
-* need AAF account (e.g. a UTAS account)
-* create Security Rules for the VM
-* create a keypair for admin login
-* create the computer!
+# 1. What is the cloud? What is it used for? 
 
-## Log in to the VM
-
-* need an SSH client (*Windows needs extra installation*)
-* create a normal user (don't always be the Administrator)
-
-## Install and run applications
-
-* install applications (as the Administrator)
-* run the applications (as a user)
-
-# 0. What is the cloud? 
-
-It's just computers. 
+It's just computers - computers that aren't physically on your desk, but also computers that you "create" for your own use. 
 
 * Linux shell
 * RStudio
@@ -48,19 +34,35 @@ It's just computers.
 * Python
 * etc. 
 
-The hard thing
+*The hard thing*
 
 Access is less direct than with a computer on your desk. 
 
-The great thing 
+*The great thing*
 
-A. can create a very powerful computer with all dependencies need, and then make a copy of it, "snapshot it" and use it again, share with others. 
+**A.** can create a very powerful computer with all dependencies need, and then make a copy of it, "snapshot it" and use it again, share with others. 
 
-B. It's also possible to create a "recipe script" to take a clean computer and install everything on it that you need automatically. 
+**B.** It's also possible to create a "recipe script" to take a clean computer and install everything on it that you need automatically. 
 
-These two cases have pros and cons, and can be easily used. 
+These two cases have pros and cons, but are not mutually exclusive. 
 
-# 1. Log in to Nectar and launch a VM (virtual computer)
+# 2. Log in to Nectar and launch a VM (virtual computer)
+
+* need AAF account (e.g. a UTAS account)
+* create Security Rules for the VM
+* create a keypair for admin login
+* create the computer!
+
+## 3. Log in to the VM
+
+* need an SSH client (*Windows needs extra installation*)
+* create a normal user (don't always be the Administrator)
+
+## 4. Use the VM
+
+* transfer files (to and from the VM)
+* install applications (as the Administrator)
+* run the applications (as a user)
 
 
 Summary of the process 
