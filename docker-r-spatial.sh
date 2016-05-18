@@ -1,3 +1,4 @@
+#!/bin/bash
 ## debian
 
 apt-get update
@@ -14,3 +15,4 @@ service docker start
 
 docker run -d -p 8787:8787 rocker/hadleyverse
 
+## now go to http://ip:8787 and login as per https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image
