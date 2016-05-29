@@ -14,7 +14,8 @@
 ## version by checking the website noted for "wget" and subsequent "gdebi" install
 
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
-echo 'deb http://cran.csiro.au/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
+echo 'deb https://cloud.r-project/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
+#echo 'deb https://cloud.r-project/bin/linux/debian jessie-cran3/' >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 ## updated GDAL 
