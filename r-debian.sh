@@ -13,22 +13,20 @@
 ## - see final comments for RStudio Server, which should be done interactively - and update the
 ## version by checking the website noted for "wget" and subsequent "gdebi" install
 
+apt-get install apt-transport-https --assume-yes
+
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
-echo 'deb https://cloud.r-project/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list
-#echo 'deb https://cloud.r-project/bin/linux/debian jessie-cran3/' >> /etc/apt/sources.list
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+echo 'deb https://cloud.r-project.org/bin/linux/debian jessie-cran3/' >> /etc/apt/sources.list
+apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480
 
-## updated GDAL 
-## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
-add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+echo "deb http://http.debian.net/debian jessie main" > /etc/apt/sources.list.d/debian-unstable.list \
+	&& echo 'APT::Default-Release "testing";' > /etc/apt/apt.conf.d/default
 
-apt-get update 
+apt-get update 	
 apt-get upgrade --assume-yes
 
 ## Install 3rd parties
 
-## pretty sure not 100% the -tools and -bin versions 
-## are not needed for R but they are useful
 
 ## HDF4
 apt-get install libhdf4-dev --assume-yes
