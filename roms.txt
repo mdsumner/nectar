@@ -1,3 +1,4 @@
+##     Your login name is mds581, and your project code is m68.
 ## compile ROMS notes
 ## need f90 in NetCDF
 ## default is /usr/local/include etc
