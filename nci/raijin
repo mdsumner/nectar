@@ -1,5 +1,9 @@
 module load R/3.2.2 netcdf/4.3.3.1p 
 
-RScript -e 'install.packages(c("sp", "ncdf4", "devtools"), repos = "http://cloud.r-project.org")'
-RScript -e 'devtools::install_github("mdsumner/angstroms")
+Rscript -e 'install.packages(c("sp", "ncdf4"), repos = "http://cloud.r-project.org")'
+
+## cannot do this unless up to date R is installed (awaiting request)
+
+Rscript -e 'install.packages(c("devtools"), repos = "http://cloud.r-project.org")'
+Rscript -e 'devtools::install_github("mdsumner/angstroms")
 
