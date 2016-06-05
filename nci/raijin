@@ -1,4 +1,6 @@
-module load R/3.2.2 netcdf/4.3.3.1p 
+
+
+module load netcdf/4.3.3.1p 
 
 Rscript -e 'install.packages(c("sp", "ncdf4"), repos = "http://cloud.r-project.org")'
 
