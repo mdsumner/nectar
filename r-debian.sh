@@ -7,7 +7,7 @@
 
 apt-get install apt-transport-https --assume-yes
 
-
+apt-get install git
 	
 apt-get update 	
 apt-get upgrade --assume-yes
