@@ -2,7 +2,7 @@
 
 ##-------------------------------------------------------
 ## deps not fully specified yet
-
+apt-get install subversion
 apt-get install apt-transport-https --assume-yes
 apt-get update 	
 apt-get upgrade --assume-yes
