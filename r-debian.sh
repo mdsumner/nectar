@@ -33,6 +33,9 @@ apt-get install libgeos-dev --assume-yes
 
  apt-get install libudunits2-0 libudunits2-dev
 
+## V8 for rmapshaper
+apt-get install libv8-3.14-dev 
+
 ##apt-get install libssl-dev  --assume-yes
 
 apt-get install jags --assume-yes
