@@ -1,3 +1,6 @@
+http://www.win-vector.com/blog/2016/02/databases-in-containers/
+
+https://hub.docker.com/r/mdillon/postgis/
 ```bash
 apt-get update
 apt-get install apt-transport-https ca-certificates
