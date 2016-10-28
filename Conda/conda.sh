@@ -2,7 +2,9 @@
 ## Conda
 
 ```bash
-sudo echo 'deb https://cloud.r-project/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
+sudo su
+echo 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
+exit
 
 
 sudo apt-get update 
