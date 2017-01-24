@@ -3,9 +3,6 @@
 ## Install R and geo-spatial dependencies
 ##  (a bit of a moving feast, let me know if you need help)
 
-apt-get update 
-apt-get upgrade --assume-yes
-
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
 echo 'deb https://cran.ms.unimelb.edu.au/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
@@ -14,7 +11,9 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
-apt-get update
+apt-get update 
+apt-get upgrade --assume-yes
+
 ## Install 3rd parties
 
 ## NetCDF
