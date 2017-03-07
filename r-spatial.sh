@@ -31,7 +31,7 @@ echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.ms.unimelb.edu
 Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "tibble", "dplyr", "rworldmap", "graticule"), "/usr/local/lib/R/site-library")'
 Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "markdown", "praise", "proj4", "rmarkdown", "rprojroot", "shiny", "sourcetools", "testthat", "xtable", "yaml"))'
 apt-get install gdebi-core --assume-yes
-wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.0.136-amd64.deb
-gdebi rstudio-server-1.0.136-amd64.deb -n
+wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-1.1.96-amd64.deb
+gdebi rstudio-dailybuilds/rstudio-1.1.96-amd64.deb -n
 
 
