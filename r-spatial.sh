@@ -28,14 +28,9 @@ apt-get install libgeos-dev --assume-yes && \
 apt-get install libssl-dev  --assume-yes && \
 apt-get install libudunits2-dev --assume-yes && \
 apt-get install r-base r-base-dev --assume-yes
-echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.ms.unimelb.edu.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "tibble", "dplyr", "rworldmap", "graticule"), 
-   "/usr/local/lib/R/site-library")'
-Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR", 
-  "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "markdown", "praise", "proj4", "rmarkdown", "rprojroot",
-  "sf", "tibble", 
-  "shiny", "sourcetools", "tidyverse", "testthat", "xtable", "yaml"), 
-"/usr/local/lib/R/site-library")'
+echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://mirror.aarnet.edu.au/pub/CRAN/";options(repos = r); })' >> /etc/R/Rprofile.site
+Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "sf", "tibble", "tidyverse", "rworldmap", "graticule"), "/usr/local/lib/R/site-library")'
+Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml"), "/usr/local/lib/R/site-library")'
 apt-get install gdebi-core --assume-yes
 wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-1.1.96-amd64.deb
 gdebi rstudio-dailybuilds/rstudio-1.1.96-amd64.deb -n
