@@ -20,7 +20,7 @@ apt upgrade --assume-yes
 apt install libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev   libudunits2-dev  r-base r-base-dev --assume-yes
    
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://mirror.aarnet.edu.au/pub/CRAN/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "sf", "tibble", "tidyverse", "rworldmap"), "/usr/local/lib/R/site-library")'
+Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap"), "/usr/local/lib/R/site-library")'
 Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "ncdump", "rbgm", "spdplyr", "spbabel", "spex"), "/usr/local/lib/R/site-library")
 Rscript -e 'devtools::install_github(c("rstudio/leaflet", "bhaskarvk/leaflet.extras", "environmentalinformatics-marburg/mapview@develop"), "/usr/local/lib/R/site-library")
 
