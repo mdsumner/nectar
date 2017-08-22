@@ -17,11 +17,11 @@ apt upgrade --assume-yes
 ## Install 3rd parties
 
 ## NetCDF and geo-spatial wunderkind
-apt install libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev   libudunits2-dev  r-base r-base-dev --assume-yes
+apt install libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev   libudunits2-dev libprotobuf-dev imagemagick r-base r-base-dev --assume-yes
    
 # R packages
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap"), "/usr/local/lib/R/site-library")'
+Rscript -e 'install.packages(c("devtools", "rgdal", "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick"), "/usr/local/lib/R/site-library")'
 #Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "ncdump", "rbgm", "spdplyr", "spbabel", "spex"), "/usr/local/lib/R/site-library")
 #Rscript -e 'devtools::install_github(c("rstudio/leaflet", "bhaskarvk/leaflet.extras", "environmentalinformatics-marburg/mapview@develop"), "/usr/local/lib/R/site-library")
 
