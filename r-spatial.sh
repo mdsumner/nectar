@@ -30,6 +30,11 @@ Rscript -e 'devtools::install_github(c("bhaskarvk/leaflet.extras", "environmenta
 wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
 gdebi rstudio-server-1.1.353-amd64.deb -n
 
+## raadtools
+## apt install sshfs
+## source("https://bioconductor.org/biocLite.R")
+## biocLite("BiocInstaller")
+## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
 ## then, regularly
 # apt update
 # apt upgrade
