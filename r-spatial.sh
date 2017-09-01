@@ -17,7 +17,7 @@ apt upgrade --assume-yes
 ## Install 3rd parties
 
 ## NetCDF and geo-spatial wunderkind
-apt install gdebi-core libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev  libgl1-mesa-dev libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev --assume-yes
+apt install gdebi-core libmagick++-dev libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev  libgl1-mesa-dev libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev --assume-yes
    
 # R packages
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
