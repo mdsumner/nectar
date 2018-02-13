@@ -33,6 +33,15 @@ Rscript -e 'devtools::install_github(c("bhaskarvk/leaflet.extras", "environmenta
 wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
 gdebi rstudio-server-1.1.353-amd64.deb -n
 
+## I have no idea what I'm doing with Python, but this seemed to work: 
+# apt install libpython3.6
+# apt install pip-python3
+# pip3 install numpy
+# tensorflow
+# library(reticulate)
+# py_config()
+# use_python("/usr/bin/python3")
+
 ## raadtools
 ## apt install sshfs
 ## source("https://bioconductor.org/biocLite.R")
