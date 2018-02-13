@@ -38,6 +38,8 @@ gdebi rstudio-server-1.1.353-amd64.deb -n
 # apt install libpython3.6
 # apt install pip-python3
 # pip3 install numpy
+# pip3 install keras
+# pip3 install tensorflow
 ## set this in /etc/R/Renviron.site RETICULATE_PYTHON=/usr/bin/python3
 # #library(reticulate)
 # #py_config()
