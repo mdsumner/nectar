@@ -7,6 +7,10 @@
 echo 'deb https://mirror.aarnet.edu.au/pub/CRAN/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
+## key for R 3.5.0
+add-apt-repository ppa:marutter/rrutter3.5
+
+
 ## updated GDAL 
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
