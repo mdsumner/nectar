@@ -4,7 +4,9 @@
 ##  (a bit of a moving feast, let me know if you need help)
 
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
-echo 'deb https://mirror.aarnet.edu.au/pub/CRAN/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
+#echo 'deb https://mirror.aarnet.edu.au/pub/CRAN/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
+echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
+
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 ## key for R 3.5.0
