@@ -32,7 +32,7 @@ apt install libjq-dev gdebi-core libv8-3.14-dev  libmagick++-dev libarchive-dev 
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("devtools", "sfdct", "rgdal", "leaflet",  "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick", "rgl", "tabularaster", "angstroms", "spex", "graticule"), "/usr/local/lib/R/site-library")'
 Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "mapview", "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "quadmesh", "rbgm", "spdplyr", "spbabel", "spex", "vapour"), "/usr/local/lib/R/site-library")'
-Rscript -e 'devtools::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), "/usr/local/lib/R/site-library")'
+Rscript -e 'devtools::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), lib = "/usr/local/lib/R/site-library")'
 
 ## find daily builds here
 #wget https://s3.amazonaws.com/rstudio-dailybuilds
