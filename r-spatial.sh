@@ -18,7 +18,7 @@ add-apt-repository ppa:marutter/rrutter3.5
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
 ## opencpu (for geojson)
-add-apt-repository -y ppa:opencpu/jq
+add-apt-repository -y ppa:opencpu/opencpu-2.1
 
 apt update 
 apt upgrade --assume-yes
