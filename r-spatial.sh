@@ -7,12 +7,10 @@
 #echo 'deb https://mirror.aarnet.edu.au/pub/CRAN/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
 echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-
 ## key for R 3.5.0
-add-apt-repository ppa:marutter/rrutter3.5
-
-
+#add-apt-repository ppa:marutter/rrutter3.5
+#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 ## updated GDAL 
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
