@@ -25,7 +25,10 @@ apt upgrade --assume-yes
 
 ## NetCDF and geo-spatial wunderkind
 apt install libjq-dev gdebi-core libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev --assume-yes
-   
+
+## Git 
+apt install git
+
 # R packages
 echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("devtools", "sfdct", "rgdal", "leaflet",  "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick", "rgl", "tabularaster", "angstroms", "spex", "graticule"), "/usr/local/lib/R/site-library")'
