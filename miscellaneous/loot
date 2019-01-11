@@ -1,0 +1,600 @@
+    1  oceanS < ROMS/External/ocean_upwelling.in >  log &
+    2  ls -l
+    3  oceanS < ROMS/External/ocean_upwelling.in >  log &
+    4  ./oceanS < ROMS/External/ocean_upwelling.in >  log &
+    5  ls -l
+    6  cat log
+    7  ls -l log
+    8  top
+    9  mpirun -np 8 ./oceanS < ROMS/External/ocean_upwelling.in >  log2 &
+   10  export OMP_NUM_THREAD=8
+   11  ls -l log2
+   12  head log2 -n 40
+   13  ls
+   14  top
+   15  head -n 60 log2
+   16  exit
+   17  ls
+   18  cd trunk
+   19  ls -l
+   20  top
+   21  mpirun -np 8 ./oceanS < ROMS/External/ocean_upwelling.in >  log3 &
+   22  top
+   23  mpirun -np 4 ./oceanS < ROMS/External/ocean_upwelling.in >  log3 &
+   24  top
+   25  mpirun -np 4 ./oceanS < ROMS/External/ocean_upwelling.in 
+   26  mpirun -np 2 ./oceanS < ROMS/External/ocean_upwelling.in 
+   27  ls -l
+   28  svn log
+   29  cd ..
+   30  mkdir roms
+   31  cd roms
+   32  git clone https://github.com/kshedstrom/roms.git
+   33  ls
+   34  cd roms
+   35  ls
+   36  cd ../..
+   37  mv roms/roms roms2
+   38  ls
+   39  rm roms
+   40  rmdir roms
+   41  mv roms2/ roms
+   42  cd roms
+   43  export FORT=gfortran
+   44  export MY_ROOT_DIR=/home/mdsumner/trunk
+   45  export USE_NETCDF4=no
+   46  make -j 8
+   47  ./oceanS < ROMS/External/ocean_upwelling.in >  log &
+   48  cat log
+   49  ls
+   50  gdalinfo ocean_his.nc 
+   51  exit
+   52  git clone https://github.com/htmlwidgets/knob.git
+   53  cd home/D3
+   54  ls
+   55  R CMD build knob
+   56  R CMD INSTALL knob_0.2.tar.gz 
+   57  R CMD build forknob
+   58  R CMD INSTALL forknob_0.2.tar.gz 
+   59  R CMD build forknob
+   60  R CMD INSTALL forknob_0.2.tar.gz 
+   61  R CMD build forknob
+   62  R CMD INSTALL forknob_0.2.tar.gz 
+   63  cd networkD3/
+   64  ls
+   65  cd inst
+   66  ls
+   67  cat ../DESCRIPTION 
+   68  ls
+   69  ls htmlwidgets/
+   70  ls htmlwidgets/lib
+   71  ls htmlwidgets/lib/
+   72  ls htmlwidgets/lib/d3-3.4.11/
+   73  ls
+   74  cd htmlwidgets/
+   75  ls
+   76  ls lib
+   77  cd lib
+   78  ls
+   79  cp -R d3-3.4.11/ ~/home/Git/D3launay/inst/htmlwidgets/lib/
+   80  cd ..
+   81  ls
+   82  cd ../../..
+   83  ls
+   84  cd D3launay/
+   85  ls
+   86  cd www
+   87  cd shared
+   88  ls
+   89  cp d3.geo.voronoi.js ~/home/Git/D3launay/inst/htmlwidgets/lib/
+   90  ls -l
+   91  cd ..
+   92  ls
+   93  cd ..
+   94  ls
+   95  cd www
+   96  ls
+   97  cd ~/home/Git/D3launay/inst/htmlwidgets/lib
+   98  ls
+   99  grep rotate d3.geo.voronoi.js 
+  100  less d3.geo.voronoi.js 
+  101  ls
+  102  mkdir d3.geo
+  103  mv d3.geo.voronoi.js d3.geo
+  104  cd d3.geo
+  105  wget 
+  106  wget http://www.jasondavies.com/maps/rotate/d3.geo.zoom.js
+  107  ls
+  108  cd ../..
+  109  cd ..
+  110  cd D3
+  111  ls
+  112  cd ..
+  113  cd D3
+  114  ls
+  115  cd knob
+  116  ls
+  117  ls R
+  118  cd R
+  119  grep knob_html knob.R
+  120  cd ../..
+  121  ls
+  122  ls  networkD3/R/*
+  123  grep "_html"  networkD3/R/*
+  124  cd networkD3/R
+  125  grep "_html" *
+  126  grep "widget" *
+  127  grep "Widget" *
+  128  cd ../..
+  129  cd knob
+  130  cd R
+  131  grep "input" *
+  132  cd home/D3
+  133  ls
+  134  cd knob
+  135  ls
+  136  ls inst
+  137  ls
+  138  ls inst/lib
+  139  cp -R inst/lib/jquery/  ~/home/Git/D3launay/inst/lib/
+  140  cp -R inst/lib/knob/  ~/home/Git/D3launay/inst/lib/
+  141  cp -R inst/lib/knob/  ~/home/Git/D3launay/inst/htmlwidgets/
+  142  cp -R inst/lib/jquery/  ~/home/Git/D3launay/inst/htmlwidgets/
+  143  cd ~
+  144  cd home/Git/D3launay/
+  145  ls
+  146  cd ..
+  147  Rscript -e "roxygen2::roxygenize('D3launay')"
+  148  R CMD build D3launay 
+  149  R CMD INSTALL D3launay_1.0.tar.gz 
+  150  cd D3
+  151  cd ..
+  152  cd D3
+  153  cd networkD3/
+  154  ls
+  155  cd inst
+  156  ls
+  157  cd htmlwidgets/
+  158  ls
+  159  grep HTMLWidgets *
+  160  emacs simpleNetwork.js
+  161  ls
+  162  cat simpleNetwork.
+  163  cat simpleNetwork.js 
+  164  ls
+  165  cd home/Git/D3launay/
+  166  ls
+  167  cd ../..
+  168  cd D3
+  169  cd networkD3/
+  170  ls
+  171  cd inst
+  172  ls
+  173  cd htmlwidgets/
+  174  ls
+  175  ls lib
+  176  ls lib/d3-3.4.11/
+  177  mkdir emacs
+  178  cd emacs
+  179  wget http://mirror.aarnet.edu.au/pub/gnu/emacs/emacs-24.4.tar.gz
+  180  tar zxvf emacs-24.4.tar.gz 
+  181  cd emacs-24.4/
+  182  ./configure --prefix=.
+  183  pwd
+  184  ./configure --prefix=/home/mdsumner/emacs
+  185  ./configure --prefix=/home/mdsumner/emacs --with-tiff=no
+  186  cat /proc/cpuinfo 
+  187  make -j 8
+  188  cd ..
+  189  ls
+  190  cd emacs-24.4/
+  191  ls
+  192  make install
+  193  ls
+  194  cd ...
+  195  ls
+  196  cd ..
+  197  ls
+  198  bin/emacs
+  199  ssh krill.acecrc.org.au
+  200  exit
+  201  git init
+  202  git status
+  203  git add particle.R
+  204  git commit -m "particle"
+  205  R
+  206  ls
+  207  pwd
+  208  cd home/people
+  209  ls
+  210  cd JanJansen/
+  211  ls
+  212  ls -ltr
+  213  top
+  214  ls
+  215  date
+  216  ls -ltr
+  217  ls -ltrh
+  218  cd ..
+  219  R
+  220  mkdir src2
+  221  cd src2
+  222  wget  ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
+  223  tar zxvf netcdf-cxx-4.2.tar.gz
+  224  cd netcdf-cxx-4.2
+  225  ls
+  226  ls cxx
+  227  cd cxx
+  228  cat README
+  229  cd src2
+  230  ls
+  231  cd netcdf-cxx-4.2
+  232  make
+  233  ls
+  234  cd examples
+  235  make
+  236  ls
+  237  autoreconf
+  238  cd home
+  239  ls
+  240  ls people
+  241  sudo -l
+  242  pwd
+  243  cd home
+  244  cd git
+  245  cd git
+  246  cd Git
+  247  ls
+  248  wget http://cran.csiro.au/src/contrib/RNetCDF_1.6.3-1.tar.gz
+  249  tar xzvf RNetCDF_1.6.3-1.tar.gz
+  250  cd home
+  251  cd Git
+  252  cd RNetCDF/
+  253  ls
+  254  ls -a
+  255  top
+  256  exit
+  257  R
+  258  exit
+  259  R
+  260  top
+  261  R
+  262  cd home/git
+  263  cd home/Git
+  264  mkdir WCtag
+  265  cd WCtag/
+  266  touch README.md
+  267  git init
+  268  git add README.md
+  269  git commit -m "first commit"
+  270  git remote add origin https://github.com/mdsumner/WCtag.git
+  271  git push -u origin master
+  272  mkdir R
+  273  cd R
+  274  nano wctag.R
+  275  cd ..
+  276  git add .
+  277  git commit -m "WC params"
+  278  git push
+  279  emacs -nw R/wctag.R 
+  280  git commit --help
+  281  git log
+  282  git commit --amend
+  283  git status
+  284  git add .
+  285  git commit --amend
+  286  git status
+  287  git pull
+  288  emacs -nw R/wctag.R 
+  289  git status
+  290  git add R/wctag.R 
+  291  git commit
+  292  ls .git
+  293  git commit
+  294  git push
+  295  exit
+  296  cd ..
+  297  cd ..
+  298  cd ..
+  299  cd git
+  300  cd Git
+  301  ls
+  302  cd WCtag
+  303  git pull
+  304  cd ..
+  305  R CMD build WCtag
+  306  R CMD INSTALL WCtag_0.0-1.tar.gz
+  307  git checkout -b wctag
+  308  exit
+  309  cd ..
+  310  cd WCtag
+  311  git pull
+  312  cd ..
+  313  R CMD build WCtag
+  314  R CMD INSTALL WCtag_0.0-1.tar.gz
+  315  exit
+  316  cd ..
+  317  Rscript -e 'roxygen2::roxygenize("WCtag")'
+  318  Rscript -e 'library(methods);roxygen2::roxygenize("WCtag")'
+  319  R CMD build WCtag
+  320  R CMD INSTALL WCtag_0.0-1.tar.gz
+  321  exit
+  322  cd ..
+  323  cd WCtag
+  324  git pull
+  325  cd ..
+  326  Rscript 'roxygen2::roxygenize("WCtag")'
+  327  Rscript -e 'roxygen2::roxygenize("WCtag")'
+  328  Rscript -e 'library(methods);roxygen2::roxygenize("WCtag")'
+  329  R CMD build WCtag
+  330  R CMD INSTALL WCtag_0.0-1.tar.gz
+  331  exit
+  332  top
+  333  cd .git
+  334  ls
+  335  ls -l
+  336  ls -a
+  337  ls index -a
+  338  R
+  339  R 
+  340  sudo Git
+  341  cd Git
+  342  cd home/Git
+  343  cd SGAT
+  344  git pull
+  345  cd ..
+  346  du .
+  347  du . -sh
+  348  git init
+  349  git checkout -b dev
+  350  exit
+  351  cd home/Git
+  352  cd nectar
+  353  ls
+  354  git status
+  355  ncdump -h a.nc
+  356  rm a.nc
+  357  git status
+  358  git push
+  359  git pull
+  360  git push
+  361  ls
+  362  ls -ltr
+  363  cat .gitignore
+  364  mv .gitignore
+  365  mv .gitignore gignore
+  366  cat .gitignore
+  367  rm .gitignore
+  368  mv gignore .gitignore
+  369  git status
+  370  git add .
+  371  git commit -m "ignore"
+  372  git push
+  373  cd home
+  374  cd Git
+  375  cd raadtools
+  376  git status
+  377  git checkout master
+  378  git merge dev
+  379  git status
+  380  git push
+  381  git merge master
+  382  cd /rdsi/PRIVATE/ftp.aviso.altimetry.fr
+  383  cd /rdsi/PRIVATE/data/ftp.aviso.altimetry.fr
+  384  ls
+  385  cd global
+  386  ls
+  387  cd delayed-time
+  388  ls
+  389  cd grids
+  390  ls
+  391  ls climatology
+  392  ls climatology/monthly_clim
+  393  ls climatology/monthly_mean
+  394  ls climatology/seasonal_clim
+  395  ls
+  396  ls madt
+  397  ls madt/all-sat-merged
+  398  ls madt/all-sat-merged/uv
+  399  ls madt/all-sat-merged/uv/2014
+  400  ls msla
+  401  ls msla/all-sat-merged
+  402  ls msla/all-sat-merged/h
+  403  git checkout master
+  404  git merge dev
+  405  git status
+  406  git push
+  407  exit
+  408  git merge master
+  409  cd home/Git
+  410  ls
+  411  cd raadtools
+  412  git status
+  413  git checkout master
+  414  git merge dev
+  415  git status
+  416  git push
+  417  git checkout dev
+  418  git merge master
+  419  cd /rdsi/PRIVATE/data
+  420  ls
+  421  ls -ltr
+  422  du www.iup.uni-bremen.de:8084 -sh
+  423  du www.iup.uni-bremen.de+8084 -sh
+  424  cd www.iup.uni-bremen.de:8084
+  425  ls
+  426  cd amsr2data/
+  427  ls
+  428  cd asi_daygrid_swath/
+  429  ls
+  430  cd s6250/
+  431  ls
+  432  cd 2012
+  433  ls
+  434  cd aug
+  435  ls
+  436  gdalinfo asi-AMSR2-s6250-20120801-v5.hdf 
+  437  cd 
+  438  cd /rdsi/PRIVATE/admin
+  439  ls
+  440  top
+  441  cd
+  442  cd home/Git
+  443  ls
+  444  git checkout master
+  445  git merge dev
+  446  git push
+  447  git checkout dev
+  448  git merge master
+  449  exit
+  450  git log > ChangeLog
+  451  head -n 10 ChangeLog
+  452  cd home/Git
+  453  R CMD build extest 
+  454  R CMD check extest_1.0.tar.gz 
+  455  cd extest.Rcheck/
+  456  ls
+  457  du extext
+  458  du extest
+  459  du extest -sh
+  460  exit
+  461  git checkout master
+  462  git merge dev
+  463  git push
+  464  git checkout dev
+  465  git merge master
+  466  cd ..
+  467  cd roc
+  468  git status
+  469  git log
+  470  git status
+  471  git push
+  472  exit
+  473  cd home/Git
+  474  R CMD build raadtools
+  475  R CMD check raadtools_0.2-0.tar.gz 
+  476  sudo shutdown -r 0
+  477  exit
+  478  git checkout master
+  479  git merge dev
+  480  git push
+  481  git checkout dev
+  482  git merge master
+  483  exit
+  484  git status
+  485  git log > ChangeLog
+  486  git status
+  487  git add ChangeLog
+  488  git commit -m "change log"
+  489  git checkout master
+  490  git merge dev
+  491  git push
+  492  git checkout dev
+  493  git merge master
+  494  exit
+  495  git checkout master
+  496  git merge dev
+  497  git push
+  498  git push
+  499  git checkout dev
+  500  exit
+  501  cd /rdsi/PRIVATE/data/oceandata.sci.gsfc.nasa.gov/MODISA/L3BIN/2012/001
+  502  ls
+  503  ls *8D*
+  504  cd home
+  505  mkdir netcdf
+  506  cd netcdf
+  507  wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.3.2.tar.gz
+  508  tar zxvf netcdf-4.3.2.tar.gz 
+  509  cd netcdf-4.3.2/
+  510  ./configure --help
+  511  ./configure --enable-netcdf4 --enable-hdf4
+  512  ./configure --enable-netcdf4
+  513  ls /usr/local/include
+  514  ls /usr/include
+  515  ls /usr/include/hdf
+  516  echo $CPATH
+  517* ./configure --h
+  518  ./configure --enable-netcdf4 --enable-hdf4 --include-dir=/usr/include/hdf
+  519  ./configure --enable-netcdf4 --enable-hdf4 --includedir=/usr/include/hdf
+  520  find / -name mfhdf.h -print
+  521  ./configure --enable-netcdf4 --enable-hdf4 --includedir=/usr
+  522  ./configure --enable-netcdf4 --enable-hdf4 --includedir=/usr/include
+  523  export CPPFLAGS="-I/usr/include/hdf"
+  524  ./configure --enable-netcdf4 --enable-hdf4 
+  525  export CPPFLAGS="-I/usr/include/hdf"
+  526  ls -l /usr/lib/
+  527  ls -l /usr/lib | more
+  528  export CPPFLAGS="-I/usr/include/hdf"
+  529  ./configure --enable-netcdf4 --enable-hdf4 
+  530  make
+  531  ls
+  532  cd examples
+  533  ls
+  534  cd C
+  535  ls
+  536  more sfc_pres_temp_rd.c 
+  537  make
+  538  ls
+  539  ls -l
+  540  cd ,,
+  541  cd ..
+  542  ls
+  543  make
+  544  more Makefile
+  545  ls
+  546  cd ..
+  547  ls
+  548  make examples
+  549  more README.md 
+  550  ls
+  551  more INSTALL
+  552  ls
+  553  cd examples/
+  554  ls
+  555  cd C
+  556  ls
+  557  more run_nc4_valgrind_tests.sh 
+  558  ls
+  559  make sfc_pres_temp_wr.c
+  560  more sfc_pres_temp_wr.c
+  561  cd ../..
+  562  ls
+  563  pwd
+  564  pushd ~
+  565  ls
+  566  cd home
+  567  ls
+  568  cd netcdf/
+  569  ls
+  570  mkdir fake
+  571  cd netcdf-4.3.2/
+  572  ls
+  573  make clean
+  574  ./configure --help
+  575  ./configure --prefix=~/home/netcdf/fake  --enable-netcdf4 --enable-hdf4 
+  576  pwd
+  577  ./configure --prefix=/home/mdsumner/home/netcdf/fake  --enable-netcdf4 --enable-hdf4 
+  578  make 
+  579  make install
+  580  /home/mdsumner/home/netcdf/fake/bin/nc-config --help
+  581  /home/mdsumner/home/netcdf/fake/bin/nc-config --cc
+  582  /home/mdsumner/home/netcdf/fake/bin/nc-config --cflags
+  583  /home/mdsumner/home/netcdf/fake/bin/nc-config --libs
+  584  /home/mdsumner/home/netcdf/fake/bin/nc-config --includedir
+  585  pwd
+  586  ls
+  587  cd examples/
+  588  ls
+  589  cd C
+  590  ls
+  591  gcc -I/home/mdsumner/home/netcdf/fake/include -I/usr/include/hdf sfc_pres_temp_wr.c -L/home/mdsumner/home/netcdf/fake/lib -lnetcdf
+  592  ls -l
+  593  gcc -Wall -I/home/mdsumner/home/netcdf/fake/include -I/usr/include/hdf sfc_pres_temp_wr.c -L/home/mdsumner/home/netcdf/fake/lib -lnetcdf
+  594  gcc -Wall -o testwr -I/home/mdsumner/home/netcdf/fake/include -I/usr/include/hdf sfc_pres_temp_wr.c -L/home/mdsumner/home/netcdf/fake/lib -lnetcdf
+  595  ls -l
+  596  ./testwr
+  597  ls -l
+  598  ncdump -h sfc_pres_temp.nc
+  599  history 
+  600  history > loot
