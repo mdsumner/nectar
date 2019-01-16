@@ -75,7 +75,7 @@ add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
 sudo apt install vim r-base r-base-dev --assume-yes
 
- 
+apt install nginx
 
 #refusing to connect
 
