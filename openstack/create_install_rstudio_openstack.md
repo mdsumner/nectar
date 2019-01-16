@@ -64,8 +64,8 @@ add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
 apt install r-base r-base-dev --assume-yes
 
-wget https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-1.2.1240-amd64.deb
-gdebi rstudio-1.2.1240-amd64.deb -n
+wget https://s3.amazonaws.com/rstudio-ide-build/server/trusty/amd64/rstudio-server-1.2.1240-amd64.deb
+gdebi rstudio-server-1.2.1240-amd64.deb -n
 
 apt install nginx
 
