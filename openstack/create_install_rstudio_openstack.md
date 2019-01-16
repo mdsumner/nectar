@@ -30,13 +30,14 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
  
 ## admin side
  
+ * it doesn't matter where the machine is  that you use to create a server in another zone
+ 
 apt-get install python-openstackclient
 
  
 
 
-os server create --flavor m3.small --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name aServiceKey --availability-zone tasmania acme
-
+openstack server create --flavor tas.c16m64 --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name keyname  --availability-zone tasmania servername
  
 
 
