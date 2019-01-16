@@ -28,16 +28,19 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
 - Users should be instructed to log onto their account, and change their password to something strong (i.e. long, unique, managed: https://support.ehelp.edu.au/support/solutions/articles/6000213823-passwords)
 
  
+## admin side
+ 
+apt-get install python-openstackclient
 
  
 
- 
-
- 
 
 os server create --flavor m3.small --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name aServiceKey --availability-zone tasmania acme
 
  
+
+
+## client server
 
 using for this example the following DNS name vm-144-6-226-131.rc.tasmania.nectar.org.au
 
@@ -51,11 +54,10 @@ apt upgrade
 
 apt install gdebi-core
 
- 
 
-wget https://s3.amazonaws.com/rstudio-ide-build/server/trusty/amd64/rstudio-server-1.2.1193-amd64.deb
+wget https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-1.2.1240-amd64.deb
 
-gdebi rstudio-server-1.2.1193-amd64.deb -n
+gdebi rstudio-1.2.1240-amd64.deb -n
 
  
 
