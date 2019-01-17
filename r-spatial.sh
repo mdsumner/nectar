@@ -24,20 +24,30 @@ apt upgrade --assume-yes
 apt install --assume-yes \
    git libjq-dev libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin \
    libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
-   libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev 
+   libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev \
+   r-base r-base-dev 
 
 
 
 # R packages
 # echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
-Rscript -e 'install.packages(c("devtools", "sfdct", "rgdal", "leaflet",  "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick", "rgl", "tabularaster", "angstroms", "spex", "graticule"), "/usr/local/lib/R/site-library")'
-Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "mapview", "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "quadmesh", "rbgm", "spdplyr", "spbabel", "spex", "vapour"), "/usr/local/lib/R/site-library")'
-Rscript -e 'devtools::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), lib = "/usr/local/lib/R/site-library")'
+Rscript -e 'remotes::install_cran(c("devtools", "sfdct", "rgdal", "leaflet",  "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick", "rgl", "tabularaster", "angstroms", "spex", "graticule"))'
+Rscript -e 'remotes::install_cran(c("BiocManager", "backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "mapview", "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "quadmesh", "rbgm", "spdplyr", "spbabel", "spex", "vapour"))'
+Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), lib = "/usr/local/lib/R/site-library")'
+
+## raadtools
+## apt install sshfs
+## 
+## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
+## then, regularly
+# apt update
+# apt upgrade
+# Rscript -e 'devtools::update_packages(TRUE)'
 
 ## find daily builds here
 #wget https://s3.amazonaws.com/rstudio-dailybuilds
-wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
-gdebi rstudio-server-1.1.353-amd64.deb -n
+#wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
+#gdebi rstudio-server-1.1.353-amd64.deb -n
 
 # tensorflow
 ## I have no idea what I'm doing with Python, but this seemed to work: 
@@ -51,12 +61,4 @@ gdebi rstudio-server-1.1.353-amd64.deb -n
 # #py_config()
 # #use_python("/usr/bin/python3")
 
-## raadtools
-## apt install sshfs
-## source("https://bioconductor.org/biocLite.R")
-## biocLite("BiocInstaller")
-## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
-## then, regularly
-# apt update
-# apt upgrade
-# Rscript -e 'devtools::update_packages(TRUE)'
+
