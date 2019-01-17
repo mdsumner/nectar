@@ -32,7 +32,7 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
  
  * it doesn't matter where the machine is  that you use to create a server in another zone
  
-apt-get install python-openstackclient
+apt-get install python-openstackclient python-designateclient
 
  
 
