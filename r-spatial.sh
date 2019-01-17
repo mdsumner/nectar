@@ -4,19 +4,16 @@
 ##  (a bit of a moving feast, let me know if you need help)
 
 ## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
-#echo 'deb https://mirror.aarnet.edu.au/pub/CRAN/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
 echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
 
 ## key for R 3.5.0
-#add-apt-repository ppa:marutter/rrutter3.5
-#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 ## updated GDAL 
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
 ## opencpu (for geojson)
-add-apt-repository -y ppa:opencpu/opencpu-2.1
+#add-apt-repository -y ppa:opencpu/opencpu-2.1
 
 apt update 
 apt upgrade --assume-yes
@@ -24,13 +21,15 @@ apt upgrade --assume-yes
 ## Install 3rd parties
 
 ## NetCDF and geo-spatial wunderkind
-apt install libjq-dev gdebi-core libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin  libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev --assume-yes
+apt install --assume-yes \
+   git libjq-dev libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin \
+   libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
+   libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick r-base r-base-dev 
 
-## Git 
-apt install git
+
 
 # R packages
-echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
+# echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages(c("devtools", "sfdct", "rgdal", "leaflet",  "rgeos", "ncdf4", "raster", "RNetCDF", "sf", "tibble", "tidyverse", "rworldmap", "geojsonio", "magick", "rgl", "tabularaster", "angstroms", "spex", "graticule"), "/usr/local/lib/R/site-library")'
 Rscript -e 'install.packages(c("backports", "base64enc", "bitops", "caTools", "crayon", "evaluate",  "formatR",  "ggraph", "ggforce", "highr", "htmltools", "htmlwidgets", "httpuv", "knitr",  "mapview", "markdown", "praise", "proj4", "rmarkdown", "rprojroot",   "shiny", "sourcetools",  "testthat", "xtable", "yaml", "angstroms", "graticule", "quadmesh", "rbgm", "spdplyr", "spbabel", "spex", "vapour"), "/usr/local/lib/R/site-library")'
 Rscript -e 'devtools::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), lib = "/usr/local/lib/R/site-library")'
