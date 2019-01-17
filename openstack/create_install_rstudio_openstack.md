@@ -34,7 +34,11 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
  
 apt-get install python-openstackclient python-designateclient
 
- 
+##  openstack zone list ## to give the zone e.g. zone.cloud.edu.au
+##  openstack recordset list zone.cloud.edu.au.  ## 
+## openstack server list  ## give the servernames
+## to create the DNS record:
+openstack recordset create --type A --record 144.6.mini.minor zone.cloud.edu.au. servername
 
 
 openstack server create --flavor tas.c16m64 --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name keyname  --availability-zone tasmania servername
