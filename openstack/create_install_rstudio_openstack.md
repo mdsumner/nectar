@@ -31,7 +31,7 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
 ## admin side
  
  * it doesn't matter where the machine is  that you use to create a server in another zone
- 
+```
 apt-get install python-openstackclient python-designateclient
 
 ##  openstack zone list ## to give the zone e.g. zone.cloud.edu.au
@@ -39,7 +39,7 @@ apt-get install python-openstackclient python-designateclient
 ## openstack server list  ## give the servernames
 ## to create the DNS record:
 openstack recordset create --type A --record 144.6.mini.minor zone.cloud.edu.au. servername
-
+```
 
 openstack server create --flavor tas.c16m64 --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name keyname  --availability-zone tasmania servername
  
@@ -73,41 +73,14 @@ gdebi rstudio-server-1.2.1240-amd64.deb -n
 
 apt install nginx
 
-#refusing to connect
-
- 
-
-#re-install RStudio
-
-gdebi rstudio-server-1.2.1193-amd64.deb -n
-
- 
-
-#connects! Assume the order of installation matters: r-base before rstudio
-
- 
-
  
 
 #create DNS entry
-
-#fudging by using Tasmania default
-
-vm-144-6-226-131.rc.tasmania.nectar.org.au
-
- 
-
+```
 #reversre proxy (nginx infront of rstudio server)
-
 #nginx will listen to pt80 and forward to pt 8787
 
-#instr here: procy setting acording to https://support.rstudio.com/hc/en-us/articles/200552326-Running-RStudio-Server-with-a-Proxy
-
-+ amendmendts by Just
-
- 
-
-repleace the http { } section from /etc/nginx/nginx.conf with this (note the servername and .welknown location need tobe named for your server)
+replace the http { } section from /etc/nginx/nginx.conf with this (note the servername and .welknown location need tobe named for your server)
 
 http {
 
@@ -164,7 +137,7 @@ http {
 }
 
 sudo /etc/init.d/nginx restart
-
+```
  
 
 #sever now responds to pt 80, can remove access to pt 8787:
