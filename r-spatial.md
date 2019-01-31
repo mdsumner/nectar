@@ -1,9 +1,16 @@
-#!/bin/bash
+# Install R and geo-spatial dependencies
 
-## Install R and geo-spatial dependencies
-##  (a bit of a moving feast, let me know if you need help)
+A constantly moving feast, let me know if you need help. 
 
-## key for apt-get update, see http://cran.r-project.org/bin/linux/ubuntu/README
+**Note**
+* I'm using latest ubuntu and R usually, check https://cran.r-project.org/bin/linux/ubuntu/README
+
+
+
+
+```bash
+
+## key for apt-get update, see https://cran.r-project.org/bin/linux/ubuntu/README
 echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
 
 ## key for R 3.5.0
@@ -50,6 +57,11 @@ Rscript -e 'BiocManager::install("rhdf5")'
 #wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
 #gdebi rstudio-server-1.1.353-amd64.deb -n
 
+
+## to downgrade gcc and gfortran (for Atlantis, and so R packages can still build)
+## https://unix.stackexchange.com/questions/410723/how-to-install-a-specific-version-of-gcc-in-kali-linux
+## and apt-get install gfortran-6 ##so R fortran would compile with gcc 6.5.0
+
 # tensorflow
 ## I have no idea what I'm doing with Python, but this seemed to work: 
 # apt install libpython3.6
@@ -62,4 +74,4 @@ Rscript -e 'BiocManager::install("rhdf5")'
 # #py_config()
 # #use_python("/usr/bin/python3")
 
-
+```
