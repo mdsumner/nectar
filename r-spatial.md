@@ -60,12 +60,14 @@ Rscript -e 'BiocManager::install("rhdf5")'
 
 ```
 
-diversitree, hisse, BAMM
+### diversitree, hisse, BAMM
 ```bash
 apt install libgsl-dev libfftw3-dev 
-Rscript -e  'remotes::install_cran(c("diversitree", "hisse", "BAMM", "BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
+Rscript -e  'remotes::install_cran(c("diversitree", "hisse",  "BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
 
 ## BAMM command line http://bamm-project.org/settingup.html#installation-from-source
+apt install cmake
+git clone https://github.com/macroevolution/bamm.git
 
 ```
 
