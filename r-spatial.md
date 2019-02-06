@@ -63,7 +63,8 @@ Rscript -e 'BiocManager::install("rhdf5")'
 diversitree, hisse, BAMM
 ```bash
 apt install libgsl-dev libfftw3-dev 
-Rscript -e  'install.packages(c("BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
+Rscript -e  'remotes::install_cran(c("diversitree", "hisse", "BAMM", "BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
+
 ```
 
 
