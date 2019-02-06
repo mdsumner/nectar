@@ -65,6 +65,8 @@ diversitree, hisse, BAMM
 apt install libgsl-dev libfftw3-dev 
 Rscript -e  'remotes::install_cran(c("diversitree", "hisse", "BAMM", "BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
 
+## BAMM command line http://bamm-project.org/settingup.html#installation-from-source
+
 ```
 
 
