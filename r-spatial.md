@@ -47,21 +47,28 @@ Rscript -e 'BiocManager::install("rhdf5")'
 ## apt install sshfs
 ## 
 ## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
-## then, regularly
-# apt update
-# apt upgrade
-# Rscript -e 'devtools::update_packages(TRUE)'
 
 ## find daily builds here
 #wget https://s3.amazonaws.com/rstudio-dailybuilds
 #wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.353-amd64.deb
 #gdebi rstudio-server-1.1.353-amd64.deb -n
 
-
 ## to downgrade gcc and gfortran (for Atlantis, and so R packages can still build)
 ## https://unix.stackexchange.com/questions/410723/how-to-install-a-specific-version-of-gcc-in-kali-linux
 ## and apt-get install gfortran-6 ##so R fortran would compile with gcc 6.5.0
 
+
+```
+
+diversitree, hisse, BAMM
+```bash
+apt install libgsl-dev libfftw3-dev 
+Rscript -e  'install.packages(c("BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
+```
+
+
+python and c.
+```bash
 # tensorflow
 ## I have no idea what I'm doing with Python, but this seemed to work: 
 # apt install libpython3.6
@@ -74,10 +81,4 @@ Rscript -e 'BiocManager::install("rhdf5")'
 # #py_config()
 # #use_python("/usr/bin/python3")
 
-```
-
-diversitree, hisse, BAMM
-```bash
-apt install libgsl-dev libfftw3-dev 
-Rscript -e  'install.packages(c("BAMMtools", "corpcor" ,  "cubature",  "gdata",     "gplots",    "gtools","MCMCglmm",  "tensorA"))' 
 ```
