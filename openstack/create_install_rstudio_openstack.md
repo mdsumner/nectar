@@ -28,6 +28,8 @@ Now that we have done the best we can to ensure that our RStudio server doesn’
 ```
 apt-get install python-openstackclient python-designateclient
 
+source the_RCfile.sh
+
 ##  openstack zone list ## to give the zone e.g. zone.cloud.edu.au
 ##  openstack recordset list zone.cloud.edu.au.  ## 
 ## openstack server list  ## give the servernames
