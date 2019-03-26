@@ -1,12 +1,6 @@
 ## create/install/secure and RStudio server in nectar
 
 
-Hi Mike,
-
-Below are all the notes that I took from our create/install/secure and RStudio instance in Nectar effort this morning.
-
- 
-
 Headline items are:
 
 - Using your openstack command line tools and your ACE_eco_stats RC file and you openstack password
@@ -15,7 +9,7 @@ Headline items are:
 
 - Install r + rstudio on instance
 
-- (we’ll use the Tasmania instance default DNS for nginx and certbot)
+- (use instance default DNS for nginx and certbot)
 
 - Install nginx and configure for reverse proxy to rstudio server
 
@@ -39,10 +33,10 @@ apt-get install python-openstackclient python-designateclient
 ## openstack server list  ## give the servernames
 ## to create the DNS record:
 openstack recordset create --type A --record 144.6.mini.minor zone.cloud.edu.au. servername
-```
+
 
 openstack server create --flavor tas.c16m64 --image 'NeCTAR Ubuntu 18.04 LTS (Bionic) amd64' --nic net-id='Classic Provider' --security-group ssh --key-name keyname  --availability-zone tasmania servername
- 
+``` 
 
 
 ## client server
