@@ -43,10 +43,11 @@ Rscript -e 'remotes::install_cran(c("angstroms", "backports",   "base64enc", "Bi
 Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "hypertidy/tidync"), lib = "/usr/local/lib/R/site-library")'
 Rscript -e 'BiocManager::install("rhdf5")'
 
+## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
+
 ## raadtools
 ## apt install sshfs
 ## 
-## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
 
 ## find daily builds here
 #wget https://s3.amazonaws.com/rstudio-dailybuilds
