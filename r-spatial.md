@@ -30,6 +30,7 @@ apt upgrade --assume-yes
 ## NetCDF and geo-spatial wunderkind
 apt install --assume-yes \
    git libjq-dev libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin \
+   libxml2-dev libcurl4-openssl-dev \ 
    libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
    libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev \
    r-base r-base-dev 
