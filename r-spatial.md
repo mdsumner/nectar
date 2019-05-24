@@ -39,6 +39,7 @@ apt install --assume-yes \
 
 # R packages
 # echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
+Rscript -e 'install.packages("remotes")'
 Rscript -e 'remotes::install_cran(c("angstroms", "backports",   "base64enc", "BiocManager", "bitops",   "caTools", "crayon", "devtools", "evaluate", "formatR", "geojsonio",   "ggforce", "ggraph", "graticule", "highr", "htmltools", "htmlwidgets",   "httpuv", "knitr", "leaflet", "magick", "mapview", "markdown",   "ncdf4", "praise", "proj4", "quadmesh", "raster", "rbgm", "rgdal",   "rgeos", "rgl", "rmarkdown", "RNetCDF", "rprojroot", "rworldmap",   "sf", "sfdct", "shiny", "sourcetools", "spbabel", "spdplyr",   "spex", "tabularaster", "testthat", "tibble", "tidync", "tidyverse", "vapour",   "xtable", "yaml"))'
 
 Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag"), lib = "/usr/local/lib/R/site-library")'
