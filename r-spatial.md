@@ -19,9 +19,6 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
-## opencpu (for geojson)
-#add-apt-repository -y ppa:opencpu/opencpu-2.1
-
 apt update 
 apt upgrade --assume-yes
 
