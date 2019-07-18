@@ -14,3 +14,14 @@ wget https://raw.githubusercontent.com/OSGeo/gdal/master/gdal/docker/ubuntu-smal
 GDAL_VERSION=$(curl -Ls https://api.github.com/repos/rouault/gdal/commits/rfc75_text  -H "Accept: application/vnd.github.VERSION.sha")
 docker build --build-arg GDAL_VERSION=${GDAL_VERSION} -t gdal_multid .
 ```
+Interactive
+
+```
+docker run -it gdal_multid:latest /bin/bash
+```
+
+Single command
+
+```bash
+docker run --rm -v /home/ubuntu:/host  gdal_multid:latest gdalinfo /host/laea.png
+```
