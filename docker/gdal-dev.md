@@ -6,8 +6,8 @@ apt-get upgrade
 
 apt-get install docker.io
 
-## EDIT this to add libnetcdf-dev libnetcdf-c++4 netcdf-bin
-wget https://raw.githubusercontent.com/OSGeo/gdal/master/gdal/docker/ubuntu-small/Dockerfile
+
+wget https://raw.githubusercontent.com/OSGeo/gdal/master/gdal/docker/ubuntu-full/Dockerfile
 
 #BOOM: http://erouault.blogspot.com/2019/
 #build-arg not build-var
