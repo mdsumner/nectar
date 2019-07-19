@@ -13,7 +13,7 @@ wget https://raw.githubusercontent.com/OSGeo/gdal/master/gdal/docker/ubuntu-full
 #build-arg not build-var
 
 GDAL_VERSION=$(curl -Ls https://api.github.com/repos/rouault/gdal/commits/rfc75  -H "Accept: application/vnd.github.VERSION.sha")
-docker build --build-arg GDAL_VERSION=${GDAL_VERSION} -t gdal_small_multid .
+docker build --build-arg GDAL_VERSION=${GDAL_VERSION} -t gdal_multid .
 ```
 Interactive
 
