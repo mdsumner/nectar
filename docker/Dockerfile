@@ -34,7 +34,7 @@ RUN Rscript -e 'install.packages("remotes")'
 RUN Rscript -e 'remotes::install_cran(c("Rcpp", "knitr", "covr", "dplyr", "geojsonsf", "testthat", "rbenchmark", "rmarkdown", "spelling"))'
 
 RUN git clone --depth 10 https://github.com/hypertidy/vapour.git
-#RUN git config --global user.email "edzer.pebesma@uni-muenster.de"
+#RUN git config --global user.email "mdsumner@gmail.com"
 
 RUN R CMD build --no-build-vignettes --no-manual vapour
 RUN R CMD INSTALL vapour
