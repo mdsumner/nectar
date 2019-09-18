@@ -12,23 +12,24 @@ RUN apt-get upgrade -y
 
 RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
   && apt-get install -y \
-	gdb \
+	#gdb \
 	git \
-	libcairo2-dev \
-	libcurl4-openssl-dev \
-	libexpat1-dev \
-	libpq-dev \
+	#libcairo2-dev \
+	#libcurl4-openssl-dev \
+	#libexpat1-dev \
+	#libpq-dev \
 	libssl-dev \
-	libsqlite3-dev \
-	libudunits2-dev \
+	libxml2-dev \
+	#libsqlite3-dev \
+	#libudunits2-dev \
 	make \
-	pandoc \
+	#pandoc \
 	qpdf \
 	r-base-dev \
-  	sqlite3 \
+  	#sqlite3 \
 	subversion \
-	valgrind \
-	vim \
+	#valgrind \
+	#vim \
 	wget
 
 RUN Rscript -e 'install.packages("remotes")'
