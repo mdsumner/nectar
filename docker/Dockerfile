@@ -12,25 +12,14 @@ RUN apt-get upgrade -y
 
 RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
   && apt-get install -y \
-	#gdb \
 	git \
-	#libcairo2-dev \
 	libcurl4-openssl-dev \
-	#libexpat1-dev \
-	#libpq-dev \
 	libssl-dev \
 	libxml2-dev \
-	#libsqlite3-dev \
-	#libudunits2-dev \
 	make \
-	#pandoc \
 	qpdf \
 	r-base-dev \
-  	#sqlite3 \
-	subversion \
-	#valgrind \
-	#vim \
-	wget
+	emacs
 
 RUN Rscript -e 'install.packages("remotes")'
 RUN Rscript -e 'remotes::install_cran(c("Rcpp", "knitr", "covr", "dplyr", "geojsonsf", "testthat", "rbenchmark", "rmarkdown", "spelling"))'
@@ -38,7 +27,7 @@ RUN Rscript -e 'remotes::install_cran(c("Rcpp", "knitr", "covr", "dplyr", "geojs
 RUN git clone --depth 10 https://github.com/hypertidy/vapour.git
 #RUN git config --global user.email "mdsumner@gmail.com"
 
-RUN R CMD build --no-build-vignettes --no-manual vapour
-RUN R CMD INSTALL vapour
+#RUN R CMD build --no-build-vignettes --no-manual vapour
+#RUN R CMD INSTALL vapour
 
 CMD ["/bin/bash"]
