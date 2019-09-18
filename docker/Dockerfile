@@ -15,7 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
 	#gdb \
 	git \
 	#libcairo2-dev \
-	#libcurl4-openssl-dev \
+	libcurl4-openssl-dev \
 	#libexpat1-dev \
 	#libpq-dev \
 	libssl-dev \
