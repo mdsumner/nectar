@@ -18,6 +18,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
 	libcurl4-openssl-dev \
 	libexpat1-dev \
 	libpq-dev \
+	libssl-dev \
 	libsqlite3-dev \
 	libudunits2-dev \
 	make \
