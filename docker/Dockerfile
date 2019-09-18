@@ -24,7 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
 RUN Rscript -e 'install.packages("remotes")'
 RUN Rscript -e 'options(Ncpus = parallel::detectCores() - 1); remotes::install_cran(c("Rcpp", "knitr", "covr", "dplyr", "geojsonsf", "testthat", "rbenchmark", "rmarkdown", "spelling"))'
 
-RUN git clone --depth 10 https://github.com/hypertidy/vapour.git
+#RUN git clone --depth 10 https://github.com/hypertidy/vapour.git
 #RUN git config --global user.email "mdsumner@gmail.com"
 
 #RUN R CMD build --no-build-vignettes --no-manual vapour
