@@ -22,15 +22,21 @@ docker run -it gdal_latest:latest /bin/bash
 apt update
 apt-get upgrade
 apt install r-base r-base-dev
+apt install git 
+apt install libcurl4-openssl-dev
+apt install libxml2-dev
+apt install libssl-dev
 ```
 
 test trip
 
 ```
-proj --version
+proj # Rel. 6.1.0, May 15th, 2019
 git clone https://github.com/Trackage/trip.git
 cd trip
 R
+install.packages("devtools")
+devtools::install_deps()
 devtools::document()
 devtools::build()
 devtools::install()
