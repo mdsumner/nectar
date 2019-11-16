@@ -21,6 +21,10 @@ Interactive
 docker run -it gdal_latest:latest /bin/bash
 apt update
 apt-get upgrade
+echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
+## key for R 3.5.0
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
 apt install r-base r-base-dev
 apt install git 
 apt install libcurl4-openssl-dev
@@ -37,6 +41,9 @@ cd trip
 R
 install.packages("devtools")
 devtools::install_deps()
+remotes::install_github("edzer/sp")
+remotes::install_github("rforge/rgdal")
+
 devtools::document()
 devtools::build()
 devtools::install()
