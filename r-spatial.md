@@ -72,7 +72,8 @@ git clone https://github.com/macroevolution/bamm.git
 ```
 
 
-python and c.
+
+# python and c.
 ```bash
 # tensorflow
 ## I have no idea what I'm doing with Python, but this seemed to work: 
@@ -87,3 +88,19 @@ python and c.
 # #use_python("/usr/bin/python3")
 
 ```
+
+
+## Microsoft access MDB files
+
+```
+apt install unixodbc
+git clone https://github.com/brianb/mdbtools.git
+cd mdbtools
+autoreconf -i -f
+./configure --disable-man
+make
+make install
+ldconfig
+## R: library(Hmisc); mdb.get("mdbfile", "diag")
+```
+
