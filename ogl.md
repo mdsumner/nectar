@@ -6,8 +6,9 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB
 apt update 
 apt upgrade --assume-yes
 
-apt install cmake make g++ libx11-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxext-dev libxcursor-dev libxinerama-dev libxi-dev
+apt install cmake make g++ libx11-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxext-dev libxcursor-dev libxinerama-dev libxi-dev libssl-dev libcurl4-openssl-dev 
 
+apt install libglew-dev libglfw3-dev
 
 apt install --assume-yes    r-base r-base-dev git
 
