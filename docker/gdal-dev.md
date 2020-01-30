@@ -1,5 +1,17 @@
-The Nowosad image: https://github.com/r-spatial/discuss/issues/28#issuecomment-551241421
+# GDAL release
 
+
+wget https://raw.githubusercontent.com/OSGeo/gdal/release/3.0/gdal/docker/ubuntu-full/Dockerfile
+docker build --build-arg GDAL_VERSION=3.0 -t gdal_latest .
+
+# The Nowosad image: 
+
+https://github.com/r-spatial/discuss/issues/28#issuecomment-551241421
+
+```
+docker run -d -p 8787:8787 -e PASSWORD=rstudio jakubnowosad/rspatial_proj6
+
+```
 
 ```bash
 apt-get update
