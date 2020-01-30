@@ -1,3 +1,5 @@
+The Nowosad image: https://github.com/r-spatial/discuss/issues/28#issuecomment-551241421
+
 
 ```bash
 apt-get update
