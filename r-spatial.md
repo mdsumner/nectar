@@ -41,6 +41,9 @@ Rscript -e 'remotes::install_cran(c("angstroms", "backports",   "base64enc", "Bi
 
 Rscript -e 'remotes::install_cran(c("PROJ", "basf", "reproj", "decido", "RTriangle", "silicate", "ceramic", "crsmeta", "unjoin", "lazyraster", "geodist"))'
 
+
+Rscript -e 'remotes::install_cran(c("sfheaders", "mapdeck"))'
+
 Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag"), lib = "/usr/local/lib/R/site-library")'
 Rscript -e 'BiocManager::install("rhdf5")'
 
