@@ -26,6 +26,7 @@ apt upgrade --assume-yes
 
 ## NetCDF and geo-spatial wunderkind
 apt install --assume-yes \
+   jags \
    git libjq-dev libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin \
    libxml2-dev libcurl4-openssl-dev \ 
    libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
@@ -43,6 +44,7 @@ Rscript -e 'remotes::install_cran(c("PROJ", "basf", "reproj", "decido", "RTriang
 
 
 Rscript -e 'remotes::install_cran(c("sfheaders", "mapdeck", "TMB", "foieGras"))'
+Rscript -e 'remotes::install_cran(c("trip", "traipse", "bsam"))'
 
 Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag"), lib = "/usr/local/lib/R/site-library")'
 Rscript -e 'BiocManager::install("rhdf5")'
