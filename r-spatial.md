@@ -27,29 +27,22 @@ apt upgrade --assume-yes
 ## NetCDF and geo-spatial wunderkind
 apt install --assume-yes \
    jags \
-   git libjq-dev libv8-3.14-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin \
-   libxml2-dev libcurl4-openssl-dev \ 
-   libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
-   libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev \
-   r-base r-base-dev 
+   git libjq-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin libnode-dev \
+   libxml2-dev libcurl4-openssl-dev libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
+   libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev r-base r-base-dev 
 
 
 
 # R packages
-# echo 'local({ r <- getOption("repos"); r["CRAN"] <- "https://cran.csiro.au/";options(repos = r); })' >> /etc/R/Rprofile.site
+# echo 'local({ r <- getOption("repos"); r["CRAN"] <- "file:///rdsi/PRIVATE/raad/dev/cran";options(repos = r); })' >> /etc/R/Rprofile.site
 Rscript -e 'install.packages("remotes")'
-Rscript -e 'remotes::install_cran(c("angstroms", "backports",   "base64enc", "BiocManager", "bitops",   "caTools", "crayon", "devtools", "evaluate", "formatR", "geojsonio",   "ggforce", "ggraph", "graticule", "highr", "htmltools", "htmlwidgets",   "httpuv", "knitr", "leaflet", "magick", "mapview", "markdown",   "ncdf4", "praise", "proj4", "quadmesh", "raster", "rbgm", "rgdal",   "rgeos", "rgl", "rmarkdown", "RNetCDF", "rprojroot", "rworldmap",   "sf", "sfdct", "shiny", "sourcetools", "spbabel", "spdplyr",   "spex", "tabularaster", "testthat", "tibble", "tidync", "tidyverse", "vapour",   "xtable", "yaml"))'
+Rscript -e 'remotes::install_cran(c("angstroms", "anglr", "backports",   "base64enc", "BiocManager", "bitops",   "caTools", "crayon", "devtools", "evaluate", "formatR", "geojsonio",   "ggforce", "ggraph", "graticule", "highr", "htmltools", "htmlwidgets",   "httpuv", "knitr", "leaflet", "magick", "mapview", "markdown",   "ncdf4", "praise", "proj4", "PROJ", "reproj", "quadmesh", "raster", "rbgm", "rgdal",   "rgeos", "rgl", "rmarkdown", "RNetCDF", "rprojroot", "rworldmap",   "sf", "sfdct", "shiny", "sourcetools", "spbabel", "spdplyr",   "spex", "tabularaster", "testthat", "tibble", "tidync", "tidyverse", "traipse", "vapour",   "xtable", "yaml"))'
 
-Rscript -e 'remotes::install_cran(c("PROJ", "basf", "reproj", "decido", "RTriangle", "silicate", "ceramic", "crsmeta", "unjoin", "lazyraster", "geodist"))'
+Rscript -e 'remotes::install_cran(c("decido", "RTriangle", "silicate", "ceramic", "crsmeta", "unjoin", "lazyraster", "geodist", "sfheaders", "mapdeck", "TMB", "foieGras", "trip", "traipse", "bsam"))'
 
-
-Rscript -e 'remotes::install_cran(c("sfheaders", "mapdeck", "TMB", "foieGras"))'
-Rscript -e 'remotes::install_cran(c("trip", "traipse", "bsam"))'
-
-Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag"), lib = "/usr/local/lib/R/site-library")'
+Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "AustralianAntarcticDivision/raadtools"))'
 Rscript -e 'BiocManager::install("rhdf5")'
 
-## Rscript -e 'devtools::install_github("AustralianAntarcticDivision/raadtools")'
 
 ## raadtools
 ## apt install sshfs
