@@ -31,6 +31,10 @@ apt install --assume-yes \
    libxml2-dev libcurl4-openssl-dev libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
    libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev r-base r-base-dev 
 
+## BE SURE to set R_LIBS_SITE in /etc/R/Renviron.site as Rstudio server no longer picks this up
+
+# R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library
+
 
 
 # R packages
@@ -42,6 +46,7 @@ Rscript -e 'remotes::install_cran(c("decido", "RTriangle", "silicate", "ceramic"
 
 Rscript -e 'remotes::install_github(c("SWotherspoon/SGAT", "SWotherspoon/BAStag", "AustralianAntarcticDivision/raadtools"))'
 Rscript -e 'BiocManager::install("rhdf5")'
+
 
 
 ## raadtools
