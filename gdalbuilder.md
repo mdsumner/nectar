@@ -21,10 +21,22 @@ cd GDAL/gdal
 ./configure --prefix=/home/ubuntu
 make
 make install
-
-
-
 gdalinfo --version
 GDAL 3.4.0dev-e37f6bc55f, released 2021/09/22
+
+
+## R
+sudo apt install --no-install-recommends software-properties-common dirmngr gdebi-core
+# add the signing key (by Michael Rutter) for these repos
+# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
+# Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+sudo apt install --no-install-recommends r-base
+
+wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.4.1717-amd64.deb
+sudo gdebi rstudio-server-1.4.1717-amd64.deb
+
 
 ```
