@@ -26,7 +26,7 @@ GDAL 3.4.0dev-e37f6bc55f, released 2021/09/22
 
 
 ## R
-sudo apt install --no-install-recommends software-properties-common dirmngr gdebi-core
+sudo apt install --no-install-recommends software-properties-common dirmngr gdebi-core libssl-dev 
 # add the signing key (by Michael Rutter) for these repos
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
 # Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
