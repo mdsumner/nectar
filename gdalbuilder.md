@@ -38,5 +38,14 @@ sudo apt install --no-install-recommends r-base
 wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.4.1717-amd64.deb
 sudo gdebi rstudio-server-1.4.1717-amd64.deb
 
+## all the github bs
+## get a token for HTTPS https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+## get gh cli (not gitsome ...) https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+##                               https://medium.com/analytics-vidhya/github-cli-brings-github-to-your-terminal-809cea627d62
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt update
+sudo apt install gh
 
 ```
