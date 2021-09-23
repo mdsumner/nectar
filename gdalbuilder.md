@@ -8,7 +8,7 @@ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt update
 sudo apt upgrade
 
-sudo apt install g++ libxml2-dev libcurl4-openssl-dev libproj-dev autotools-dev autoconf libtool pkg-config make
+sudo apt install g++ libxml2-dev libcurl4-openssl-dev libproj-dev autotools-dev autoconf libtool pkg-config make sqlite3
 
 ## then in .bashrc
 #export MAKEFLAGS = -j27
@@ -18,12 +18,19 @@ sudo apt install g++ libxml2-dev libcurl4-openssl-dev libproj-dev autotools-dev 
 git clone https://github.com/osgeo/gdal
 cd GDAL/gdal
 ./autogen.sh
-./configure --prefix=/home/ubuntu
+./configure --prefix=$HOME
 make
 make install
-gdalinfo --version
-GDAL 3.4.0dev-e37f6bc55f, released 2021/09/22
+#gdalinfo --version
+#GDAL 3.4.0dev-e37f6bc55f, released 2021/09/22
 
+git clone https://github.com/osgeo/proj
+cd GDAL/gdal
+git checkout 8.1
+./autogen.sh
+./configure --prefix=$HOME
+make
+make install
 
 ## R
 sudo apt install --no-install-recommends software-properties-common dirmngr gdebi-core libssl-dev 
