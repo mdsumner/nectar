@@ -28,7 +28,8 @@ git clone https://github.com/osgeo/proj
 cd GDAL/gdal
 git checkout 8.1
 ./autogen.sh
-./configure --prefix=$HOME
+./configure --prefix=$HOME --with-proj=$HOME
+
 make
 make install
 
