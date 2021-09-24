@@ -27,7 +27,8 @@ make install
 git clone https://github.com/osgeo/gdal
 cd GDAL/gdal
 ./autogen.sh
-./configure --prefix=$HOME
+export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+./configure --prefix=$HOME --with-proj=$HOME
 make
 make install
 #gdalinfo --version
