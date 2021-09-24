@@ -19,7 +19,7 @@ git clone https://github.com/osgeo/proj
 cd proj
 git checkout 8.1
 ./autogen.sh
-./configure --prefix=$HOME --with-proj=$HOME
+./configure --prefix=$HOME
 
 make
 make install
