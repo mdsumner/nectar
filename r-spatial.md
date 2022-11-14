@@ -9,12 +9,12 @@ A constantly moving feast, let me know if you need help.
 
 
 ```bash
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
-## key for apt-get update, see https://cran.r-project.org/bin/linux/ubuntu/README
-echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
+sudo apt install --no-install-recommends r-base
 
-## key for R 3.5.0
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 ## updated GDAL 
 ## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
