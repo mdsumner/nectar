@@ -9,31 +9,24 @@ A constantly moving feast, let me know if you need help.
 
 
 ```bash
+sudo apt update -qq
+sudo apt install --no-install-recommends software-properties-common dirmngr
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
-sudo apt install --no-install-recommends r-base
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
 
-## updated GDAL 
-## https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable
-add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
-
-apt update 
-apt upgrade --assume-yes
+sudo apt update
+sudo apt upgrade --assume-yes
 
 ## Install 3rd parties
 
 ## NetCDF and geo-spatial wunderkind
-apt install --assume-yes \
-   jags \
+sudo apt install --assume-yes \
    git libjq-dev  libmagick++-dev libarchive-dev libnetcdf-dev proj-bin libnode-dev \
    libxml2-dev libcurl4-openssl-dev libproj-dev libgdal-dev gdal-bin libgeos-dev  libssl-dev libgl1-mesa-dev libglu1-mesa-dev \
    libudunits2-dev libprotobuf-dev protobuf-compiler imagemagick libgit2-dev r-base r-base-dev 
 
-## BE SURE to set R_LIBS_SITE in /etc/R/Renviron.site as Rstudio server no longer picks this up
-
-# R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library
 
 
 
