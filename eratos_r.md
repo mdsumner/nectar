@@ -54,4 +54,10 @@ pkgs <- c("angstroms", "backports",   "base64enc", "BiocManager", "bitops",   "c
 pak::pkg_install(pkgs)
 ```
 
+
+Specific stuff for work with Tom and Mike
+
+
+```R
+pak::pkg_install("tremenyi/indices")
 ```
