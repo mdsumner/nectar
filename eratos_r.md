@@ -1,5 +1,7 @@
 Notes for installing R, Python with geospatial deps on Linux, Ubuntu 22 (2023-02-10). 
 
+The system libs, and the R packages are way overkill - but this is a working set of notes for our usage atm. 
+
 ```
 ## latest R (search "ubuntu cran")
 sudo apt update -qq
