@@ -1,6 +1,10 @@
 ## create/install/secure and RStudio server in nectar
 
 
+now see https://github.com/mdsumner/nectar/issues/14
+
+
+
 Headline items are:
 
 - Using your openstack command line tools and your ACE_eco_stats RC file and you openstack password
