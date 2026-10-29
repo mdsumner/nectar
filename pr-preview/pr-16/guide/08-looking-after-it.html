@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>looking-after-it – Need a bigger computer?</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../guide/07-software.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66ae90e4418e9d0ac3caa4b8c3bef75c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/08-looking-after-it.html">8. Looking after it</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Need a bigger computer?</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/01-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Concepts</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/02-your-allocation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Your allocation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/03-sizing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Sizing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/04-launch-a-vm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Launch a VM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/05-storage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Storage</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/06-rstudio-server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. RStudio Server</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/07-software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Software</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/08-looking-after-it.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">8. Looking after it</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#8-looking-after-it" id="toc-8-looking-after-it" class="nav-link active" data-scroll-target="#8-looking-after-it">8. Looking after it</a>
+  <ul class="collapse">
+  <li><a href="#users" id="toc-users" class="nav-link" data-scroll-target="#users">Users</a>
+  <ul class="collapse">
+  <li><a href="#add-a-user" id="toc-add-a-user" class="nav-link" data-scroll-target="#add-a-user">Add a user</a></li>
+  <li><a href="#sudo-sparingly" id="toc-sudo-sparingly" class="nav-link" data-scroll-target="#sudo-sparingly">sudo, sparingly</a></li>
+  <li><a href="#passwords" id="toc-passwords" class="nav-link" data-scroll-target="#passwords">Passwords</a></li>
+  <li><a href="#remove-a-user" id="toc-remove-a-user" class="nav-link" data-scroll-target="#remove-a-user">Remove a user</a></li>
+  </ul></li>
+  <li><a href="#updates" id="toc-updates" class="nav-link" data-scroll-target="#updates">Updates</a>
+  <ul class="collapse">
+  <li><a href="#automatic-security-updates" id="toc-automatic-security-updates" class="nav-link" data-scroll-target="#automatic-security-updates">Automatic security updates</a></li>
+  <li><a href="#everything-else-by-hand" id="toc-everything-else-by-hand" class="nav-link" data-scroll-target="#everything-else-by-hand">Everything else, by hand</a></li>
+  <li><a href="#reboot-when-needed" id="toc-reboot-when-needed" class="nav-link" data-scroll-target="#reboot-when-needed">Reboot when needed</a></li>
+  </ul></li>
+  <li><a href="#costs-shut-off-vs-shelve" id="toc-costs-shut-off-vs-shelve" class="nav-link" data-scroll-target="#costs-shut-off-vs-shelve">Costs: shut off vs shelve</a></li>
+  <li><a href="#snapshots" id="toc-snapshots" class="nav-link" data-scroll-target="#snapshots">Snapshots</a>
+  <ul class="collapse">
+  <li><a href="#instance-snapshots" id="toc-instance-snapshots" class="nav-link" data-scroll-target="#instance-snapshots">Instance snapshots</a></li>
+  <li><a href="#volume-snapshots" id="toc-volume-snapshots" class="nav-link" data-scroll-target="#volume-snapshots">Volume snapshots</a></li>
+  <li><a href="#share-a-snapshot-with-another-project" id="toc-share-a-snapshot-with-another-project" class="nav-link" data-scroll-target="#share-a-snapshot-with-another-project">Share a snapshot with another project</a></li>
+  <li><a href="#recipes-age-better-than-snapshots" id="toc-recipes-age-better-than-snapshots" class="nav-link" data-scroll-target="#recipes-age-better-than-snapshots">Recipes age better than snapshots</a></li>
+  </ul></li>
+  <li><a href="#instance-metadata" id="toc-instance-metadata" class="nav-link" data-scroll-target="#instance-metadata">Instance metadata</a></li>
+  <li><a href="#allocation-expiry-and-handing-back" id="toc-allocation-expiry-and-handing-back" class="nav-link" data-scroll-target="#allocation-expiry-and-handing-back">Allocation expiry and handing back</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdsumner/nectar/edit/main/guide/08-looking-after-it.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdsumner/nectar/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="8-looking-after-it" class="level1">
+<h1>8. Looking after it</h1>
+<blockquote class="blockquote">
+<p><strong>Status:</strong> draft. Facts checked against Nectar support and tutorial pages, October 2026.</p>
+</blockquote>
+<p>A VM is yours to run: nobody patches it, backs it up, or tidies it away for you. This page covers the routine jobs.</p>
+<section id="users" class="level2">
+<h2 class="anchored" data-anchor-id="users">Users</h2>
+<p>Placeholders: <code>&lt;username&gt;</code> is a Linux account on the VM; <code>&lt;server&gt;</code> is the instance name.</p>
+<section id="add-a-user" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-user">Add a user</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> adduser <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This creates the home directory and prompts for a password. The password is what they use for RStudio Server (<a href="../guide/06-rstudio-server.html#8-add-users">06</a>).</p>
+<p>Nectar images turn off SSH password login (<code>PasswordAuthentication no</code>), so for SSH each user needs a key (<a href="https://github.com/NeCTAR-RC/nectar-images/blob/master/ansible/roles/ssh/tasks/main.yml">nectar-images ssh role</a>):</p>
+<ol type="1">
+<li><p>They run <code>ssh-keygen -t ed25519</code> on their own computer and send you the <strong>public</strong> key (<code>~/.ssh/id_ed25519.pub</code>). Never accept or send a private key.</p></li>
+<li><p>You install it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/.ssh</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'ssh-ed25519 AAAA... them@laptop'</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/.ssh/authorized_keys</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>:<span class="op">&lt;</span>username<span class="op">&gt;</span> /home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/.ssh</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/.ssh</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 600 /home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/.ssh/authorized_keys</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>They log in with <code>ssh &lt;username&gt;@&lt;ip&gt;</code>.</p></li>
+</ol>
+<p>To give access to a shared data directory, add them to its group (<a href="../guide/05-storage.html#mount">05</a>): <code>sudo usermod -aG lab &lt;username&gt;</code> (takes effect at their next login).</p>
+</section>
+<section id="sudo-sparingly" class="level3">
+<h3 class="anchored" data-anchor-id="sudo-sparingly">sudo, sparingly</h3>
+<p><code>sudo</code> lets a user do anything, including read everyone’s files and break the machine. Keep it to the one or two people who administer the VM:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> sudo <span class="op">&lt;</span>username<span class="op">&gt;</span>     <span class="co"># grant</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> deluser <span class="op">&lt;</span>username<span class="op">&gt;</span> sudo         <span class="co"># revoke</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getent</span> group sudo                    <span class="co"># who has it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Most users never need it: R packages install into their own library, and containers can be run for them.</p>
+</section>
+<section id="passwords" class="level3">
+<h3 class="anchored" data-anchor-id="passwords">Passwords</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd <span class="op">&lt;</span>username<span class="op">&gt;</span>        <span class="co"># set a new password (e.g. they forgot it)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd <span class="at">-e</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>     <span class="co"># force a change at next login</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Users change their own with <code>passwd</code>. Send temporary passwords by a different channel from the username.</p>
+</section>
+<section id="remove-a-user" class="level3">
+<h3 class="anchored" data-anchor-id="remove-a-user">Remove a user</h3>
+<ol type="1">
+<li><p>Copy off anything worth keeping from <code>/home/&lt;username&gt;</code> and their files on volumes (<code>sudo find /mnt/data -user &lt;username&gt;</code>).</p></li>
+<li><p>Remove the account and home directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> deluser <span class="at">--remove-home</span> <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To lock an account without deleting it: <code>sudo usermod -L -e 1 &lt;username&gt;</code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="updates" class="level2">
+<h2 class="anchored" data-anchor-id="updates">Updates</h2>
+<section id="automatic-security-updates" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-security-updates">Automatic security updates</h3>
+<p>Official Nectar Ubuntu and Debian images ship with <code>unattended-upgrades</code> enabled, installing <strong>security updates only</strong>, daily (<a href="https://github.com/NeCTAR-RC/nectar-images/tree/master/ansible/roles/unattended-upgrades">nectar-images unattended-upgrades role</a>). Check:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/apt/apt.conf.d/20auto-upgrades</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># APT::Periodic::Unattended-Upgrade "1";</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unattended-upgrades <span class="at">--dry-run</span> <span class="at">-v</span> <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If it’s missing (another image, or you turned it off):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install unattended-upgrades</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg-reconfigure <span class="at">-plow</span> unattended-upgrades    <span class="co"># answer Yes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It does not reboot the VM for you.</p>
+</section>
+<section id="everything-else-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="everything-else-by-hand">Everything else, by hand</h3>
+<p>Do this every month or so, and before installing anything big:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt full-upgrade</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>full-upgrade</code> is like <code>upgrade</code> but may also add or remove packages to complete an upgrade (typical for new kernels). Read what it proposes to remove before saying yes.</p>
+</section>
+<section id="reboot-when-needed" class="level3">
+<h3 class="anchored" data-anchor-id="reboot-when-needed">Reboot when needed</h3>
+<p>Kernel and core library updates only take effect after a reboot:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /var/run/reboot-required <span class="dv">2</span><span class="op">&gt;</span>/dev/null       <span class="co"># exists if a reboot is needed</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /var/run/reboot-required.pkgs <span class="dv">2</span><span class="op">&gt;</span>/dev/null  <span class="co"># which packages asked for it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Warn your users, then <code>sudo reboot</code>. Volumes in <code>/etc/fstab</code> remount automatically (<a href="../guide/05-storage.html#mount">05</a>); check with <code>df -h</code> afterwards.</p>
+<p>R and Python packages are not touched by <code>apt</code> unless installed from it; see <a href="../guide/07-software.html">07</a>.</p>
+</section>
+</section>
+<section id="costs-shut-off-vs-shelve" class="level2">
+<h2 class="anchored" data-anchor-id="costs-shut-off-vs-shelve">Costs: shut off vs shelve</h2>
+<p>Every running instance uses Service Units (SU) per hour, and <strong>a shut-off instance still uses SU</strong>. Only shelving or deleting it stops the meter (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000257023">SU and usage</a>).</p>
+<p>If the VM will be idle for weeks, shelve it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> server shelve <span class="op">&lt;</span>server<span class="op">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> server unshelve <span class="op">&lt;</span>server<span class="op">&gt;</span>   <span class="co"># when you need it again</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or Project → Compute → Instances → Shelve Instance.</p>
+<p>Shelving snapshots the root disk and frees the hypervisor. Attached volumes and object storage are untouched. Unshelving takes a few minutes, longer for big disks. TODO(verify): whether a Classic Provider instance keeps its public IP across shelve/unshelve; if not, update its DNS record (<a href="../guide/06-rstudio-server.html">06</a>).</p>
+</section>
+<section id="snapshots" class="level2">
+<h2 class="anchored" data-anchor-id="snapshots">Snapshots</h2>
+<section id="instance-snapshots" class="level3">
+<h3 class="anchored" data-anchor-id="instance-snapshots">Instance snapshots</h3>
+<p>An instance snapshot is an image of the <strong>root disk only</strong>, not attached volumes (<a href="https://tutorials.rc.nectar.org.au/snapshots/02-instance-snapshots">Nectar tutorial</a>). Take one before risky changes (a release upgrade, a big reconfiguration):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> server image create <span class="at">--name</span> <span class="op">&lt;</span>server<span class="op">&gt;</span>-2026-10-29 <span class="op">&lt;</span>server<span class="op">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> image list <span class="at">--private</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can launch a new instance from it (Launch Instance → Source: Instance Snapshot).</p>
+</section>
+<section id="volume-snapshots" class="level3">
+<h3 class="anchored" data-anchor-id="volume-snapshots">Volume snapshots</h3>
+<p>A volume snapshot uses volume quota equal to the volume’s size, and a volume can’t be deleted while it has snapshots (<a href="https://tutorials.rc.nectar.org.au/snapshots/06-volume-storage-snapshots">Nectar tutorial</a>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> volume snapshot create <span class="at">--volume</span> <span class="op">&lt;</span>volname<span class="op">&gt;</span> --force <span class="op">&lt;</span>volname<span class="op">&gt;</span>-2026-10-29</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For real backups of data, use the volume backup service or copy to object storage (<a href="../guide/05-storage.html#backups">05</a>).</p>
+</section>
+<section id="share-a-snapshot-with-another-project" class="level3">
+<h3 class="anchored" data-anchor-id="share-a-snapshot-with-another-project">Share a snapshot with another project</h3>
+<p>E.g. to give a colleague’s project a copy of your set-up, or to move to a new allocation (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000106269">image sharing</a>):</p>
+<ol type="1">
+<li><p>You (owner):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> image set <span class="at">--shared</span> <span class="op">&lt;</span>image<span class="op">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> image add project <span class="op">&lt;</span>image<span class="op">&gt;</span> <span class="op">&lt;</span>their-project-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(The older form is <code>glance member-create &lt;image-id&gt; &lt;project-id&gt;</code>.)</p></li>
+<li><p>They accept it, from their project:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> image set <span class="at">--accept</span> <span class="op">&lt;</span>image-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<p>It then shows in their image list. Shared snapshots survive the deletion of your project at allocation expiry (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000171494">expiry</a>).</p>
+</section>
+<section id="recipes-age-better-than-snapshots" class="level3">
+<h3 class="anchored" data-anchor-id="recipes-age-better-than-snapshots">Recipes age better than snapshots</h3>
+<p>A snapshot is a frozen machine: old OS, old packages, and nobody remembers what was done to it. A script records what you did and can be re-run on a fresh, current image.</p>
+<ul>
+<li>Keep your setup as a script in git (e.g.&nbsp;<code>setup.sh</code>: <code>apt install</code> lines, R/Python installs, users, fstab entries, nginx config).</li>
+<li>Each time you do something by hand on the VM, add it to the script.</li>
+<li>Test it now and then by launching a fresh VM and running it.</li>
+<li>You can pass the script as a <strong>Customization Script</strong> (user data) when you launch an instance, and cloud-init runs it at first boot.</li>
+</ul>
+<p>Then a snapshot is just a convenience, and losing the VM costs you an hour, not a month.</p>
+</section>
+</section>
+<section id="instance-metadata" class="level2">
+<h2 class="anchored" data-anchor-id="instance-metadata">Instance metadata</h2>
+<p>Inside the VM, OpenStack’s metadata service tells you about the instance (<a href="https://docs.openstack.org/nova/latest/user/metadata.html">OpenStack metadata docs</a>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the Customization Script (user data) you launched with</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> http://169.254.169.254/openstack/latest/user_data</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># instance name, UUID, availability zone, keypair, project ID</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> http://169.254.169.254/openstack/latest/meta_data.json <span class="kw">|</span> <span class="ex">python3</span> <span class="at">-m</span> json.tool</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># network configuration</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> http://169.254.169.254/openstack/latest/network_data.json <span class="kw">|</span> <span class="ex">python3</span> <span class="at">-m</span> json.tool</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The older EC2-style paths (<code>http://169.254.169.254/latest/meta-data/</code>, <code>.../latest/user-data</code>) still work. These addresses only answer from inside the instance.</p>
+<p>Handy in scripts, e.g.&nbsp;to find the availability zone before creating a volume:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> http://169.254.169.254/openstack/latest/meta_data.json <span class="dt">\</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="ex">python3</span> <span class="at">-c</span> <span class="st">'import json,sys; print(json.load(sys.stdin)["availability_zone"])'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="allocation-expiry-and-handing-back" class="level2">
+<h2 class="anchored" data-anchor-id="allocation-expiry-and-handing-back">Allocation expiry and handing back</h2>
+<p>Allocations last up to 12 months. As expiry approaches you get warnings, then quota drops to zero, then instances are stopped, snapshotted and terminated, and finally everything is deleted. See <a href="../guide/02-your-allocation.html">02</a> for the timeline and how to extend, and the <a href="https://support.ehelp.edu.au/support/solutions/articles/6000171494">Nectar expiry article</a>. Submitting an extension request pauses the process.</p>
+<p>Don’t rely on the automatic clean-up. To hand back cleanly:</p>
+<ol type="1">
+<li><p><strong>Tell your users</strong> and agree a date.</p></li>
+<li><p><strong>Copy data off</strong>: from volumes and home directories to object storage, your institution’s storage, or another project. Check the copy (<code>rclone check</code>, file counts, sizes).</p></li>
+<li><p><strong>Save the recipe</strong>: make sure your setup script and any config (nginx, fstab, crontab) are in git.</p></li>
+<li><p><strong>Delete instances</strong>: Project → Compute → Instances → Delete, or <code>openstack server delete &lt;server&gt;</code>.</p></li>
+<li><p><strong>Delete volume snapshots, then volumes</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> volume snapshot list</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> volume snapshot delete <span class="op">&lt;</span>snapshot<span class="op">&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> volume list</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> volume delete <span class="op">&lt;</span>volname<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Delete instance snapshots</strong> you no longer need (<code>openstack image list --private</code>, <code>openstack image delete &lt;image&gt;</code>), and stop sharing any you shared.</p></li>
+<li><p><strong>Empty object storage</strong> you no longer need (<code>rclone purge nectar_s3:my-bucket</code>, or <code>swift delete &lt;container&gt;</code>). Public containers survive project deletion, so don’t leave data public by accident.</p></li>
+<li><p><strong>Release DNS records</strong> so the names don’t point at an IP someone else may get:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> recordset list <span class="op">&lt;</span>project<span class="op">&gt;</span>.cloud.edu.au.</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> recordset delete <span class="op">&lt;</span>project<span class="op">&gt;</span>.cloud.edu.au. <span class="op">&lt;</span>server<span class="op">&gt;</span>.<span class="op">&lt;</span>project<span class="op">&gt;</span>.cloud.edu.au.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you used your own domain, remove its records at your DNS provider.</p></li>
+<li><p><strong>Revoke credentials</strong>: <code>openstack ec2 credentials delete &lt;access&gt;</code>, and delete application credentials (Identity → Application Credentials).</p></li>
+<li><p>Tell the node or <a href="mailto:support@nectar.org.au">support</a> you’re done, if the allocation is still running. TODO(verify): whether there is a formal “close allocation” step in the dashboard.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../guide/07-software.html" class="pagination-link" aria-label="7. Software">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">7. Software</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdsumner/nectar/edit/main/guide/08-looking-after-it.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdsumner/nectar/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
