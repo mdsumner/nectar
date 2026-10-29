@@ -1,132 +1,123 @@
-nectar
-======
+# Need a bigger computer?
 
+The [ARDC Nectar Research Cloud](https://ardc.edu.au/services/ardc-nectar-research-cloud/)
+lets Australian researchers create their own virtual machines (VMs): computers in
+a data centre that you start, log in to, install what you like on, and delete when
+you're done. It's free for researchers, and it sits between your laptop and a
+supercomputer.
 
-# Introduction
+This page is a short way in, and a list of places to go next.
 
+> **Status:** early draft. The old notes this grew out of are in [`legacy/`](legacy/).
 
-This page describes use of Nectar for beginners. Nectar is the cloud computing resource. 
+## Is this for me?
 
-> NeCTAR is a scientific "cloud-compute" resource, The National eResearch 
-> Collaboration Tools and Resources (NeCTAR) Project  
+Probably, if:
 
-https://nectar.org.au/about-nectar
+- your laptop is too slow, too small, or you need something running overnight or for weeks;
+- you want a machine you control: your own software, your own users, always on;
+- you want to serve something on the web (RStudio Server, Jupyter, marimo, Shiny, a website,
+  a data service), or to work on a remote machine from [Positron](https://positron.posit.co/)
+  or VS Code over SSH;
+- you use HPC but want something interactive alongside it.
 
-Official guides and how-to here: ttps://support.nectar.org.au/support/solutions
+**If you have a university email address (`.edu.au`), try logging in now:** go to the
+[Nectar dashboard](https://dashboard.rc.nectar.org.au) and choose **Login via AAF**.
+If it works, you already have a small personal allocation (a Project Trial) and can
+launch a VM today. Not sure you're eligible? Use the
+[eligibility checker](https://eligibility.rc.nectar.org.au/).
 
-# Summary
+The trial is small (up to 4 cores, for 6 months). When you need more, you apply for
+your own allocation. How to think about that, and how big a machine you need:
 
-We will
+- [Your allocation](guide/02-your-allocation.md): the trial, applying, renewing, what happens at expiry
+- [Sizing](guide/03-sizing.md): how big a machine is, and turning that into Service Units
+- [The words](guide/01-concepts.md): project, allocation, flavour, image, instance, volume
 
-1. What is the cloud? What is it used for? 
-2. Log in to Nectar and launch a VM (virtual computer)
-3. Log in to the VM
-4. Use the VM
+## What do I actually do?
 
+Six steps. Each one has a "more" link if you get stuck; otherwise just do it.
+Nothing here is precious. If something goes wrong, delete the VM and start again.
 
-# 1. What is the cloud? What is it used for? 
+1. **Log in** to the [dashboard](https://dashboard.rc.nectar.org.au) with AAF.
+   [More](guide/04-launch-a-vm.md#1-log-in-to-the-dashboard)
+2. **Check your allocation.** Your Project Trial (`pt-NNNN`) is selected at the top left.
+   [More](guide/04-launch-a-vm.md#2-check-your-allocation)
+3. **Create a keypair, and save the private key.** This is how you'll log in; there
+   are no passwords. [More](guide/04-launch-a-vm.md#3-create-a-keypair)
+4. **Allow SSH in.** A security group is a firewall rule. Without one that allows SSH
+   you can see your VM but not reach it.
+   [More](guide/04-launch-a-vm.md#4-allow-ssh-in-security-groups)
+5. **Launch an instance.** Pick an image (Ubuntu), a flavour (size), your security
+   group, and **your key**. A VM launched without a key can't be logged in to; delete
+   it and launch another. [More](guide/04-launch-a-vm.md#5-launch-the-instance)
+6. **Connect with SSH**: `ssh ubuntu@<ip>`.
+   [More](guide/04-launch-a-vm.md#6-connect-with-ssh)
 
-It's just computers - computers that aren't physically on your desk, but also computers that you "create" for your own use. 
+That's it: you have a computer.
 
-* Linux shell
-* RStudio
-* Matlab
-* Python
-* etc. 
+**Next:** put something on the web. [RStudio Server](guide/06-rstudio-server.md)
+behind HTTPS with a proper name, or the dashboard's one-click "Quick Deploy" for RStudio.
 
-*The hard thing*
+Once you're using it:
 
-Access is less direct than with a computer on your desk. 
+- [Storage](guide/05-storage.md): volumes, object storage, network mounts
+- [Software](guide/07-software.md): R and geospatial stacks, containers, Python
+- [Looking after it](guide/08-looking-after-it.md): users, updates, snapshots, shelving, handing it back
 
-*The great thing*
+## How Nectar fits
 
-**A.** can create a very powerful computer with all dependencies need, and then make a copy of it, "snapshot it" and use it again, share with others. 
+### Compared with AWS EC2
 
-**B.** It's also possible to create a "recipe script" to take a clean computer and install everything on it that you need automatically. 
+Same idea, different deal. Nectar runs [OpenStack](https://www.openstack.org/), and most
+EC2 words have a direct match: instance type → flavour, AMI → image, EBS → volume,
+S3 → object storage (Nectar's has an S3-compatible API), and security groups and
+keypairs are the same. The differences are that Nectar is free to eligible researchers,
+paid for with an allocation of Service Units instead of a credit card, and it has
+no managed databases, queues or serverless: you get VMs, storage and DNS.
+[More](guide/01-concepts.md#if-you-know-aws-ec2)
 
-These two cases have pros and cons, but are not mutually exclusive. 
+### Compared with HPC
 
-# 2. Log in to Nectar and launch a VM (virtual computer)
+HPC (supercomputers and university clusters) is for big batch jobs: you submit work
+to a queue, it runs across many cores, and the centre looks after the software. A
+Nectar VM is yours. It's interactive, always on, you have root, and you maintain it
+([ARDC: cloud vs HPC](https://support.ehelp.edu.au/support/solutions/articles/6000284556)).
+Many people use both. If you have an HPC project, interactive work is possible there too:
+NCI's [ARE](https://are.nci.org.au/) runs RStudio and Jupyter in the browser, and both NCI
+and Pawsey document running them inside a job.
+[More](guide/01-concepts.md#cloud-desktop-or-hpc)
 
-* need AAF account (e.g. a UTAS account)
-* create Security Rules for the VM
-* create a keypair for admin login
-* create the computer!
+- [NCI](https://nci.org.au/): Gadi, the national supercomputer
+- [Pawsey](https://pawsey.org.au/): Setonix, and since December 2025 also a
+  [Nectar node](https://pawsey.org.au/systems/ardc-nectar-cloud-node/)
+- [Monash](https://www.monash.edu/researchinfrastructure/eresearch): a Nectar node and <!-- TODO(verify): link returns 403 to scripts; check in a browser -->
+  university HPC
+- [QCIF](https://www.qcif.edu.au/): runs the Queensland Nectar node (QRIScloud)
+  for UQ, QUT and other Queensland members, and brokers HPC access
+- Your own university's research computing team, who often run a cluster and can
+  help with a Nectar allocation
 
-## 3. Log in to the VM
+### The node network
 
-* need an SSH client (*Windows needs extra installation*)
-* create a normal user (don't always be the Administrator)
+Nectar is run by partner organisations ("nodes"), each with its own data centre. Your
+institution's node can approve *local* allocations; *national* allocations are approved
+centrally and can run anywhere. The nodes are Intersect (NSW), Queensland, Adelaide,
+Tasmania, Melbourne Research Cloud, Monash, Swinburne, Pawsey, National (ARDC-AARNet),
+and Auckland (NZ)
+([current list and members](https://support.ehelp.edu.au/support/solutions/articles/6000193442)).
 
-## 4. Use the VM
+## Official docs and help
 
-* transfer files (to and from the VM)
-* install applications (as the Administrator)
-* run the applications (as a user)
+- [Nectar tutorials](https://tutorials.rc.nectar.org.au/): step-by-step, with screenshots
+- [ARDC Nectar Support Centre](https://support.ehelp.edu.au/support/home): the knowledge base
+- Help: support@nectar.org.au, or your node's local support
+- [ARDC Nectar Research Cloud](https://ardc.edu.au/services/ardc-nectar-research-cloud/): what it is and who funds it
 
+## About this guide
 
-Summary of the process 
-The crucial parts with Nectar are ensuring you have
-a Nectar account
-Security Rules for the right ports
-a keypair set up for the initial admin login 
-a Nectar allocation to launch the RStudio server against
-somewhere to log into the virtual machine from (e.g. via SSH with MobaXTerm on Windows)
-a tiny bit of Linux-fu to create a normal user
-Nectar account
-Many Australian universities provide access via pre-existing email account logins.  Go to the dashboard login, find your institution, e.g. UTas and follow the trail into the dashboard.  
-
-Log in here: https://dashboard.rc.nectar.org.au/auth/login/?next=/project/
-Next we will set up Security Rules, a keypair for secure access, and the actual launching. 
-Security Rules
-Go to Access and Security, and the Security Groups tab.
-You may need the following ports open:
-22   SSH  - this is needed for us to log in as admin to create users on the server
-8787  RStudio Server - this allows users to log into the RStudio interface
-Once you have Security Group/s defined you can apply them to an instance that you launch, either at launch or after the fact.
-
-Key pair
-
-Create one under the "Keypairs" tab under Access and Security. Save the resulting .pem file somewhere you can use it to SSH in (see Log in below). 
-
-Note: the default admin user on this Ubuntu machine is "ubuntu", you'll use this name with the keypair to log in to the machine for creating normal users. 
-Launch a server
-Launching goes like this, with details relevant for 2014-05-28: 
-
-find the most recent version of Ubuntu, currently 14.04 under "Images and Snapshots", make sure "Nectar official" tab is active, choose "NeCTAR Ubuntu 14.04 (Trusty) amd64", click Launch
-set your Flavor (server grunt within limits of your allocation)
-give it an “Instance Name”  
-under Access & Security tab specify the keypair you will use (THIS IS REQUIRED BEFORE LAUNCHING)
-also make sure the Security groups are applied – so you have all those ports for HTTP, SSH, HTTPS, RStudio Server and Shiny as required for your needs (See images of my rules above. )
-under Availability Zone optionally choose a location
-under "Customization", enter the script text (see below)
-click “Launch” - once this is fired up you can get the IP address, which we use next
-Script text
-See here, enter the entire contents of r-spatial.sh into the Customization text field: 
-https://github.com/mdsumner/nectar/blob/master/r-spatial.sh
-
-You do need to run the gdebi install for the RStudio as sudo, and should do it interactively. 
-
-Log in
-Option 1)
-Log in using SSH on Windows like this (I recommend using MobaXTerm)  http://mobaxterm.mobatek.net/
-     (putty also works but isn't as "nice". )
-in MobaXTerm create an SSH session
-input your ip address "Remote Host", and "username"  ubuntu (note that it's using port 22 as per our SSH rule for Security Groups above)
-configure it to use your keypair.pem file
-configure any other settings relevant to your situation
-
-Option 2)
-If you don't know what this is go to Option 1: 
-ssh ubuntu@[ip.number] -i [thekey].pem
-
-Create a normal user, with a username/password
-then create a normal Linux user with e.g. sudo adduser normalusername and follow the prompts. 
-That normalusername should now be able to log in to the RStudio Server instance at http://ipaddress:8787 and also in the usual ways to the server. 
-
-
-
-
-
-
-
+Written by Michael Sumner, a researcher at the University of Tasmania (home of the
+Tasmania node), from about a decade of using Nectar. It's meant to be generic: none of
+it depends on which node or institution you're at. Groups that run their own Nectar
+projects or services will link their own pages from here. Corrections are welcome as
+issues or pull requests.
