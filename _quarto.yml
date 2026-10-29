@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - README.md
+    - guide/0*.md
+
+website:
+  title: "Need a bigger computer?"
+  description: "A practical guide to the ARDC Nectar Research Cloud for researchers"
+  repo-url: https://github.com/mdsumner/nectar
+  repo-actions: [edit, issue]
+  page-navigation: true
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - text: "Start here"
+        href: README.md
+      - guide/01-concepts.md
+      - guide/02-your-allocation.md
+      - guide/03-sizing.md
+      - guide/04-launch-a-vm.md
+      - guide/05-storage.md
+      - guide/06-rstudio-server.md
+      - guide/07-software.md
+      - guide/08-looking-after-it.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    from: markdown+gfm_auto_identifiers

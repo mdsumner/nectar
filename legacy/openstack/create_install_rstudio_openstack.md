@@ -307,9 +307,9 @@ IMPORTANT NOTES:
 
 new/changed user creds can be sent via email, and/or known by you as an admin, provided the user changes it immediately
 
-username = michael
+username = <username>
 
-password = zaq1xsw2
+password = <temporary-password>
 
  
 
