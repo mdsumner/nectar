@@ -7,12 +7,16 @@ A running list. Tick things off, add as they come up.
 Each of these gets tested on a real Nectar VM, then becomes a guide page of its own.
 
 - [ ] marimo: install on a VM, serve it behind nginx + HTTPS like RStudio (06)
-- [ ] Jupyter (JupyterLab): same, and check the command in 07 against a current image
+- [ ] Jupyter (JupyterLab): same, and check the command in 07 against a current image.
+      Smoke test from issue #12: open a public Zarr store with xarray
+      (`xr.open_dataset(<zarr url>, engine='zarr', chunks={})`)
 - [ ] Positron: connect to a VM over SSH from the desktop app
 - [ ] VS Code Remote-SSH, as the alternative to Positron
 - [ ] "Next: put something on the web": one simple page serving a static site with
       nginx and a `<project>.cloud.edu.au` name, before RStudio
 - [ ] Applications > Quick Deploy R-Studio: try it from a Project Trial and allocated project
+- [ ] Maybe: Open Data Cube / DEA sandbox in Docker on a VM (issue #13), as an example
+      of a group-maintained stack
 - [ ] Interactive HPC pointers: NCI ARE, NCI and Pawsey docs for RStudio/Jupyter in a job
 
 ## Verify on a real VM
