@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>rstudio-server – Need a bigger computer?</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../guide/07-software.html" rel="next">
+<link href="../guide/05-storage.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66ae90e4418e9d0ac3caa4b8c3bef75c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guide/06-rstudio-server.html">6. RStudio Server</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Need a bigger computer?</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/01-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Concepts</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/02-your-allocation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Your allocation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/03-sizing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Sizing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/04-launch-a-vm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Launch a VM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/05-storage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Storage</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/06-rstudio-server.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">6. RStudio Server</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/07-software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Software</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guide/08-looking-after-it.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Looking after it</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#6-rstudio-server" id="toc-6-rstudio-server" class="nav-link active" data-scroll-target="#6-rstudio-server">6. RStudio Server</a>
+  <ul class="collapse">
+  <li><a href="#the-easy-path-applications--quick-deploy-r-studio" id="toc-the-easy-path-applications--quick-deploy-r-studio" class="nav-link" data-scroll-target="#the-easy-path-applications--quick-deploy-r-studio">The easy path: Applications &gt; Quick Deploy R-Studio</a></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#1-install-r" id="toc-1-install-r" class="nav-link" data-scroll-target="#1-install-r">1. Install R</a></li>
+  <li><a href="#2-install-rstudio-server" id="toc-2-install-rstudio-server" class="nav-link" data-scroll-target="#2-install-rstudio-server">2. Install RStudio Server</a></li>
+  <li><a href="#3-make-rstudio-server-listen-only-on-localhost" id="toc-3-make-rstudio-server-listen-only-on-localhost" class="nav-link" data-scroll-target="#3-make-rstudio-server-listen-only-on-localhost">3. Make RStudio Server listen only on localhost</a></li>
+  <li><a href="#4-create-the-dns-record" id="toc-4-create-the-dns-record" class="nav-link" data-scroll-target="#4-create-the-dns-record">4. Create the DNS record</a>
+  <ul class="collapse">
+  <li><a href="#install-the-clients-in-a-python-virtual-environment" id="toc-install-the-clients-in-a-python-virtual-environment" class="nav-link" data-scroll-target="#install-the-clients-in-a-python-virtual-environment">Install the clients in a Python virtual environment</a></li>
+  <li><a href="#load-your-credentials" id="toc-load-your-credentials" class="nav-link" data-scroll-target="#load-your-credentials">Load your credentials</a></li>
+  <li><a href="#create-and-check-the-record" id="toc-create-and-check-the-record" class="nav-link" data-scroll-target="#create-and-check-the-record">Create and check the record</a></li>
+  </ul></li>
+  <li><a href="#5-open-ports-80-and-443-and-never-8787" id="toc-5-open-ports-80-and-443-and-never-8787" class="nav-link" data-scroll-target="#5-open-ports-80-and-443-and-never-8787">5. Open ports 80 and 443 (and never 8787)</a></li>
+  <li><a href="#6-install-nginx-and-add-a-site-for-rstudio" id="toc-6-install-nginx-and-add-a-site-for-rstudio" class="nav-link" data-scroll-target="#6-install-nginx-and-add-a-site-for-rstudio">6. Install nginx and add a site for RStudio</a></li>
+  <li><a href="#7-get-a-certificate-with-certbot" id="toc-7-get-a-certificate-with-certbot" class="nav-link" data-scroll-target="#7-get-a-certificate-with-certbot">7. Get a certificate with certbot</a></li>
+  <li><a href="#8-add-users" id="toc-8-add-users" class="nav-link" data-scroll-target="#8-add-users">8. Add users</a></li>
+  <li><a href="#if-something-goes-wrong" id="toc-if-something-goes-wrong" class="nav-link" data-scroll-target="#if-something-goes-wrong">If something goes wrong</a></li>
+  <li><a href="#variation-rstudio-under-a-path" id="toc-variation-rstudio-under-a-path" class="nav-link" data-scroll-target="#variation-rstudio-under-a-path">Variation: RStudio under a path</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdsumner/nectar/edit/main/guide/06-rstudio-server.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdsumner/nectar/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="6-rstudio-server" class="level1">
+<h1>6. RStudio Server</h1>
+<blockquote class="blockquote">
+<p><strong>Status:</strong> draft. Source: <code>legacy/openstack/create_install_rstudio_openstack.md</code> and <a href="https://github.com/mdsumner/nectar/issues/14">issue #14</a>, updated against current docs (October 2026).</p>
+</blockquote>
+<p>The goal is RStudio Server at <code>https://&lt;server&gt;.&lt;project&gt;.cloud.edu.au</code>, not <code>http://&lt;ip&gt;:8787</code>. Without HTTPS, passwords and data cross the network in clear text.</p>
+<p>The arrangement is:</p>
+<pre><code>browser ──HTTPS:443──&gt; nginx (on the VM) ──HTTP──&gt; RStudio Server on 127.0.0.1:8787</code></pre>
+<p>nginx holds the certificate and talks to the outside world. RStudio Server only listens on the VM itself.</p>
+<section id="the-easy-path-applications--quick-deploy-r-studio" class="level2">
+<h2 class="anchored" data-anchor-id="the-easy-path-applications--quick-deploy-r-studio">The easy path: Applications &gt; Quick Deploy R-Studio</h2>
+<p>If you don’t need full control, let Nectar do the setup. In the dashboard, the Applications tab has a <strong>Quick Deploy</strong> option for R-Studio. It launches a VM with RStudio Server and Shiny Server already installed. If you choose a DNS zone during the deploy, you get automatic HTTPS at <code>https://&lt;host&gt;.&lt;project&gt;.cloud.edu.au</code>. You can also add a volume, which must be in the same availability zone as the VM (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000164849">Nectar support: R-Studio application</a>, <a href="https://tutorials.rc.nectar.org.au/applications/03-configuring">tutorial: configuring applications</a>).</p>
+<p>Each deploy creates its own security group. Delete these when you delete the application, or they pile up (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000168298">Nectar support: application security groups</a>).</p>
+<p>The rest of this page is the do-it-yourself route: more steps, but you choose the versions, the configuration and what else runs on the machine.</p>
+<p>Placeholders used below:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Placeholder</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;project&gt;</code></td>
+<td>your Nectar project name, which is also your DNS zone</td>
+<td><code>myproject</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;server&gt;</code></td>
+<td>the hostname you choose for this VM</td>
+<td><code>rstudio</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;ip&gt;</code></td>
+<td>the VM’s public IP address (dashboard: Project → Compute → Instances)</td>
+<td><code>203.0.113.10</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;fqdn&gt;</code></td>
+<td><code>&lt;server&gt;.&lt;project&gt;.cloud.edu.au</code></td>
+<td><code>rstudio.myproject.cloud.edu.au</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;username&gt;</code></td>
+<td>a user account on the VM</td>
+<td><code>alice</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="before-you-start" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-start">Before you start</h2>
+<ul>
+<li>A running Ubuntu 24.04 LTS VM you can SSH into as <code>ubuntu</code> (<a href="../guide/04-launch-a-vm.html">04</a>). Ubuntu 26.04 LTS is supported by CRAN and Posit, so it should work the same way. TODO(verify): whether Nectar currently offers an official Ubuntu 26.04 image.</li>
+<li>Your project has an allocation. Nectar creates a DNS zone named after the project (<code>&lt;project&gt;.cloud.edu.au.</code>) for new and renewed allocations (<a href="https://support.ehelp.edu.au/support/solutions/articles/6000201311-nectar-dns-service">Nectar DNS service</a>).</li>
+</ul>
+</section>
+<section id="1-install-r" class="level2">
+<h2 class="anchored" data-anchor-id="1-install-r">1. Install R</h2>
+<p>Follow <a href="https://cloud.r-project.org/bin/linux/ubuntu/">CRAN’s Ubuntu instructions</a>. On the VM:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="at">-qq</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> software-properties-common dirmngr</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># optional: fingerprint should be E298A3A825C0D65DFD57CBB651716619E084DAB9</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg</span> <span class="at">--show-keys</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> r-base r-base-dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>$(lsb_release -cs)</code> fills in your release (<code>noble</code> for 24.04, <code>resolute</code> for 26.04). For geospatial libraries and binary packages, see <a href="../guide/07-software.html">07</a>.</p>
+</section>
+<section id="2-install-rstudio-server" class="level2">
+<h2 class="anchored" data-anchor-id="2-install-rstudio-server">2. Install RStudio Server</h2>
+<p>Get the current Ubuntu <code>.deb</code> from Posit’s <a href="https://posit.co/download/rstudio-server/">download page</a> (it currently redirects to <a href="https://docs.posit.co/ide/user/download.html">docs.posit.co/ide/user/download.html</a>). The one package, built on <code>jammy</code>, is for Ubuntu 22, 24 and 26. Don’t copy a version number from old notes: the filename changes with every release.</p>
+<p>Either copy the link from that page, or use Posit’s “latest stable” redirect and check which version it points to:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sI</span> https://rstudio.org/download/latest/stable/server/jammy/rstudio-server-latest-amd64.deb <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-i</span> ^location</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then download and install it (in October 2026 the current file was <code>rstudio-server-2026.10.1-239-amd64.deb</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://rstudio.org/download/latest/stable/server/jammy/rstudio-server-latest-amd64.deb</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./rstudio-server-latest-amd64.deb</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status rstudio-server</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>apt install ./file.deb</code> pulls in dependencies, so you no longer need <code>gdebi</code>. TODO(verify): the <code>rstudio.org/download/latest/...</code> redirect is not documented on Posit’s download page, though it worked when this was written. If it stops working, copy the link from the download page instead.</p>
+</section>
+<section id="3-make-rstudio-server-listen-only-on-localhost" class="level2">
+<h2 class="anchored" data-anchor-id="3-make-rstudio-server-listen-only-on-localhost">3. Make RStudio Server listen only on localhost</h2>
+<p>nginx will be the only way in, so tell RStudio Server not to listen on the public interface (<a href="https://docs.posit.co/ide/server-pro/admin/access_and_security/running_with_a_proxy.html">Posit: running with a proxy</a>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"www-address=127.0.0.1"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/rstudio/rserver.conf</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart rstudio-server</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Check it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ss <span class="at">-tlnp</span> <span class="kw">|</span> <span class="fu">grep</span> 8787</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see <code>127.0.0.1:8787</code>, not <code>0.0.0.0:8787</code>.</p>
+</section>
+<section id="4-create-the-dns-record" class="level2">
+<h2 class="anchored" data-anchor-id="4-create-the-dns-record">4. Create the DNS record</h2>
+<p>You do this with the OpenStack command-line client and its DNS (Designate) plugin. It can run on any machine, such as your laptop or the VM itself.</p>
+<section id="install-the-clients-in-a-python-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="install-the-clients-in-a-python-virtual-environment">Install the clients in a Python virtual environment</h3>
+<p>Use a venv rather than <code>apt install python3-openstackclient</code>. The apt packages can lag behind and mixing them with system Python caused trouble before (see <a href="https://github.com/mdsumner/nectar/issues/14">issue #14</a>). Ubuntu 24.04 also refuses <code>pip install</code> outside a venv.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3-venv python3-pip</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv ~/venvs/openstack</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/venvs/openstack/bin/activate</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install python-openstackclient python-designateclient</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When you come back later, run <code>source ~/venvs/openstack/bin/activate</code> again first. References: <a href="https://tutorials.rc.nectar.org.au/openstack-cli/02-openstack-client">Nectar: OpenStack client</a>, <a href="https://docs.python.org/3/library/venv.html">Python venv docs</a>.</p>
+</section>
+<section id="load-your-credentials" class="level3">
+<h3 class="anchored" data-anchor-id="load-your-credentials">Load your credentials</h3>
+<p>Do either of the following.</p>
+<p><strong>Application credential (preferred for anything scripted or left on a machine).</strong> In the Nectar dashboard, select the right project, then go to Identity → Application Credentials, create one, and download its openrc file. It is tied to one project, can be revoked, and doesn’t expose your personal password (<a href="https://tutorials.rc.nectar.org.au/application-credentials/01-overview">Nectar: application credentials</a>, <a href="https://tutorials.rc.nectar.org.au/application-credentials/03-using-app-credentials">using them</a>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clear any leftover OS_* variables first, e.g. open a fresh shell</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> app-cred-<span class="op">&lt;</span>name<span class="op">&gt;</span>-openrc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Project OpenStack RC file.</strong> In the dashboard, select the project, click your email address (top right), and choose “OpenStack RC File”. You’ll be asked for your <em>OpenStack password</em>. This is not your institutional login: generate it under Settings → Reset Password (<a href="https://tutorials.rc.nectar.org.au/openstack-cli/04-credentials">Nectar: credentials</a>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;</span>project<span class="op">&gt;</span>-openrc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Never commit either file, or paste its secret, into a repository or document.</p>
+</section>
+<section id="create-and-check-the-record" class="level3">
+<h3 class="anchored" data-anchor-id="create-and-check-the-record">Create and check the record</h3>
+<p>Find your zone, then create an A record pointing <code>&lt;server&gt;</code> at the VM’s IP (<a href="https://tutorials.rc.nectar.org.au/dns/05-create-recordset">Nectar: create a recordset</a>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> zone list</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> recordset create <span class="op">&lt;</span>project<span class="op">&gt;</span>.cloud.edu.au. <span class="op">&lt;</span>server<span class="op">&gt;</span> --type A <span class="at">--record</span> <span class="op">&lt;</span>ip<span class="op">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> recordset list <span class="op">&lt;</span>project<span class="op">&gt;</span>.cloud.edu.au.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note the <strong>trailing dot</strong> on the zone name. It is a fully qualified name and the commands fail without it.</p>
+<p>Wait a minute or two, then check that the name resolves to your IP:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">host</span> <span class="op">&lt;</span>fqdn<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can also create the record in the dashboard: Project → DNS → Zones → Create Record Set.</p>
+</section>
+</section>
+<section id="5-open-ports-80-and-443-and-never-8787" class="level2">
+<h2 class="anchored" data-anchor-id="5-open-ports-80-and-443-and-never-8787">5. Open ports 80 and 443 (and never 8787)</h2>
+<p>In the dashboard (Project → Network → Security Groups), add a group, e.g. <code>http-https</code>, with ingress rules for TCP 80 and TCP 443 from <code>0.0.0.0/0</code>, and attach it to the instance. Port 80 is needed for the Let’s Encrypt challenge and the HTTP to HTTPS redirect.</p>
+<p>The same from the command line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> security group create http-https</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> security group rule create <span class="at">--protocol</span> tcp <span class="at">--dst-port</span> 80 <span class="at">--remote-ip</span> 0.0.0.0/0 http-https</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> security group rule create <span class="at">--protocol</span> tcp <span class="at">--dst-port</span> 443 <span class="at">--remote-ip</span> 0.0.0.0/0 http-https</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> server add security group <span class="op">&lt;</span>server<span class="op">&gt;</span> http-https</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do <strong>not</strong> open 8787. If an old group allows it, remove that group from the instance:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openstack</span> server remove security group <span class="op">&lt;</span>server<span class="op">&gt;</span> <span class="op">&lt;</span>group-with-8787<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="6-install-nginx-and-add-a-site-for-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="6-install-nginx-and-add-a-site-for-rstudio">6. Install nginx and add a site for RStudio</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nginx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create <code>/etc/nginx/sites-available/rstudio</code>, based on Posit’s <a href="https://docs.posit.co/ide/server-pro/admin/access_and_security/running_with_a_proxy.html">proxy configuration</a>. Files in <code>sites-available</code> are included inside nginx’s <code>http { }</code> block, so don’t edit <code>/etc/nginx/nginx.conf</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano /etc/nginx/sites-available/rstudio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="nginx"><code># Support proxying of websocket connections (RStudio needs these)
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  ''      close;
+}
+
+server {
+  listen 80;
+  listen [::]:80;
+  server_name &lt;fqdn&gt;;
+
+  # allow larger uploads through the RStudio Files pane
+  client_max_body_size 100M;
+
+  location / {
+    proxy_pass http://127.0.0.1:8787;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_set_header Host $host;
+    proxy_read_timeout 20d;
+  }
+}</code></pre>
+<p>Posit’s example uses <code>proxy_set_header Host $host:$server_port;</code> and says to leave out the port when serving on the default 80/443, so this uses <code>$host</code>. <code>client_max_body_size</code> is optional (nginx’s default is 1M).</p>
+<p>Enable the site, disable the default one, test, and reload:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /etc/nginx/sites-available/rstudio /etc/nginx/sites-enabled/rstudio</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm /etc/nginx/sites-enabled/default</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nginx <span class="at">-t</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl reload nginx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>At this point <code>http://&lt;fqdn&gt;</code> should show the RStudio login page. <strong>Don’t log in yet</strong>, because it isn’t encrypted.</p>
+</section>
+<section id="7-get-a-certificate-with-certbot" class="level2">
+<h2 class="anchored" data-anchor-id="7-get-a-certificate-with-certbot">7. Get a certificate with certbot</h2>
+<p><a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=snap">certbot.eff.org</a> recommends installing certbot as a snap, and Ubuntu cloud images ship with <code>snapd</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove certbot   <span class="co"># only if an old apt version is installed</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install <span class="at">--classic</span> certbot</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /snap/bin/certbot /usr/local/bin/certbot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>TODO(verify): that the Nectar Ubuntu 24.04 image includes <code>snapd</code>. If it doesn’t (or you’d rather avoid snaps), <code>sudo apt install python3-certbot-nginx</code> also works on 24.04, with a slightly older certbot.</p>
+<p>Request the certificate and let certbot edit the nginx site:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> certbot <span class="at">--nginx</span> <span class="at">-d</span> <span class="op">&lt;</span>fqdn<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It asks for an email address (for expiry warnings) and for you to agree to the terms. If it asks about redirecting, choose redirect. TODO(verify): recent certbot seems to add the HTTP to HTTPS redirect without asking. If it doesn’t, add <code>--redirect</code> to the command. Afterwards the <code>server</code> block in <code>/etc/nginx/sites-available/rstudio</code> has <code>listen 443 ssl</code> and certificate lines marked <code># managed by Certbot</code>, plus a second block that redirects port 80.</p>
+<p>Renewal is automatic. The snap installs a systemd timer (the apt package does too), and certificates renew before they expire. Check it and do a dry run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> list-timers <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-i</span> certbot</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> certbot renew <span class="at">--dry-run</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now open <code>https://&lt;fqdn&gt;</code>. <code>http://&lt;fqdn&gt;</code> should redirect there.</p>
+</section>
+<section id="8-add-users" class="level2">
+<h2 class="anchored" data-anchor-id="8-add-users">8. Add users</h2>
+<p>RStudio Server logs in with ordinary Linux accounts. For each person:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> adduser <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Give them a temporary password, sent separately from the username (e.g.&nbsp;by a different channel), and ask them to change it on first login:</p>
+<ol type="1">
+<li><p>Log in at <code>https://&lt;fqdn&gt;</code>.</p></li>
+<li><p>Open the Terminal tab (Tools → Terminal → New Terminal) and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Choose a long, unique password, ideally from a password manager. Sign out and back in so the password manager saves the new one.</p></li>
+</ol>
+<p>Don’t give users <code>sudo</code> unless they need it. See <a href="../guide/08-looking-after-it.html">08</a> for managing users over time. Never write real usernames, passwords, IP addresses or credential files into shared notes or this repo.</p>
+</section>
+<section id="if-something-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="if-something-goes-wrong">If something goes wrong</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nginx <span class="at">-t</span>                              <span class="co"># config syntax</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> journalctl <span class="at">-u</span> nginx <span class="at">-e</span>                <span class="co"># nginx service log</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-n</span> 50 /var/log/nginx/error.log   <span class="co"># proxy errors (502 = RStudio not reachable)</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status rstudio-server</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rstudio-server verify-installation</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-n</span> 50 /var/log/letsencrypt/letsencrypt.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>certbot fails the challenge:</strong> check that <code>host &lt;fqdn&gt;</code> returns your IP and that port 80 is open in the security group.</li>
+<li><strong>Login page loads but the session hangs or keeps disconnecting:</strong> the websocket <code>Upgrade</code>/<code>Connection</code> headers are missing from the nginx site.</li>
+<li><strong>502 Bad Gateway:</strong> RStudio Server isn’t running, or isn’t on <code>127.0.0.1:8787</code>.</li>
+</ul>
+</section>
+<section id="variation-rstudio-under-a-path" class="level2">
+<h2 class="anchored" data-anchor-id="variation-rstudio-under-a-path">Variation: RStudio under a path</h2>
+<p>To serve RStudio at <code>https://&lt;fqdn&gt;/rstudio/</code> with something else (a landing page, Jupyter) at <code>/</code>, see Posit’s <a href="https://docs.posit.co/ide/server-pro/admin/access_and_security/running_with_a_proxy.html">proxy guide</a> for the sub-path configuration. In outline, add this inside the existing <code>server</code> block, keeping the websocket headers from above:</p>
+<pre class="nginx"><code>location /rstudio/ {
+  rewrite ^/rstudio/(.*)$ /$1 break;
+  proxy_pass http://127.0.0.1:8787;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $connection_upgrade;
+  proxy_set_header Host $host;
+  proxy_set_header X-RStudio-Root-Path /rstudio;
+  proxy_read_timeout 20d;
+}</code></pre>
+<p>The <code>X-RStudio-Root-Path</code> header and <code>www-root-path=/rstudio</code> in <code>/etc/rstudio/rserver.conf</code> do the same job, so you need only one. If both are set, the header wins.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../guide/05-storage.html" class="pagination-link" aria-label="5. Storage">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5. Storage</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../guide/07-software.html" class="pagination-link" aria-label="7. Software">
+        <span class="nav-page-text">7. Software</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdsumner/nectar/edit/main/guide/06-rstudio-server.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdsumner/nectar/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
