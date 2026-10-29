@@ -1,10 +1,10 @@
-# Render the site on every push to master and publish it to the gh-pages
+# Render the site on every push to main and publish it to the gh-pages
 # branch, leaving any PR previews in place.
 name: Publish site
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 concurrency: publish

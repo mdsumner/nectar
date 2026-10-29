@@ -35,7 +35,7 @@ The `TODO(verify)` markers in the guide, by page:
 
 ## Site
 
-- [ ] Go live: Quarto site on GitHub Pages from master (workflows are in `.github/`)
+- [ ] Go live: Quarto site on GitHub Pages from main (workflows are in `.github/`)
 - [ ] Decide whether `guide/_research-notes.md` stays in the repo (it's not rendered)
 - [ ] Hooks for other groups' pages (join a project, managed stacks) once they nominate owners
 - [ ] Branding/voice check with Media and manager before promoting it
