@@ -8,7 +8,7 @@ supercomputer.
 
 This page is a short way in, and a list of places to go next.
 
-> **Status:** early draft. The old notes this grew out of are in [`legacy/`](legacy/).
+> **Status:** early draft. The old notes this grew out of are in [`legacy/`](https://github.com/mdsumner/nectar/tree/master/legacy).
 
 ## Is this for me?
 

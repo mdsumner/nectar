@@ -3,3 +3,7 @@
 .RData
 *.Rproj
 .gitignore
+
+/.quarto/
+**/*.quarto_ipynb
+/_site/

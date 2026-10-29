@@ -1,0 +1,30 @@
+# Render the site on every push to master and publish it to the gh-pages
+# branch, leaving any PR previews in place.
+name: Publish site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency: publish
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - run: quarto render
+
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
+          branch: gh-pages
+          clean-exclude: pr-preview/
+          force: false
