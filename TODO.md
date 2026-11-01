@@ -19,6 +19,12 @@ Each of these gets tested on a real Nectar VM, then becomes a guide page of its 
       of a group-maintained stack
 - [ ] Interactive HPC pointers: NCI ARE, NCI and Pawsey docs for RStudio/Jupyter in a job
 
+## Recipes
+
+- [ ] Tag a release of `recipes/` and pin `quickstart.sh` to it, instead of `main`
+- [ ] More recipes alongside RStudio: Jupyter, marimo
+- [ ] Switch `41-rstudio.sh` to a stable release once one covers Ubuntu 26.04
+
 ## Verify on a real VM
 
 The `TODO(verify)` markers in the guide, by page:

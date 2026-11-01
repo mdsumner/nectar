@@ -21,9 +21,9 @@ run() { echo "=== $(date -u +%T) start $*"
 [ -n "$VOLID" ] && run 10-volume.sh "$VOLID"
 run 20-docker.sh
 run 30-gdal.sh
-[ -n "$RUST" ] && run 35-rust.sh
 run 40-r.sh
 run 41-rstudio.sh
+[ -n "$RUST" ] && run 42-rust.sh
 if [ -s users.tsv ] && grep -qvE '^\s*(#|$)' users.tsv; then run 60-users.sh users.tsv; else run 45-login.sh; fi
 if [ -n "$FQDN" ]; then
   me=$(ip -4 route get 1.1.1.1 | grep -oP 'src \K\S+')

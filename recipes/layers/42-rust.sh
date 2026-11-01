@@ -1,6 +1,6 @@
 #!/bin/bash
-# 35: Rust toolchain for R packages that compile Rust (optional; launch.sh --rust). Run as root, after 30-gdal.sh.
-# Usage:  35-rust.sh [toolchain]   (default stable)
+# 42: Rust toolchain for R packages that compile Rust (optional; launch.sh --rust). Run as root, after 40-r.sh (it writes R's Renviron.site).
+# Usage:  42-rust.sh [toolchain]   (default stable)
 #
 # rustup and the toolchain are system-wide and root-maintained in /usr/local (root disk); no CARGO_HOME is set, so each
 # user's crate cache lands in their own ~/.cargo on the home volume. Renviron.site carries this to R and RStudio sessions, which don't read profile.d.
