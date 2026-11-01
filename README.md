@@ -56,7 +56,10 @@ Nothing here is precious. If something goes wrong, delete the VM and start again
 
 That's it: you have a computer.
 
-**Next:** put something on the web. [RStudio Server](guide/06-rstudio-server.md)
+**Next:** a [ready-made research server](guide/09-ready-made-server.md): paste two lines
+when you launch, and the VM builds itself with RStudio, R, GDAL and the spatial packages.
+
+Or put something on the web: [RStudio Server](guide/06-rstudio-server.md)
 behind HTTPS with a proper name, or the dashboard's one-click "Quick Deploy" for RStudio.
 
 Once you're using it:

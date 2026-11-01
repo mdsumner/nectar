@@ -25,6 +25,7 @@ website:
       - guide/06-rstudio-server.md
       - guide/07-software.md
       - guide/08-looking-after-it.md
+      - guide/09-ready-made-server.md
 
 format:
   html:
