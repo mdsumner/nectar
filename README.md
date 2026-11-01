@@ -3,8 +3,8 @@
 The [ARDC Nectar Research Cloud](https://ardc.edu.au/services/ardc-nectar-research-cloud/)
 lets Australian researchers create their own virtual machines (VMs): computers in
 a data centre that you start, log in to, install what you like on, and delete when
-you're done. It's free for researchers, and it sits between your laptop and a
-supercomputer.
+you're done. It's free for researchers, and provides a level of computing capacity that is more than laptop but less than 
+supercomputer. 
 
 This page is a short way in, and a list of places to go next.
 
