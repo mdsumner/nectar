@@ -8,7 +8,7 @@ supercomputer.
 
 This page is a short way in, and a list of places to go next.
 
-> **Status:** early draft. The old notes this grew out of are in [`legacy/`](https://github.com/mdsumner/nectar/tree/main/legacy).
+> **Status:** early draft.
 
 ## Is this for me?
 
@@ -123,4 +123,5 @@ Written by Michael Sumner, a researcher at the University of Tasmania (home of t
 Tasmania node), from about a decade of using Nectar. It's meant to be generic: none of
 it depends on which node or institution you're at. Groups that run their own Nectar
 projects or services will link their own pages from here. Corrections are welcome as
-issues or pull requests.
+issues or pull requests. The old notes it grew out of are in
+[`legacy/`](https://github.com/mdsumner/nectar/tree/main/legacy).

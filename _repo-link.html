@@ -1,0 +1,13 @@
+<script>
+// Quarto puts the GitHub icon inside the "Edit this page" link; make it a separate link to the repo.
+document.querySelectorAll(".toc-actions a.toc-action > i.bi-github").forEach(function (icon) {
+  var repo = document.createElement("a");
+  repo.href = "https://github.com/mdsumner/nectar";
+  repo.className = "toc-action";
+  repo.title = "GitHub repository";
+  repo.setAttribute("aria-label", "GitHub repository");
+  var edit = icon.parentNode;
+  edit.parentNode.insertBefore(repo, edit);
+  repo.appendChild(icon);
+});
+</script>

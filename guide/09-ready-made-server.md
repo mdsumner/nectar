@@ -55,13 +55,22 @@ cat /var/lib/recipe-status            # running, failed <layer>, or done
 
 ## Connect to RStudio
 
-When the status says `done`, get your password:
+When the status says `done`, get your password. The build saved it in a file
+called `rstudio-password` in the `ubuntu` home directory on your VM. If you're
+still logged in to the VM, the file is right there:
+
+```bash
+cat rstudio-password
+```
+
+Or fetch it from a terminal on your own computer, without logging in:
 
 ```bash
 ssh ubuntu@<ip> cat rstudio-password
 ```
 
-Then connect with a tunnel, which carries RStudio through your SSH connection:
+Then, from a terminal on your own computer, connect with a tunnel, which carries
+RStudio through your SSH connection:
 
 ```bash
 ssh -L 8787:localhost:8787 ubuntu@<ip>
