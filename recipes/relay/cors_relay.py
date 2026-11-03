@@ -9,9 +9,11 @@ Installed by the nectar relay recipe as a systemd service on 127.0.0.1:8787,
 behind nginx with a Let's Encrypt certificate. Allowed hosts are read from
 /etc/cors-relay/hosts on every request, so editing that file is enough.
 """
+import asyncio
 import sys
 from urllib.parse import urlparse
-from aiohttp import web, ClientSession, ClientTimeout
+from aiohttp import web, ClientError, ClientSession, ClientTimeout
+from yarl import URL
 
 # One host per line in /etc/cors-relay/hosts (comments with #); else these.
 ALLOW = {
@@ -28,9 +30,13 @@ def load_allow():
         return hosts or ALLOW
     except OSError:
         return ALLOW
-FORWARD_REQ = ("Range", "If-Range", "If-None-Match", "If-Modified-Since", "Accept")
-FORWARD_RESP = ("Content-Type", "Content-Length", "Content-Range", "Accept-Ranges",
-                "ETag", "Last-Modified", "Cache-Control")
+
+
+# compared lower-case: HTTP/2 clients send lower-case names
+FORWARD_REQ = {"range", "if-range", "if-none-match", "if-modified-since", "accept"}
+FORWARD_RESP = {"content-type", "content-length", "content-range", "accept-ranges",
+                "etag", "last-modified", "cache-control"}
+MAX_REDIRECTS = 5
 CORS = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
@@ -44,26 +50,46 @@ async def healthz(request):
     return web.Response(text="ok " + " ".join(sorted(load_allow())) + "\n", headers=CORS)
 
 
+def allowed(url):
+    u = urlparse(url)
+    return u.scheme == "https" and (u.hostname or "") in load_allow()
+
+
 async def relay(request):
     if request.method == "OPTIONS":
         return web.Response(status=204, headers=CORS)
     url = request.query.get("url", "")
-    host = urlparse(url).hostname or ""
-    if urlparse(url).scheme != "https" or host not in load_allow():
+    if not allowed(url):
         return web.Response(status=403, text="host not allowed", headers=CORS)
-    headers = {k: v for k, v in request.headers.items() if k in FORWARD_REQ}
-    headers["User-Agent"] = "nuyina-map-relay/1.0"
+    headers = {k: v for k, v in request.headers.items() if k.lower() in FORWARD_REQ}
+    headers["User-Agent"] = "nectar-cors-relay/1.0"
+    # identity: aiohttp would otherwise ask for gzip and decompress, leaving Content-Length wrong
+    headers["Accept-Encoding"] = "identity"
     session = request.app["session"]
-    async with session.request(request.method, url, headers=headers, allow_redirects=True) as up:
-        out = {k: v for k, v in up.headers.items() if k in FORWARD_RESP}
-        out.update(CORS)
-        resp = web.StreamResponse(status=up.status, headers=out)
-        await resp.prepare(request)
-        if request.method == "GET":
-            async for chunk in up.content.iter_chunked(1 << 16):
-                await resp.write(chunk)
-        await resp.write_eof()
-        return resp
+    try:
+        # follow redirects by hand so every hop is checked against the allow-list
+        for _ in range(MAX_REDIRECTS + 1):
+            up = await session.request(request.method, url, headers=headers, allow_redirects=False)
+            if up.status not in (301, 302, 303, 307, 308) or "Location" not in up.headers:
+                break
+            url = str(up.url.join(URL(up.headers["Location"])))
+            up.release()
+            if not allowed(url):
+                return web.Response(status=403, text="redirect to a host not allowed", headers=CORS)
+        else:
+            return web.Response(status=502, text="too many redirects", headers=CORS)
+        async with up:
+            out = {k: v for k, v in up.headers.items() if k.lower() in FORWARD_RESP}
+            out.update(CORS)
+            resp = web.StreamResponse(status=up.status, headers=out)
+            await resp.prepare(request)
+            if request.method == "GET":
+                async for chunk in up.content.iter_chunked(1 << 16):
+                    await resp.write(chunk)
+            await resp.write_eof()
+            return resp
+    except (ClientError, asyncio.TimeoutError) as e:
+        return web.Response(status=502, text=f"upstream error: {type(e).__name__}", headers=CORS)
 
 
 async def on_startup(app):

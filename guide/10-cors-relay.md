@@ -6,9 +6,10 @@
 A web page can read a slice of a remote file (a few kilobytes out of a
 netCDF, a tile out of a GeoTIFF) directly, with no server of its own, as long
 as the host serving the file says it may. The host says so with a response
-header, `Access-Control-Allow-Origin`, and most object storage does (Pawsey,
-source.coop, AWS). Many institutional file servers do not: they were set up
-for `wget`, not for browsers. The browser then refuses the read, and the page
+header, `Access-Control-Allow-Origin`. Public data hubs such as source.coop
+send it; object storage (AWS S3, Pawsey Acacia) sends it when the bucket owner
+has set a CORS policy. Many institutional file servers do not: they were set
+up for `wget`, not for browsers. The browser then refuses the read, and the page
 sees "Failed to fetch".
 
 A relay fixes that from your side. It is a very small web service that
@@ -102,7 +103,8 @@ servers only, never anything that needs a login.
 ## What to look after
 
 - **It is public.** Anyone can use your relay to read from the listed hosts.
-  The list is your only control, and the logs are in `journalctl -u cors-relay`.
+  The list is your only control (redirects are checked against it too), and
+  the logs are in `journalctl -u cors-relay`.
 - **It costs you traffic, not storage.** Every byte a page reads passes
   through the VM. A map that reads a few megabytes per view is fine; a bulk
   download is not what this is for.
