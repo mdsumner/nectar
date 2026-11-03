@@ -8,7 +8,7 @@ set -euo pipefail
 FQDN=${1:?fqdn, e.g. myhost.myproject.cloud.edu.au}
 EMAIL=${2:-}
 export DEBIAN_FRONTEND=noninteractive
-apt-get install -y -qq nginx certbot python3-certbot-nginx
+apt-get install -y -qq nginx certbot python3-certbot-nginx bind9-dnsutils
 
 cat > /etc/nginx/sites-available/rstudio <<CONF
 # nectar-recipes: RStudio Server under /rstudio/ (https://docs.posit.co/ide/server-pro/access_and_security/running_with_a_proxy.html)
@@ -51,7 +51,11 @@ echo "== certificate"
 # Nectar puts the public IP on the interface (the metadata service has no public-ipv4); behind NAT, ask outside
 PUB=$(ip -4 route get 1.1.1.1 | grep -oP 'src \K\S+')
 case "$PUB" in 10.*|172.1[6-9].*|172.2?.*|172.3[01].*|192.168.*) PUB=$(curl -fs --max-time 5 https://ifconfig.me || true);; esac
-DNS=$(getent ahostsv4 "$FQDN" | awk 'NR==1{print $1}' || true)
+# ask the zone's own nameserver: resolvers cache "no such name" for the zone's negative TTL (an hour on Nectar zones),
+# so a record added after the first lookup would otherwise stay invisible for that long
+lookup() { local ns; ns=$(dig +short NS "${1#*.}" 2>/dev/null | head -1)
+           if [ -n "$ns" ]; then dig +short A "$1" @"$ns" | head -1; else getent ahostsv4 "$1" | awk 'NR==1{print $1}'; fi; }
+DNS=$(lookup "$FQDN" || true)
 if [ -z "$DNS" ] || [ "$DNS" != "$PUB" ]; then
   echo "SKIPPED: $FQDN resolves to '${DNS:-nothing}', this host is $PUB."
   # retry every 5 min until DNS points here; the timer switches itself off once the certificate exists

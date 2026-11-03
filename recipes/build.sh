@@ -25,10 +25,14 @@ run 40-r.sh
 run 41-rstudio.sh
 [ -n "$RUST" ] && run 42-rust.sh
 if [ -s users.tsv ] && grep -qvE '^\s*(#|$)' users.tsv; then run 60-users.sh users.tsv; else run 45-login.sh; fi
+# ask the zone's own nameserver: resolvers cache "no such name" for the zone's negative TTL (an hour on Nectar zones),
+# so a record added after the first lookup would otherwise stay invisible for that long
+lookup() { local ns; ns=$(dig +short NS "${1#*.}" 2>/dev/null | head -1)
+           if [ -n "$ns" ]; then dig +short A "$1" @"$ns" | head -1; else getent ahostsv4 "$1" | awk 'NR==1{print $1}'; fi; }
 if [ -n "$FQDN" ]; then
   me=$(ip -4 route get 1.1.1.1 | grep -oP 'src \K\S+')
   echo "=== waiting up to 5 min for $FQDN -> $me (after that, recipe-cert.timer keeps retrying)"
-  for i in $(seq 30); do [ "$(getent ahostsv4 "$FQDN" | awk 'NR==1{print $1}')" = "$me" ] && break; sleep 10; done
+  for i in $(seq 30); do [ "$(lookup "$FQDN")" = "$me" ] && break; sleep 10; done
   run 50-nginx.sh "$FQDN" $EMAIL
 fi
 run 70-check.sh
