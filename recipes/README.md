@@ -37,3 +37,8 @@ stranger would run it:
 #!/bin/bash
 curl -fsSL https://raw.githubusercontent.com/mdsumner/nectar/<branch>/recipes/bootstrap.sh | RECIPE_REF=<branch> bash
 ```
+
+## Other recipes
+
+- [`relay/`](relay/README.md): a small separate server that relays byte-range reads for web pages
+  (CORS), see [A relay for browser reads](../guide/10-cors-relay.md).
