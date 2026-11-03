@@ -78,18 +78,19 @@ async def relay(request):
                 return web.Response(status=403, text="redirect to a host not allowed", headers=CORS)
         else:
             return web.Response(status=502, text="too many redirects", headers=CORS)
-        async with up:
-            out = {k: v for k, v in up.headers.items() if k.lower() in FORWARD_RESP}
-            out.update(CORS)
-            resp = web.StreamResponse(status=up.status, headers=out)
-            await resp.prepare(request)
-            if request.method == "GET":
-                async for chunk in up.content.iter_chunked(1 << 16):
-                    await resp.write(chunk)
-            await resp.write_eof()
-            return resp
     except (ClientError, asyncio.TimeoutError) as e:
         return web.Response(status=502, text=f"upstream error: {type(e).__name__}", headers=CORS)
+    # once the response has started, a failure mid-body just closes the connection
+    async with up:
+        out = {k: v for k, v in up.headers.items() if k.lower() in FORWARD_RESP}
+        out.update(CORS)
+        resp = web.StreamResponse(status=up.status, headers=out)
+        await resp.prepare(request)
+        if request.method == "GET":
+            async for chunk in up.content.iter_chunked(1 << 16):
+                await resp.write(chunk)
+        await resp.write_eof()
+        return resp
 
 
 async def on_startup(app):
