@@ -32,3 +32,4 @@ format:
     theme: cosmo
     toc: true
     from: markdown+gfm_auto_identifiers
+    include-after-body: _repo-link.html
