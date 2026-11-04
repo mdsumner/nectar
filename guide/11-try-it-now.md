@@ -103,6 +103,40 @@ A JupyterHub that lets you bring your own image needs only the name,
 Because it's the same software at each step, code that works in one place
 works in the next. You move it up when it outgrows where it is.
 
+## Faster starts, for a workshop
+
+A new codespace spends most of its first few minutes fetching the image. If
+you're running a session where many people open one at once, the repository's
+owner can have GitHub do that ahead of time, with a *prebuild*. A codespace
+then starts from the prepared copy, in well under a minute.
+
+This applies to this repository, or to your own copy of it (a fork, or a repo
+of your own with the same `.devcontainer` folder). Prebuilds only help
+codespaces opened from the repository that has them.
+
+1. On the repository's GitHub page, go to **Settings > Codespaces**, and click
+   **Set up prebuild**.
+2. **Branch:** `main`. **Configuration:** `.devcontainer/devcontainer.json`.
+3. **Prebuild triggers:** choose **Scheduled**, weekly. The image is
+   rebuilt monthly under the same name (`:latest`), and nothing in the
+   repository changes when that happens, so "On configuration change" would
+   keep serving the old one. For a workshop, also run it by hand the day
+   before, from the repository's **Actions** tab.
+4. **Region availability:** only the region nearest your participants. Each
+   region keeps its own copy, and you pay to store each one.
+5. Click **Create**. The first prebuild takes a few minutes; it runs as a
+   GitHub Actions job.
+
+Prebuilds use Actions minutes and Codespaces storage, both charged to the
+repository's owner (check
+[GitHub's billing page for prebuilds](https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds)).
+For one image in one region, the storage is modest. Delete the prebuild after
+the workshop if you won't need it again.
+
+Binder has no equivalent you can set up. It keeps a copy of the image on each
+of its servers once someone has launched it there, so launches get quicker
+with use. For a class on Binder, launch it yourself an hour before.
+
 ## Reading data from a browser page
 
 If you go on to read data from a web page rather than from R (a map viewer
