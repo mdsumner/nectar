@@ -5,6 +5,7 @@ project:
     - README.md
     - guide/0*.md
     - guide/10-cors-relay.md
+    - guide/11-try-it-now.md
 
 website:
   title: "Need a bigger computer?"
@@ -28,6 +29,7 @@ website:
       - guide/08-looking-after-it.md
       - guide/09-ready-made-server.md
       - guide/10-cors-relay.md
+      - guide/11-try-it-now.md
 
 format:
   html:

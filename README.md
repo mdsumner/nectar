@@ -27,6 +27,9 @@ If it works, you already have a small personal allocation (a Project Trial) and 
 launch a VM today. Not sure you're eligible? Use the
 [eligibility checker](https://eligibility.rc.nectar.org.au/).
 
+Want to see the software first? [Try it in your browser](guide/11-try-it-now.md), no
+allocation needed.
+
 The trial is small (up to 4 cores, for 6 months). When you need more, you apply for
 your own allocation. How to think about that, and how big a machine you need:
 
