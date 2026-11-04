@@ -235,6 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-you-get" id="toc-what-you-get" class="nav-link" data-scroll-target="#what-you-get">What you get</a></li>
   <li><a href="#what-it-costs-and-what-it-isnt" id="toc-what-it-costs-and-what-it-isnt" class="nav-link" data-scroll-target="#what-it-costs-and-what-it-isnt">What it costs, and what it isn’t</a></li>
   <li><a href="#one-image-several-places-to-run-it" id="toc-one-image-several-places-to-run-it" class="nav-link" data-scroll-target="#one-image-several-places-to-run-it">One image, several places to run it</a></li>
+  <li><a href="#faster-starts-for-a-workshop" id="toc-faster-starts-for-a-workshop" class="nav-link" data-scroll-target="#faster-starts-for-a-workshop">Faster starts, for a workshop</a></li>
   <li><a href="#reading-data-from-a-browser-page" id="toc-reading-data-from-a-browser-page" class="nav-link" data-scroll-target="#reading-data-from-a-browser-page">Reading data from a browser page</a></li>
   </ul></li>
   </ul>
@@ -325,6 +326,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ghcr.io/mdsumner/nectar jupyter lab <span class="at">--ip</span><span class="op">=</span>0.0.0.0 <span class="at">--no-browser</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A JupyterHub that lets you bring your own image needs only the name, <code>ghcr.io/mdsumner/nectar:latest</code>. The image has the user (uid 1000) and the <code>jupyterhub-singleuser</code> program hubs expect.</p>
 <p>Because it’s the same software at each step, code that works in one place works in the next. You move it up when it outgrows where it is.</p>
+</section>
+<section id="faster-starts-for-a-workshop" class="level2">
+<h2 class="anchored" data-anchor-id="faster-starts-for-a-workshop">Faster starts, for a workshop</h2>
+<p>A new codespace spends most of its first few minutes fetching the image. If you’re running a session where many people open one at once, the repository’s owner can have GitHub do that ahead of time, with a <em>prebuild</em>. A codespace then starts from the prepared copy, in well under a minute.</p>
+<p>This applies to this repository, or to your own copy of it (a fork, or a repo of your own with the same <code>.devcontainer</code> folder). Prebuilds only help codespaces opened from the repository that has them.</p>
+<ol type="1">
+<li>On the repository’s GitHub page, go to <strong>Settings &gt; Codespaces</strong>, and click <strong>Set up prebuild</strong>.</li>
+<li><strong>Branch:</strong> <code>main</code>. <strong>Configuration:</strong> <code>.devcontainer/devcontainer.json</code>.</li>
+<li><strong>Prebuild triggers:</strong> choose <strong>Scheduled</strong>, weekly. The image is rebuilt monthly under the same name (<code>:latest</code>), and nothing in the repository changes when that happens, so “On configuration change” would keep serving the old one. For a workshop, also run it by hand the day before, from the repository’s <strong>Actions</strong> tab.</li>
+<li><strong>Region availability:</strong> only the region nearest your participants. Each region keeps its own copy, and you pay to store each one.</li>
+<li>Click <strong>Create</strong>. The first prebuild takes a few minutes; it runs as a GitHub Actions job.</li>
+</ol>
+<p>Prebuilds use Actions minutes and Codespaces storage, both charged to the repository’s owner (check <a href="https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds">GitHub’s billing page for prebuilds</a>). For one image in one region, the storage is modest. Delete the prebuild after the workshop if you won’t need it again.</p>
+<p>Binder has no equivalent you can set up. It keeps a copy of the image on each of its servers once someone has launched it there, so launches get quicker with use. For a class on Binder, launch it yourself an hour before.</p>
 </section>
 <section id="reading-data-from-a-browser-page" class="level2">
 <h2 class="anchored" data-anchor-id="reading-data-from-a-browser-page">Reading data from a browser page</h2>
