@@ -10,8 +10,8 @@ couple of minutes, two ways:
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/mdsumner/nectar?quickstart=1)
 [![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mdsumner/nectar/main?urlpath=lab/tree/try-it.ipynb)
 
-- **Codespaces** gives you VS Code and a terminal. It needs a GitHub account,
-  and it's the roomier of the two.
+- **Codespaces** gives you VS Code, and opens the same JupyterLab in a second
+  tab. It needs a GitHub account, and it's the roomier of the two.
 - **Binder** gives you JupyterLab, with RStudio a click away. It needs no
   account at all, but it's small (around 2 GB of memory) and forgets
   everything when you close the tab.
@@ -29,15 +29,16 @@ that's what Nectar is for.
 - Python with GDAL's bindings, in `/opt/gdal-py`
 - JupyterLab, with an R kernel, a Python kernel that has GDAL, and RStudio in
   its launcher (this is what Binder opens)
-- VS Code in the browser, with R and Python set up, and a terminal (this is
-  what Codespaces opens)
+- VS Code in the browser, with R and Python set up, and a terminal (Codespaces
+  opens this, with JupyterLab in a second tab)
 - A login called `rstudio`, with `sudo`, because the container is yours to
   change
 
 Open either link and wait while it starts. The first start can take several
-minutes, because the image is several gigabytes and has to be fetched. Binder
-opens a notebook with this in it; in Codespaces, open a terminal and type `R`.
-It's the same read the recipe uses as its final check:
+minutes, because the image is several gigabytes and has to be fetched. Both open
+a notebook with this in it. Codespaces also shows a welcome page, with the
+other ways in: RStudio, or R in a VS Code terminal. It's the same read the
+recipe uses as its final check:
 
 ```r
 library(terra)
