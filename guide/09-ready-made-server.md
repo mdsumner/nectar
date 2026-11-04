@@ -19,6 +19,9 @@ If you don't like the result, delete the VM and try again.
 You don't need to download data to start: see
 [Try some cloud-ready data](#try-some-cloud-ready-data).
 
+To try the same software before launching anything, see
+[Try it now, in your browser](11-try-it-now.md).
+
 ## Launch it
 
 Follow [Launch a VM](04-launch-a-vm.md) as usual, with these choices:

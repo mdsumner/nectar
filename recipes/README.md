@@ -25,6 +25,10 @@ Each is a short script run as root, in this order, and safe to read on its own.
 | `50-nginx.sh` | nginx and a Let's Encrypt certificate | `--fqdn` |
 | `70-check.sh` | Reads a remote dataset from R, end to end | Always |
 
+The same 30, 40 and 42 layers also build a container image, `ghcr.io/mdsumner/nectar`
+(`image/Dockerfile`), for Codespaces and Docker: see
+[Try it now](../guide/11-try-it-now.md).
+
 Requires Ubuntu 26.04: the GDAL build is lifted from images built on that release,
 so the host's glibc must match.
 

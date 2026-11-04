@@ -1,0 +1,17 @@
+{
+  // Codespaces (and VS Code's Dev Containers): the recipe's image, built by .github/workflows/image.yml.
+  "name": "Nectar recipe: GDAL + R",
+  "image": "ghcr.io/mdsumner/nectar:latest",
+  "remoteUser": "rstudio",
+  "hostRequirements": { "cpus": 4 },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "r.bracketedPaste": true,
+        "r.plot.useHttpgd": false,
+        "python.defaultInterpreterPath": "/opt/gdal-py/bin/python"
+      },
+      "extensions": ["REditorSupport.r", "ms-python.python"]
+    }
+  }
+}

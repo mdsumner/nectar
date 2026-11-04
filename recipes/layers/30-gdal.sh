@@ -1,6 +1,8 @@
 #!/bin/bash
 # 30: GDAL/PROJ/GEOS (+ spatialite, kea, uv, /opt/gdal-py venv) lifted from a gdal-r-ci image, plus apt deps.
 # Usage (as root), after 20-docker.sh:  30-gdal.sh [image]   (default ghcr.io/hypertidy/gdal-system:latest)
+# In an image build (image/Dockerfile), the Dockerfile copies /usr/local and /opt/gdal-py in itself and sets
+# GDAL_PRELIFTED=<image>; the lift is skipped and everything else (apt deps, Arrow, checks) runs as on a VM.
 #
 # The image is plain Ubuntu (26.04 since gdal-r-ci 73d922b; glibc must match the host) with GDAL built into /usr/local, so its /usr/local runs on a host of the same release given
 # the same apt libraries. :latest = release GDAL (not bleeding edge). To upgrade: rerun with a newer tag.
@@ -23,15 +25,19 @@ apt-get install -y -qq --no-install-recommends \
   libkml-dev libxerces-c-dev libpoppler-dev libpoppler-private-dev libcfitsio-dev libfreexl-dev libspdlog-dev \
   libsqlite3-0 libmuparser-dev
 
-echo "== lift /usr/local and /opt/gdal-py from $IMG"
-docker pull -q "$IMG"
-docker inspect --format '{{index .RepoDigests 0}}' "$IMG" | tee /etc/gdal-lifted-from
-docker run --rm --entrypoint tar "$IMG" -C / -cf - \
-  --exclude=usr/local/rustup --exclude=usr/local/cargo usr/local opt/gdal-py | tar -C / -xf -
+if [ -n "${GDAL_PRELIFTED:-}" ]; then
+  echo "== /usr/local and /opt/gdal-py already copied in from $GDAL_PRELIFTED"
+  echo "$GDAL_PRELIFTED" > /etc/gdal-lifted-from
+else
+  echo "== lift /usr/local and /opt/gdal-py from $IMG"
+  docker pull -q "$IMG"
+  docker inspect --format '{{index .RepoDigests 0}}' "$IMG" | tee /etc/gdal-lifted-from
+  docker run --rm --entrypoint tar "$IMG" -C / -cf - \
+    --exclude=usr/local/rustup --exclude=usr/local/cargo usr/local opt/gdal-py | tar -C / -xf -
+  docker rmi -f "$IMG" >/dev/null   # its files are now on the host; don't keep several GB of image on a small root disk
+fi
 echo /usr/local/lib > /etc/ld.so.conf.d/gdal-r-local.conf
 ldconfig
-
-docker rmi -f "$IMG" >/dev/null   # its files are now on the host; don't keep several GB of image on a small root disk
 
 echo "== Arrow libs matching the ABI GDAL was linked against"
 if [ ! -f /etc/apt/sources.list.d/apache-arrow.sources ]; then
