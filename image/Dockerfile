@@ -1,6 +1,7 @@
-# The recipe's software as a container image: the same layers a Nectar VM runs (30-gdal, 40-r, optionally 42-rust),
-# on the same Ubuntu release, so "try it in the browser" and "your own server" run the same stack.
-# The VM-only layers (volume, Docker, RStudio Server under systemd, nginx, accounts) are left out.
+# The recipe's software as a container image: the same layers a Nectar VM runs (30-gdal, 40-r, 41-rstudio, optionally
+# 42-rust), on the same Ubuntu release, so "try it in the browser" and "your own server" run the same stack. Plus
+# 43-jupyter: JupyterLab with R, Python (GDAL) and RStudio inside it, which Binder and JupyterHubs need.
+# The VM-only layers (volume, Docker, nginx, accounts) are left out, and RStudio runs per user, not as a service.
 # Build from the repo root:  docker build -f image/Dockerfile -t nectar .      (add --build-arg RUST=1 for Rust)
 ARG GDAL_IMAGE=ghcr.io/hypertidy/gdal-system:latest
 
@@ -30,13 +31,19 @@ RUN bash /tmp/layers/40-r.sh languageserver && rm -rf /var/lib/apt/lists/* /tmp/
 # the locale 40-r.sh generated
 ENV LANG=en_US.UTF-8
 
+COPY recipes/layers/41-rstudio.sh recipes/layers/43-jupyter.sh /tmp/layers/
+RUN bash /tmp/layers/41-rstudio.sh && bash /tmp/layers/43-jupyter.sh \
+ && rm -rf /var/lib/apt/lists/* /tmp/*.deb /tmp/Rtmp* /root/.cache
+ENV PATH=/opt/jupyter/bin:$PATH
+
 COPY recipes/layers/42-rust.sh /tmp/layers/
 RUN if [ -n "$RUST" ]; then bash /tmp/layers/42-rust.sh; fi && rm -rf /tmp/layers
 
-# The user: `rstudio`, as on a VM built by the recipe, with uid 1000 (what Codespaces and Binder expect) and sudo,
+# The user: `rstudio`, as on a VM built by the recipe, with uid 1000 (what Codespaces, Binder and hubs expect) and sudo,
 # since a container is yours to change. Ubuntu's images ship an `ubuntu` user at 1000; it makes way.
 RUN userdel -r ubuntu 2>/dev/null; useradd -m -u 1000 -s /bin/bash rstudio \
  && echo 'rstudio ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/rstudio && chmod 440 /etc/sudoers.d/rstudio
 USER rstudio
 WORKDIR /home/rstudio
+EXPOSE 8888
 CMD ["bash", "-l"]
