@@ -249,25 +249,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="11-try-it-now-in-your-browser" class="level1">
 <h1>11. Try it now, in your browser</h1>
 <blockquote class="blockquote">
-<p><strong>Status:</strong> draft, November 2026. The image builds and passes the recipe’s own check; the Codespaces link is new.</p>
+<p><strong>Status:</strong> draft, November 2026. The image builds and passes the recipe’s own check; the Codespaces and Binder links are new.</p>
 </blockquote>
-<p>Before you ask for an allocation or launch anything, you can try the software a <a href="../guide/09-ready-made-server.html">ready-made server</a> gets, in a browser tab, in a couple of minutes:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://github.com/codespaces/new/mdsumner/nectar?quickstart=1"><img src="https://github.com/codespaces/badge.svg" class="img-fluid figure-img"></a></p>
-<figcaption>Open in GitHub Codespaces</figcaption>
-</figure>
-</div>
-<p>This isn’t Nectar. It’s a small temporary computer from GitHub, running the same software the recipe puts on a Nectar VM. It’s for a first look. When you want more memory, more disk, or a computer that’s still there next month, that’s what Nectar is for.</p>
+<p>Before you ask for an allocation or launch anything, you can try the software a <a href="../guide/09-ready-made-server.html">ready-made server</a> gets, in a browser tab, in a couple of minutes, two ways:</p>
+<p><a href="https://github.com/codespaces/new/mdsumner/nectar?quickstart=1"><img src="https://github.com/codespaces/badge.svg" class="img-fluid" alt="Open in GitHub Codespaces"></a> <a href="https://mybinder.org/v2/gh/mdsumner/nectar/main?urlpath=lab/tree/try-it.ipynb"><img src="https://mybinder.org/badge_logo.svg" class="img-fluid" alt="Launch Binder"></a></p>
+<ul>
+<li><strong>Codespaces</strong> gives you VS Code, and opens the same JupyterLab in a second tab. It needs a GitHub account, and it’s the roomier of the two.</li>
+<li><strong>Binder</strong> gives you JupyterLab, with RStudio a click away. It needs no account at all, but it’s small (around 2 GB of memory) and forgets everything when you close the tab.</li>
+</ul>
+<p>Neither is Nectar. Each is a small temporary computer from someone else (GitHub, or the volunteer-run <a href="https://mybinder.org">mybinder.org</a>), running the same software the recipe puts on a Nectar VM. It’s for a first look. When you want more memory, more disk, or a computer that’s still there next month, that’s what Nectar is for.</p>
 <section id="what-you-get" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-get">What you get</h2>
 <ul>
 <li>R, with <code>sf</code>, <code>terra</code>, <code>gdalraster</code>, <code>vapour</code> and <code>sds</code>, compiled against the same GDAL, PROJ and GEOS as a recipe-built VM</li>
 <li>Python with GDAL’s bindings, in <code>/opt/gdal-py</code></li>
-<li>VS Code in the browser, with R and Python set up, and a terminal</li>
+<li>JupyterLab, with an R kernel, a Python kernel that has GDAL, and RStudio in its launcher (this is what Binder opens)</li>
+<li>VS Code in the browser, with R and Python set up, and a terminal (Codespaces opens this, with JupyterLab in a second tab)</li>
 <li>A login called <code>rstudio</code>, with <code>sudo</code>, because the container is yours to change</li>
 </ul>
-<p>You need a GitHub account. Open the link, wait while it starts (the first start takes a few minutes, while it fetches the image), then open a terminal and type <code>R</code>. Try the same read the recipe uses as its final check:</p>
+<p>Open either link and wait while it starts. The first start can take several minutes, because the image is several gigabytes and has to be fetched. Both open a notebook with this in it. Codespaces also shows a welcome page, with the other ways in: RStudio, or R in a VS Code terminal. It’s the same read the recipe uses as its final check:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(sds<span class="sc">::</span><span class="fu">gebco</span>())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">crop</span>(r, <span class="fu">ext</span>(<span class="dv">147</span>, <span class="dv">148</span>, <span class="sc">-</span><span class="dv">43</span>, <span class="sc">-</span><span class="dv">42</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -275,12 +275,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="what-it-costs-and-what-it-isnt" class="level2">
 <h2 class="anchored" data-anchor-id="what-it-costs-and-what-it-isnt">What it costs, and what it isn’t</h2>
+<p>Binder is free, and run by volunteers on donated computers, so it can be busy; if a launch fails, try again later. A session ends after about 10 minutes without activity, and takes everything in it with it.</p>
 <p>Personal GitHub accounts get a free monthly allowance of Codespaces hours and storage. The link asks for a 4-core machine, which uses up the allowance faster than a 2-core one does. Check <a href="https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces">GitHub’s current figures</a>. A codespace stops when you leave it idle, and it’s deleted after a few weeks unused, along with anything you saved in it. Push your work somewhere, or download it.</p>
 <p>It isn’t a place for big data or long runs. That’s the point of the ladder below.</p>
 </section>
 <section id="one-image-several-places-to-run-it" class="level2">
 <h2 class="anchored" data-anchor-id="one-image-several-places-to-run-it">One image, several places to run it</h2>
-<p>The software is a container image, <code>ghcr.io/mdsumner/nectar</code>, built from the same recipe layers as a VM (<code>30-gdal.sh</code>, <code>40-r.sh</code>), on the same Ubuntu release. It’s rebuilt monthly, and whenever those layers change. Codespaces is only one place to run it.</p>
+<p>The software is a container image, <code>ghcr.io/mdsumner/nectar</code>, built from the same recipe layers as a VM (<code>30-gdal.sh</code>, <code>40-r.sh</code>, <code>41-rstudio.sh</code>), on the same Ubuntu release, plus <code>43-jupyter.sh</code> for JupyterLab. It’s rebuilt monthly, and whenever those layers change. Binder and Codespaces are just two of the places it runs.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -291,29 +292,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>GitHub Codespaces (the link above)</td>
-<td>A GitHub account</td>
-<td>A first look, a workshop, trying a change</td>
+<td><a href="https://mybinder.org/v2/gh/mdsumner/nectar/main?urlpath=lab/tree/try-it.ipynb">Binder</a></td>
+<td>Nothing</td>
+<td>A first look, a link in a talk or a paper</td>
 </tr>
 <tr class="even">
+<td><a href="https://github.com/codespaces/new/mdsumner/nectar?quickstart=1">GitHub Codespaces</a></td>
+<td>A GitHub account</td>
+<td>A workshop, a longer session, trying a change</td>
+</tr>
+<tr class="odd">
 <td>Your own computer</td>
 <td><a href="https://docs.docker.com/get-started/get-docker/">Docker</a></td>
 <td>The same software, offline, on your own files</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>A JupyterHub that takes your own image</td>
 <td>An account on that hub</td>
 <td>A group or a class (some community hubs, such as <a href="https://2i2c.org/">2i2c</a>’s, allow this)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>A Nectar VM, <a href="../guide/09-ready-made-server.html">built by the recipe</a></td>
 <td>A Nectar allocation</td>
 <td>Real work: more memory and disk, RStudio Server, a computer that stays</td>
 </tr>
 </tbody>
 </table>
-<p>On your own computer, this runs it with the current folder available inside as <code>~/work</code>:</p>
+<p>On your own computer, this runs R, with the current folder available inside as <code>~/work</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-v</span> <span class="st">"</span><span class="va">$PWD</span><span class="st">"</span>:/home/rstudio/work ghcr.io/mdsumner/nectar R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or JupyterLab, with RStudio in its launcher: run this, then open the <code>http://127.0.0.1:8888/lab?token=...</code> address it prints.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-p</span> 127.0.0.1:8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$PWD</span><span class="st">"</span>:/home/rstudio/work <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ghcr.io/mdsumner/nectar jupyter lab <span class="at">--ip</span><span class="op">=</span>0.0.0.0 <span class="at">--no-browser</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A JupyterHub that lets you bring your own image needs only the name, <code>ghcr.io/mdsumner/nectar:latest</code>. The image has the user (uid 1000) and the <code>jupyterhub-singleuser</code> program hubs expect.</p>
 <p>Because it’s the same software at each step, code that works in one place works in the next. You move it up when it outgrows where it is.</p>
 </section>
 <section id="reading-data-from-a-browser-page" class="level2">
