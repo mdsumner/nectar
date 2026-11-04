@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Before you ask for an allocation or launch anything, you can try the software a <a href="../guide/09-ready-made-server.html">ready-made server</a> gets, in a browser tab, in a couple of minutes, two ways:</p>
 <p><a href="https://github.com/codespaces/new/mdsumner/nectar?quickstart=1"><img src="https://github.com/codespaces/badge.svg" class="img-fluid" alt="Open in GitHub Codespaces"></a> <a href="https://mybinder.org/v2/gh/mdsumner/nectar/main?urlpath=lab/tree/try-it.ipynb"><img src="https://mybinder.org/badge_logo.svg" class="img-fluid" alt="Launch Binder"></a></p>
 <ul>
-<li><strong>Codespaces</strong> gives you VS Code and a terminal. It needs a GitHub account, and it’s the roomier of the two.</li>
+<li><strong>Codespaces</strong> gives you VS Code, and opens the same JupyterLab in a second tab. It needs a GitHub account, and it’s the roomier of the two.</li>
 <li><strong>Binder</strong> gives you JupyterLab, with RStudio a click away. It needs no account at all, but it’s small (around 2 GB of memory) and forgets everything when you close the tab.</li>
 </ul>
 <p>Neither is Nectar. Each is a small temporary computer from someone else (GitHub, or the volunteer-run <a href="https://mybinder.org">mybinder.org</a>), running the same software the recipe puts on a Nectar VM. It’s for a first look. When you want more memory, more disk, or a computer that’s still there next month, that’s what Nectar is for.</p>
@@ -264,10 +264,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>R, with <code>sf</code>, <code>terra</code>, <code>gdalraster</code>, <code>vapour</code> and <code>sds</code>, compiled against the same GDAL, PROJ and GEOS as a recipe-built VM</li>
 <li>Python with GDAL’s bindings, in <code>/opt/gdal-py</code></li>
 <li>JupyterLab, with an R kernel, a Python kernel that has GDAL, and RStudio in its launcher (this is what Binder opens)</li>
-<li>VS Code in the browser, with R and Python set up, and a terminal (this is what Codespaces opens)</li>
+<li>VS Code in the browser, with R and Python set up, and a terminal (Codespaces opens this, with JupyterLab in a second tab)</li>
 <li>A login called <code>rstudio</code>, with <code>sudo</code>, because the container is yours to change</li>
 </ul>
-<p>Open either link and wait while it starts. The first start can take several minutes, because the image is several gigabytes and has to be fetched. Binder opens a notebook with this in it; in Codespaces, open a terminal and type <code>R</code>. It’s the same read the recipe uses as its final check:</p>
+<p>Open either link and wait while it starts. The first start can take several minutes, because the image is several gigabytes and has to be fetched. Both open a notebook with this in it. Codespaces also shows a welcome page, with the other ways in: RStudio, or R in a VS Code terminal. It’s the same read the recipe uses as its final check:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(sds<span class="sc">::</span><span class="fu">gebco</span>())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">crop</span>(r, <span class="fu">ext</span>(<span class="dv">147</span>, <span class="dv">148</span>, <span class="sc">-</span><span class="dv">43</span>, <span class="sc">-</span><span class="dv">42</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
