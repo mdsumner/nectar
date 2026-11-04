@@ -1,2 +1,4 @@
+# the build context is the repo root for both image/Dockerfile and binder/Dockerfile (repo2docker); send only what they copy
 *
 !recipes/layers/
+!binder/try-it.ipynb

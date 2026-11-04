@@ -6,9 +6,9 @@ name: Image
 on:
   push:
     branches: [main]
-    paths: [image/**, recipes/layers/30-gdal.sh, recipes/layers/40-r.sh, recipes/layers/42-rust.sh, .github/workflows/image.yml]
+    paths: [image/**, recipes/layers/30-gdal.sh, recipes/layers/40-r.sh, recipes/layers/41-rstudio.sh, recipes/layers/42-rust.sh, recipes/layers/43-jupyter.sh, .github/workflows/image.yml]
   pull_request:
-    paths: [image/**, recipes/layers/30-gdal.sh, recipes/layers/40-r.sh, recipes/layers/42-rust.sh, .github/workflows/image.yml]
+    paths: [image/**, recipes/layers/30-gdal.sh, recipes/layers/40-r.sh, recipes/layers/41-rstudio.sh, recipes/layers/42-rust.sh, recipes/layers/43-jupyter.sh, .github/workflows/image.yml]
   schedule:
     - cron: '17 3 1 * *'
   workflow_dispatch:
