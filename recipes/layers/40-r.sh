@@ -32,6 +32,10 @@ local({
 })
 R
 
+echo "== reticulate uses the Python that has GDAL (/opt/gdal-py), as gdal-r-python does; R sessions read Renviron.site"
+sed -i '/^RETICULATE_PYTHON=/d; /^RETICULATE_USE_MANAGED_VENV=/d' /etc/R/Renviron.site 2>/dev/null || true
+printf 'RETICULATE_PYTHON=/opt/gdal-py/bin/python\nRETICULATE_USE_MANAGED_VENV=no\n' >> /etc/R/Renviron.site
+
 echo "== spatial packages from source"
 Rscript -e '
 pkgs <- c("sf", "terra", "gdalraster", "vapour", "sds", commandArgs(TRUE))

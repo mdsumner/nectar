@@ -14,18 +14,22 @@
 #   --fqdn FQDN         serve RStudio at https://FQDN/rstudio/ (default: none, SSH tunnel only)
 #   --email ADDR        Let's Encrypt contact, with --fqdn
 #   --rust              add the Rust toolchain
+#   --jupyter           add JupyterLab (R and Python kernels), reached through the SSH tunnel like RStudio
+#   --python-full       lift the full Python geo stack (gdal-r-python: rasterio, geopandas, xarray, ...); ~3 GB more disk
+#   --gdal-image IMG    lift GDAL from another gdal-r-ci image (default ghcr.io/hypertidy/gdal-system:latest)
 #   --dry-run           write the user-data and print the command; create nothing
 # Needs: your project's OpenStack credentials in the environment and `openstack` on PATH (or $OPENSTACK).
 set -euo pipefail
 O=${OPENSTACK:-openstack}
 HERE=$(cd "$(dirname "$0")" && pwd)
 NAME=${1:?usage: launch.sh NAME --key KEYPAIR [options]}; shift
-KEY= VOLID= NEWGB= USERS= FQDN= EMAIL= DRY= RUST= AZ= HOMEDIR=
+KEY= VOLID= NEWGB= USERS= FQDN= EMAIL= DRY= RUST= AZ= HOMEDIR= JUPYTER= GDAL_IMAGE=
 FLAVOR=m3.small IMAGE="NeCTAR Ubuntu 26.04 LTS (Resolute) amd64" SGS=default,ssh
 while [ $# -gt 0 ]; do case $1 in
   --volume) VOLID=$2; shift 2;; --new-volume) NEWGB=$2; shift 2;; --users) USERS=$2; shift 2;; --home) HOMEDIR=$2; shift 2;;
   --fqdn) FQDN=$2; shift 2;; --email) EMAIL=$2; shift 2;; --flavor) FLAVOR=$2; shift 2;; --image) IMAGE=$2; shift 2;;
   --key) KEY=$2; shift 2;; --secgroups) SGS=$2; shift 2;; --az) AZ=$2; shift 2;; --rust) RUST=1; shift;; --dry-run) DRY=1; shift;;
+  --jupyter) JUPYTER=1; shift;; --python-full) GDAL_IMAGE=ghcr.io/hypertidy/gdal-r-python:latest; shift;; --gdal-image) GDAL_IMAGE=$2; shift 2;;
   *) echo "unknown option $1"; exit 2;; esac; done
 [ -n "$KEY" ] || { echo "--key KEYPAIR is required"; exit 2; }
 if [ -n "$VOLID$NEWGB" ] && [ -z "$AZ" ]; then echo "--az is required with a volume"; exit 2; fi
@@ -51,7 +55,7 @@ HEAD
   echo B64
   cat <<CONFIG
 cat > config <<'CFG'
-VOLID='$VOLID' FQDN='$FQDN' EMAIL='$EMAIL' RUST='$RUST'
+VOLID='$VOLID' FQDN='$FQDN' EMAIL='$EMAIL' RUST='$RUST' JUPYTER='$JUPYTER' GDAL_IMAGE='$GDAL_IMAGE'
 ${HOMEDIR:+RECIPE_HOME='$HOMEDIR'}
 CFG
 CONFIG

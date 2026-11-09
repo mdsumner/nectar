@@ -6,7 +6,12 @@
 #
 # The image is plain Ubuntu (26.04 since gdal-r-ci 73d922b; glibc must match the host) with GDAL built into /usr/local, so its /usr/local runs on a host of the same release given
 # the same apt libraries. :latest = release GDAL (not bleeding edge). To upgrade: rerun with a newer tag.
-# Rust (/usr/local/rustup, /usr/local/cargo) is left out; only the image build needs it.
+# Rust (/usr/local/rustup, /usr/local/cargo) is left out; only the image build needs it. So is any R library under
+# /usr/local/lib/R (gdal-r and gdal-r-python carry one): 40-r.sh builds R packages against the host's own R.
+# A bigger Python stack: pass ghcr.io/hypertidy/gdal-r-python:latest (build.sh: GDAL_IMAGE, launch.sh: --python-full).
+# Its /opt/gdal-py adds rasterio, geopandas, pyogrio, pyarrow, xarray, dask, pystac-client, ... (source-built against the
+# same GDAL). The pull is ~11 GB (removed after the lift)
+# and leaves ~4.5 GB on disk instead of ~1.7 GB. gdal-system's /opt/gdal-py has only the GDAL bindings and numpy.
 # Arrow: GDAL links a specific Arrow ABI (e.g. libarrow.so.2600); the matching packages are installed and held.
 set -euo pipefail
 IMG=${1:-ghcr.io/hypertidy/gdal-system:latest}
@@ -33,11 +38,15 @@ else
   docker pull -q "$IMG"
   docker inspect --format '{{index .RepoDigests 0}}' "$IMG" | tee /etc/gdal-lifted-from
   docker run --rm --entrypoint tar "$IMG" -C / -cf - \
-    --exclude=usr/local/rustup --exclude=usr/local/cargo usr/local opt/gdal-py | tar -C / -xf -
+    --exclude=usr/local/rustup --exclude=usr/local/cargo --exclude=usr/local/lib/R usr/local opt/gdal-py | tar -C / -xf -
   docker rmi -f "$IMG" >/dev/null   # its files are now on the host; don't keep several GB of image on a small root disk
 fi
 echo /usr/local/lib > /etc/ld.so.conf.d/gdal-r-local.conf
 ldconfig
+# the apt libraries gdal-r-python's Dockerfile adds for its Python extensions (python3-venv tracks the system Python)
+case ${GDAL_PRELIFTED:-$IMG} in *gdal-r-python*)
+  echo "== apt deps of the gdal-r-python stack"
+  apt-get install -y -qq --no-install-recommends python3-venv libhiredis-dev;; esac
 
 echo "== Arrow libs matching the ABI GDAL was linked against"
 if [ ! -f /etc/apt/sources.list.d/apache-arrow.sources ]; then
@@ -59,6 +68,8 @@ apt-mark hold $PKGS libarrow-dev libparquet-dev libarrow-dataset-dev libarrow-ac
 echo "== checks"
 missing=$(for f in /usr/local/lib/*.so* /usr/local/bin/*; do [ -f "$f" ] && file -b "$f" | grep -q ELF && ldd "$f" 2>/dev/null | grep 'not found'; done | sort -u || true)
 [ -z "$missing" ] && echo "ldd: no missing libraries" || { echo "MISSING:"; echo "$missing"; exit 1; }
+missing=$(find /opt/gdal-py -name '*.so*' -type f -print0 | xargs -0 -r -n 200 ldd 2>/dev/null | grep 'not found' | sort -u || true)
+[ -z "$missing" ] && echo "ldd: no missing libraries in /opt/gdal-py" || { echo "MISSING (/opt/gdal-py):"; echo "$missing"; exit 1; }
 gdalinfo --version
 echo "PROJ $(pkg-config --modversion proj)  GEOS $(geos-config --version)"
 gdal-config --formats | tr ' ' '\n' | grep -iE '^(arrow|parquet|netcdf|hdf5|zarr|kea|gpkg|cog)' | tr '\n' ' '; echo

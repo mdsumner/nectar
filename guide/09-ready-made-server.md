@@ -141,3 +141,29 @@ quota. The volume and the VM must be in the same availability zone.
 security group that opens ports 80 and 443 (see
 [RStudio Server](06-rstudio-server.md)). `recipes/launch.sh` lists all its
 options at the top of the file.
+
+### JupyterLab, and a bigger Python stack
+
+`--jupyter` adds JupyterLab, with R and Python kernels and RStudio in its
+launcher. Each user starts their own, through a tunnel as for RStudio:
+
+```bash
+ssh -L 8888:localhost:8888 ubuntu@<ip>     # then, on the VM:
+jupyter lab --no-browser
+```
+
+and opens the `http://localhost:8888/lab?token=...` link it prints.
+
+Python on the server is `/opt/gdal-py`, built against the same GDAL as R's
+packages, and R's reticulate uses it too. By default it has only GDAL's own
+bindings and numpy. `--python-full` swaps in the full stack from
+[gdal-r-ci](https://github.com/hypertidy/gdal-r-ci)'s `gdal-r-python` image:
+rasterio, geopandas, pyogrio, pyarrow, xarray, dask, pystac-client, odc-geo,
+rioxarray and more. It adds about 3 GB on disk and a few minutes to the build.
+
+From the dashboard, put the same settings before `bash` in the Customization Script:
+
+```bash
+#!/bin/bash
+curl -fsSL https://raw.githubusercontent.com/mdsumner/nectar/main/recipes/bootstrap.sh | JUPYTER=1 GDAL_IMAGE=ghcr.io/hypertidy/gdal-r-python:latest bash
+```

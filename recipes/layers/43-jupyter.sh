@@ -1,7 +1,9 @@
 #!/bin/bash
 # 43: JupyterLab in /opt/jupyter, with two kernels (R, and Python with GDAL from /opt/gdal-py) and an RStudio launcher
 # (jupyter-rsession-proxy, which starts rserver per user). Also jupyterhub-singleuser, which Binder and JupyterHubs run.
-# Usage (as root), after 40-r.sh and 41-rstudio.sh. The container image runs it; a VM doesn't, yet.
+# Usage (as root), after 40-r.sh and 41-rstudio.sh. The container image always runs it; a VM with launch.sh --jupyter
+# (JUPYTER=1). On a VM, each user starts their own server on localhost and reaches it through the SSH tunnel, as for
+# RStudio:  ssh -L 8888:localhost:8888 ...  then  jupyter lab --no-browser   (JupyterLab listens on localhost by default)
 set -euo pipefail
 J=/opt/jupyter
 export UV_PYTHON_DOWNLOADS=never PATH="$J/bin:$PATH"

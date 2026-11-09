@@ -5,9 +5,10 @@
 # Build from the repo root:  docker build -f image/Dockerfile -t nectar .      (add --build-arg RUST=1 for Rust)
 ARG GDAL_IMAGE=ghcr.io/hypertidy/gdal-system:latest
 
-# The GDAL build, minus the Rust toolchain that only its own build needed (as 30-gdal.sh excludes on a VM)
+# The GDAL build, minus the Rust toolchain that only its own build needed and any R library (40-r.sh builds its own),
+# as 30-gdal.sh excludes on a VM. --build-arg GDAL_IMAGE=ghcr.io/hypertidy/gdal-r-python:latest gives the full Python stack.
 FROM ${GDAL_IMAGE} AS gdal
-RUN rm -rf /usr/local/rustup /usr/local/cargo
+RUN rm -rf /usr/local/rustup /usr/local/cargo /usr/local/lib/R
 
 FROM ubuntu:26.04
 ARG GDAL_IMAGE

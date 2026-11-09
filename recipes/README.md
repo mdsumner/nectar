@@ -16,11 +16,11 @@ Each is a short script run as root, in this order, and safe to read on its own.
 |---|---|---|
 | `10-volume.sh` | Formats (if empty) and mounts the home volume | With a volume |
 | `20-docker.sh` | Docker Engine, on the volume if there is one | Always |
-| `30-gdal.sh` | GDAL, PROJ and GEOS lifted from a gdal-r-ci image, plus system libraries | Always |
+| `30-gdal.sh` | GDAL, PROJ and GEOS lifted from a gdal-r-ci image, plus system libraries. With `--python-full`, the gdal-r-python image's Python geo stack too | Always |
 | `40-r.sh` | R, and `sf`, `terra`, `gdalraster`, `vapour`, `sds` from source | Always |
 | `41-rstudio.sh` | RStudio Server on localhost | Always |
 | `42-rust.sh` | Rust toolchain | `--rust` |
-| `43-jupyter.sh` | JupyterLab, R and Python (GDAL) kernels, RStudio in its launcher | Container image only, for now |
+| `43-jupyter.sh` | JupyterLab, R and Python (GDAL) kernels, RStudio in its launcher | `--jupyter`; always in the container image |
 | `45-login.sh` | `rstudio` account with a random password | No users file |
 | `60-users.sh` | Accounts from a users file | `--users` |
 | `50-nginx.sh` | nginx and a Let's Encrypt certificate | `--fqdn` |
