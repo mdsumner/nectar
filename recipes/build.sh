@@ -4,13 +4,15 @@
 #   RECIPE_HOME  where homes live (default /home; with a volume, /mnt/data/home)    VOLID     OpenStack volume to mount there
 #   FQDN, EMAIL  public web address + Let's Encrypt contact (default: none, SSH tunnel only)
 #   RUST=1       add the Rust toolchain                                             ./users.tsv  accounts (replaces the `rstudio` login)
+#   JUPYTER=1    add JupyterLab (layer 43)                                          GDAL_IMAGE   image 30-gdal.sh lifts from
+#                                                       (default gdal-system; ghcr.io/hypertidy/gdal-r-python:latest = full Python geo stack)
 # Log: /var/log/recipe-build.log. Status: /var/lib/recipe-status (running, failed <layer>, done).
 set -uo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 [ -f config ] && . ./config
 exec > >(tee -a /var/log/recipe-build.log) 2>&1
 export HOME=/root DEBIAN_FRONTEND=noninteractive
-VOLID=${VOLID:-} FQDN=${FQDN:-} EMAIL=${EMAIL:-} RUST=${RUST:-}
+VOLID=${VOLID:-} FQDN=${FQDN:-} EMAIL=${EMAIL:-} RUST=${RUST:-} JUPYTER=${JUPYTER:-} GDAL_IMAGE=${GDAL_IMAGE:-}
 [ -n "$VOLID" ] && : "${RECIPE_HOME:=/mnt/data/home}"
 export RECIPE_HOME=${RECIPE_HOME:-/home}
 echo 'DPkg::Lock::Timeout "900";' > /etc/apt/apt.conf.d/99lock-timeout   # first boot: unattended-upgrades holds the lock
@@ -20,10 +22,11 @@ run() { echo "=== $(date -u +%T) start $*"
         else echo "=== $(date -u +%T) FAILED $1"; echo "failed $1" > /var/lib/recipe-status; exit 1; fi; }
 [ -n "$VOLID" ] && run 10-volume.sh "$VOLID"
 run 20-docker.sh
-run 30-gdal.sh
+run 30-gdal.sh $GDAL_IMAGE
 run 40-r.sh
 run 41-rstudio.sh
 [ -n "$RUST" ] && run 42-rust.sh
+[ -n "$JUPYTER" ] && run 43-jupyter.sh
 if [ -s users.tsv ] && grep -qvE '^\s*(#|$)' users.tsv; then run 60-users.sh users.tsv; else run 45-login.sh; fi
 # ask the zone's own nameserver: resolvers cache "no such name" for the zone's negative TTL (an hour on Nectar zones),
 # so a record added after the first lookup would otherwise stay invisible for that long
