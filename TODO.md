@@ -22,8 +22,13 @@ Each of these gets tested on a real Nectar VM, then becomes a guide page of its 
 ## Recipes
 
 - [ ] Tag a release of `recipes/` and pin `quickstart.sh` to it, instead of `main`
-- [ ] More recipes alongside RStudio: Jupyter, marimo
 - [ ] Switch `41-rstudio.sh` to a stable release once one covers Ubuntu 26.04
+- [ ] Self-assembling landing page: each layer that adds a web service (41 RStudio,
+      43 Jupyter, a Shiny or plumber2 app) drops a fragment in
+      `/etc/nectar-recipes/services.d/NN-name.html`. Layer 50 (or a small
+      `nectar-index` command each layer calls) puts them together into
+      `/var/www/html/index.html` with a contact line set at launch (`--contact`).
+      Same idea as the "image slots" on the Codespaces welcome page.
 
 ## Verify on a real VM
 
