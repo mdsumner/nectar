@@ -239,7 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#connect-to-rstudio" id="toc-connect-to-rstudio" class="nav-link" data-scroll-target="#connect-to-rstudio">Connect to RStudio</a></li>
   <li><a href="#try-some-cloud-ready-data" id="toc-try-some-cloud-ready-data" class="nav-link" data-scroll-target="#try-some-cloud-ready-data">Try some cloud-ready data</a></li>
   <li><a href="#what-to-look-after" id="toc-what-to-look-after" class="nav-link" data-scroll-target="#what-to-look-after">What to look after</a></li>
-  <li><a href="#more-options" id="toc-more-options" class="nav-link" data-scroll-target="#more-options">More options</a></li>
+  <li><a href="#more-options" id="toc-more-options" class="nav-link" data-scroll-target="#more-options">More options</a>
+  <ul class="collapse">
+  <li><a href="#jupyterlab-and-a-bigger-python-stack" id="toc-jupyterlab-and-a-bigger-python-stack" class="nav-link" data-scroll-target="#jupyterlab-and-a-bigger-python-stack">JupyterLab, and a bigger Python stack</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mdsumner/nectar/edit/main/guide/09-ready-made-server.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdsumner/nectar/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -324,8 +327,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">recipes/launch.sh</span> myserver <span class="at">--key</span> mykey <span class="at">--az</span> tasmania <span class="at">--new-volume</span> 100 <span class="at">--flavor</span> m3.large</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With a volume, home directories and Docker’s data live on it (at <code>/mnt/data/home</code>) and survive the VM. Volumes need <a href="../guide/02-your-allocation.html">an allocation</a>, because a Project Trial has no volume quota. The volume and the VM must be in the same availability zone.</p>
 <p><code>--fqdn</code> serves RStudio at <code>https://&lt;name&gt;/rstudio/</code>, needing a DNS record and a security group that opens ports 80 and 443 (see <a href="../guide/06-rstudio-server.html">RStudio Server</a>). <code>recipes/launch.sh</code> lists all its options at the top of the file.</p>
+<section id="jupyterlab-and-a-bigger-python-stack" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterlab-and-a-bigger-python-stack">JupyterLab, and a bigger Python stack</h3>
+<p><code>--jupyter</code> adds JupyterLab, with R and Python kernels and RStudio in its launcher. Each user starts their own, through a tunnel as for RStudio:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 8888:localhost:8888 ubuntu@<span class="op">&lt;</span>ip<span class="op">&gt;</span>     <span class="co"># then, on the VM:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--no-browser</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and opens the <code>http://localhost:8888/lab?token=...</code> link it prints.</p>
+<p>Python on the server is <code>/opt/gdal-py</code>, built against the same GDAL as R’s packages, and R’s reticulate uses it too. By default it has only GDAL’s own bindings and numpy. <code>--python-full</code> swaps in the full stack from <a href="https://github.com/hypertidy/gdal-r-ci">gdal-r-ci</a>’s <code>gdal-r-python</code> image: rasterio, geopandas, pyogrio, pyarrow, xarray, dask, pystac-client, odc-geo, rioxarray and more. It adds about 3 GB on disk and a few minutes to the build.</p>
+<p>From the dashboard, put the same settings before <code>bash</code> in the Customization Script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/mdsumner/nectar/main/recipes/bootstrap.sh <span class="kw">|</span> <span class="va">JUPYTER</span><span class="op">=</span>1 <span class="va">GDAL_IMAGE</span><span class="op">=</span>ghcr.io/hypertidy/gdal-r-python:latest <span class="fu">bash</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 </section>
 </section>
 
